@@ -248,6 +248,20 @@ a{color:var(--rw-accent-dark);}
   inset:0;
   background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.18),transparent 60%);
   pointer-events:none;
+  z-index:3;
+}
+.rw-itemcard-thumb img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:2;
+  border-radius:inherit;
+}
+.rw-itemcard-thumb span{
+  position:relative;
+  z-index:1;
 }
 .rw-itemcard-thumb.prism{background:linear-gradient(135deg,#4b81e8 0%,#2c5dbf 100%);}
 .rw-itemcard-thumb.bmpipe{background:linear-gradient(135deg,#6c5ce7 0%,#4834a8 100%);}
@@ -611,28 +625,28 @@ a{color:var(--rw-accent-dark);}
 <p class="rw-section-note">Four named planners built during my PhD. Each is a concrete instantiation of a production-readiness property — portability without profiling, joint optimisation across all parallelism dimensions, and runtime fidelity on production frameworks.</p>
 <p class="rw-systems-callout">⚡ Three of these — <strong>PRISM</strong>, <strong>BMPipe</strong> and <strong>H²O</strong> — are combined in a live interactive demo: <a class="rw-demo-inline" href="#demo">SAPP Search Studio →</a></p>
 
-<div class="rw-itemcard"><div class="rw-itemcard-thumb prism"><span>PRISM</span></div><div class="rw-itemcard-body">
+<div class="rw-itemcard"><div class="rw-itemcard-thumb prism"><span>PRISM</span><img src="/images/sys/prism.png" alt="PRISM architecture" onerror="this.remove();"></div><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>PRISM</h3><span class="rw-badge">SCA / HPCAsia 2026</span></div>
 <p>Profiling-free symbolic memory-driven strategy planner. Predicts memory under arbitrary recomputation policies via closed-form per-component expressions; the communication side is modelled with collective-volume and topology-aware templates.</p>
 <p class="rw-card-result"><strong>92–96 %</strong> memory-prediction accuracy (median error ≈ 7 %) across DeepSeek3 / Llama2-3 / Mistral / TextHawk / Llama-MoE on Ascend-910 up to <strong>1,024 NPUs</strong>; up to <strong>1.43× MFU</strong> speedup over Megatron-LM.</p>
 <div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
 </div></div>
 
-<div class="rw-itemcard"><div class="rw-itemcard-thumb bmpipe"><span>BMPipe</span></div><div class="rw-itemcard-body">
+<div class="rw-itemcard"><div class="rw-itemcard-thumb bmpipe"><span>BMPipe</span><img src="/images/sys/bmpipe.png" alt="BMPipe architecture" onerror="this.remove();"></div><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>BMPipe</h3><span class="rw-badge">IEEE CLUSTER 2025</span></div>
 <p>Bubble–memory co-optimisation strategy planner. Formalises pipeline idle time into a tri-category taxonomy — <em>recomputation, imbalance, preparation bubbles</em> — and solves a joint pipeline–memory ILP for very-large DNN training.</p>
 <p class="rw-card-result"><strong>1.36×</strong> speedup over Megatron-Even on a <strong>16,384-NPU</strong> Ascend-910 cluster; up to <strong>1.70×</strong> under 1F1B-Interleave; ILP solves in <strong>&lt; 200 ms</strong> at production scale.</p>
 <div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
 </div></div>
 
-<div class="rw-itemcard"><div class="rw-itemcard-thumb h2o"><span>H²O</span></div><div class="rw-itemcard-body">
+<div class="rw-itemcard"><div class="rw-itemcard-thumb h2o"><span>H²O</span><img src="/images/sys/h2o.png" alt="H²O architecture" onerror="this.remove();"></div><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>H²O</h3><span class="rw-badge">Euro-Par 2025 · 🏆 Best Poster</span></div>
 <p>Holistic hyper-parameter optimisation. A two-level optimiser searches the macro tuple <code>(DP, TP, PP, OP, micro-batch)</code> with a fast symbolic Delta cost model; the inner level refines layer-to-stage assignment and per-layer recomputation via ILP — the first joint solver across all macro degrees plus stage assignment.</p>
 <p class="rw-card-result"><strong>+36.72 %</strong> speedup over the D-Rec baseline on 128-device clusters; <strong>35.73 % MFU</strong> on DeepSeek-141B — without any accelerator-time profiling.</p>
 <div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
 </div></div>
 
-<div class="rw-itemcard"><div class="rw-itemcard-thumb manumatic"><span>ManuMatic</span></div><div class="rw-itemcard-body">
+<div class="rw-itemcard"><div class="rw-itemcard-thumb manumatic"><span>ManuMatic</span><img src="/images/sys/manumatic.png" alt="ManuMatic architecture" onerror="this.remove();"></div><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>ManuMatic</h3><span class="rw-badge">IFIP NPC 2025</span></div>
 <p>Strategy injection for robust automatic hybrid parallelism. A structured interface lets users pin a small set of performance-critical operators while the planner derives a globally consistent strategy for the rest of the graph; built atop the D-Rec planner inside MindSpore and degenerates exactly to D-Rec when no constraints are provided.</p>
 <p class="rw-card-result">Up to <strong>2.24×</strong> over D-Rec on Mixtral-8×7B with expert parallelism (8 NPUs); <strong>2.04×</strong> on Llama3-8B at 8 K context; <strong>1.45× / 1.30×</strong> on Qwen2.5-72B at 32 K context (64 NPUs, combined with BMPipe).</p>
@@ -666,7 +680,7 @@ a{color:var(--rw-accent-dark);}
 <h2>Publications</h2>
 <div class="rw-publist">
 
-<div class="rw-pubitem"><div class="rw-itemcard-thumb prism"><span>1</span></div><div class="rw-itemcard-body">
+<div class="rw-pubitem"><div class="rw-itemcard-thumb prism"><span>1</span><img src="/images/sys/prism.png" alt="" onerror="this.remove();"></div><div class="rw-itemcard-body">
 <p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Philippe Fang, Chong Li, Thibaut Tachon, Raja Appuswamy.</p>
 <p class="rw-pubtitle"><em>PRISM: Profiling-Free Symbolic Memory-Driven Strategy Planner for Large DNN Model Training.</em></p>
 <p class="rw-pubvenue">SCA / HPCAsia 2026, Osaka, Japan · Jan 26–29, 2026</p>
@@ -684,25 +698,25 @@ a{color:var(--rw-accent-dark);}
 <p class="rw-pubvenue">arXiv preprint · 2025</p>
 </div></div>
 
-<div class="rw-pubitem"><div class="rw-itemcard-thumb manumatic"><span>4</span></div><div class="rw-itemcard-body">
+<div class="rw-pubitem"><div class="rw-itemcard-thumb manumatic"><span>4</span><img src="/images/sys/manumatic.png" alt="" onerror="this.remove();"></div><div class="rw-itemcard-body">
 <p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Hongxing Wang, Raja Appuswamy, Yujie Yuan.</p>
 <p class="rw-pubtitle"><em>ManuMatic: Strategy Injection for Robust Automatic Hybrid Parallelism in Distributed DNN Training.</em></p>
 <p class="rw-pubvenue">22nd IFIP NPC 2025, Nha Trang, Vietnam · Nov 14–16, 2025</p>
 </div></div>
 
-<div class="rw-pubitem"><div class="rw-itemcard-thumb bmpipe"><span>5</span></div><div class="rw-itemcard-body">
+<div class="rw-pubitem"><div class="rw-itemcard-thumb bmpipe"><span>5</span><img src="/images/sys/bmpipe.png" alt="" onerror="this.remove();"></div><div class="rw-itemcard-body">
 <p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy, Teng Su.</p>
 <p class="rw-pubtitle"><em>BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training.</em></p>
 <p class="rw-pubvenue">27th IEEE CLUSTER 2025, Edinburgh, UK · Sep 2–5, 2025</p>
 </div></div>
 
-<div class="rw-pubitem"><div class="rw-itemcard-thumb h2o"><span>6</span></div><div class="rw-itemcard-body">
+<div class="rw-pubitem"><div class="rw-itemcard-thumb h2o"><span>6</span><img src="/images/sys/h2o.png" alt="" onerror="this.remove();"></div><div class="rw-itemcard-body">
 <p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Raja Appuswamy, Yujie Yuan.</p>
 <p class="rw-pubtitle"><em>H²O: Holistic Hyper-Parameter Optimization for Large-Scale Deep Neural Network Training.</em></p>
 <p class="rw-pubvenue">31st Euro-Par 2025, Dresden, Germany · Aug 25–29, 2025 · 🏆 Best Poster Award</p>
 </div></div>
 
-<div class="rw-pubitem"><div class="rw-itemcard-thumb neutral"><span>7</span></div><div class="rw-itemcard-body">
+<div class="rw-pubitem"><div class="rw-itemcard-thumb neutral"><span>7</span><img src="/images/sys/prism.png" alt="" onerror="this.remove();"></div><div class="rw-itemcard-body">
 <p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy.</p>
 <p class="rw-pubtitle"><em>SCOPE — Symbolic Computation-Memory Optimization for Pipeline Efficiency in Ultra-Scale DNN Training.</em></p>
 <p class="rw-pubvenue">DP2E-AI 2025 Workshop, Paris, France · Jun 2–6, 2025</p>
