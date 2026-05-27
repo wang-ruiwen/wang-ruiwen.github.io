@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 144" preserveAspectRatio="xMidYMid slice">
+<defs>
+<linearGradient id="pg" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#4b81e8"/>
+<stop offset="100%" stop-color="#2c5dbf"/>
+</linearGradient>
+</defs>
+<rect width="200" height="144" fill="url(#pg)"/>
+<!-- Incoming white light -->
+<line x1="14" y1="72" x2="78" y2="72" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+<!-- Prism triangle -->
+<polygon points="80,108 102,30 140,108" fill="rgba(255,255,255,0.12)" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/>
+<!-- Outgoing rainbow spectrum -->
+<line x1="120" y1="62" x2="190" y2="42" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round"/>
+<line x1="123" y1="70" x2="190" y2="60" stroke="#ffd93d" stroke-width="3" stroke-linecap="round"/>
+<line x1="126" y1="78" x2="190" y2="78" stroke="#6bcb77" stroke-width="3" stroke-linecap="round"/>
+<line x1="129" y1="86" x2="190" y2="96" stroke="#4d96ff" stroke-width="3" stroke-linecap="round"/>
+<line x1="132" y1="94" x2="190" y2="114" stroke="#c8a2ff" stroke-width="3" stroke-linecap="round"/>
+</svg>
