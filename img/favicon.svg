@@ -1,6 +1,4 @@
-<svg
-    xmlns="http://www.w3.org/2000/svg" version="1.1" width="256" height="256" viewbox="0 0 949 256">
-    <path fill="#2366d1" d="M110.85125168440814 128L221.70250336881628 192L110.85125168440814 256L0 192Z"/>
-    <path fill="#609dff" d="M110.85125168440814 64L221.70250336881628 128L110.85125168440814 192L0 128Z"/>
-    <path fill="#a4c7ff" d="M110.85125168440814 0L221.70250336881628 64L110.85125168440814 128L0 64Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<rect width="64" height="64" fill="#1a1f36" rx="6"/>
+<text x="32" y="50" font-family="Georgia,'Times New Roman',serif" font-size="48" font-weight="700" fill="#ffffff" text-anchor="middle">R</text>
 </svg>
