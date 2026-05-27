@@ -1,139 +1,584 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta link="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css"><title>Ruiwen WANG — AI Infra & LLM Pretraining</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ruiwen WANG"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ruiwen WANG"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM, working at the intersection of AI Systems, Parallel Computing and Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism (DP/TP/PP/VPP/SP/EP/OP), pipeline-bubble optimisation, automatic strategy planning. Five planners — PRISM, BMPipe, H²O, Concord, ManuMatic — deployed on Huawei Ascend-910 clusters up to 16,384 NPUs, benchmarked against Megatron-LM. Distributed training, foundation models, MLSys, HPC."><meta property="og:type" content="blog"><meta property="og:title" content="Ruiwen WANG — AI Infra & LLM Pretraining"><meta property="og:url" content="https://ruiwen.wang/index.html"><meta property="og:site_name" content="Ruiwen WANG"><meta property="og:description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Five planners (PRISM, BMPipe, H²O, Concord, ManuMatic) on Huawei Ascend-910 clusters up to 16,384 NPUs."><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ruiwen.wang/img/og_image.png"><meta property="article:published_time" content="2025-09-25T22:00:00.000Z"><meta property="article:modified_time" content="2025-10-20T13:54:30.876Z"><meta property="article:author" content="Ruiwen WANG"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://ruiwen.wang/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ruiwen.wang/index.html"},"headline":"Ruiwen WANG","image":["https://ruiwen.wang/img/og_image.png"],"datePublished":"2025-09-25T22:00:00.000Z","dateModified":"2025-10-20T13:54:30.876Z","author":{"@type":"Person","name":"Ruiwen WANG"},"publisher":{"@type":"Organization","name":"Ruiwen WANG","logo":{"@type":"ImageObject"}},"description":"Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Five planners (PRISM, BMPipe, H²O, Concord, ManuMatic) on Huawei Ascend-910 clusters up to 16,384 NPUs, benchmarked against Megatron-LM."}</script><link rel="canonical" href="https://ruiwen.wang/index.html"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><style>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta link="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css"><title>Ruiwen WANG — AI Infra & LLM Pretraining</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ruiwen WANG"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ruiwen WANG"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM, working at the intersection of AI Systems, Parallel Computing and Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism (DP/TP/PP/VPP/SP/EP/OP), pipeline-bubble optimisation, automatic strategy planning. Five planners — PRISM, BMPipe, H²O, Concord, ManuMatic — deployed on Huawei Ascend-910 clusters up to 16,384 NPUs, benchmarked against Megatron-LM. Distributed training, foundation models, MLSys, HPC."><meta property="og:type" content="blog"><meta property="og:title" content="Ruiwen WANG — AI Infra & LLM Pretraining"><meta property="og:url" content="https://ruiwen.wang/index.html"><meta property="og:site_name" content="Ruiwen WANG"><meta property="og:description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Five planners (PRISM, BMPipe, H²O, Concord, ManuMatic) on Huawei Ascend-910 clusters up to 16,384 NPUs."><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ruiwen.wang/img/og_image.png"><meta property="article:published_time" content="2025-09-25T22:00:00.000Z"><meta property="article:modified_time" content="2025-10-20T13:54:30.876Z"><meta property="article:author" content="Ruiwen WANG"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://ruiwen.wang/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ruiwen.wang/index.html"},"headline":"Ruiwen WANG","image":["https://ruiwen.wang/img/og_image.png"],"datePublished":"2025-09-25T22:00:00.000Z","dateModified":"2025-10-20T13:54:30.876Z","author":{"@type":"Person","name":"Ruiwen WANG"},"publisher":{"@type":"Organization","name":"Ruiwen WANG","logo":{"@type":"ImageObject"}},"description":"Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Five planners (PRISM, BMPipe, H²O, Concord, ManuMatic) on Huawei Ascend-910 clusters up to 16,384 NPUs, benchmarked against Megatron-LM."}</script><link rel="canonical" href="https://ruiwen.wang/index.html"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;600;700;800&amp;family=Source+Code+Pro:wght@400;600&amp;display=swap"><style>
 :root{
   --rw-accent:#4b81e8;
   --rw-accent-dark:#2c5dbf;
   --rw-accent-soft:rgba(75,129,232,0.08);
   --rw-text:#1a1f36;
   --rw-text-muted:#5a667a;
-  --rw-card-shadow:0 6px 24px rgba(15,23,42,0.06),0 2px 6px rgba(15,23,42,0.04);
-  --rw-card-shadow-hover:0 12px 36px rgba(15,23,42,0.10),0 4px 10px rgba(15,23,42,0.06);
+  --rw-line:rgba(75,129,232,0.1);
 }
-body{background:linear-gradient(180deg,#f6f8fc 0%,#eef2f7 100%) !important;background-attachment:fixed;color:var(--rw-text);}
-body>.section,body>.footer{opacity:1 !important;}
-.navbar.navbar-main{box-shadow:0 1px 3px rgba(0,0,0,0.04);backdrop-filter:blur(8px);background:rgba(255,255,255,0.92) !important;}
-.navbar-item.is-active{color:var(--rw-accent) !important;font-weight:600;}
-.navbar-item.navbar-logo{font-weight:700;letter-spacing:-0.01em;}
-.card{border-radius:14px !important;box-shadow:var(--rw-card-shadow) !important;border:none !important;overflow:hidden;transition:box-shadow 0.25s ease,transform 0.25s ease;}
-.card:hover{box-shadow:var(--rw-card-shadow-hover) !important;}
-.card-content{padding:2rem 2.25rem;}
-@media (max-width:768px){.card-content{padding:1.5rem 1.25rem;}}
-.article .title.is-3{font-weight:700;letter-spacing:-0.02em;color:var(--rw-text);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--rw-accent-soft);position:relative;}
-.article .title.is-3::after{content:'';position:absolute;bottom:-2px;left:0;width:64px;height:2px;background:linear-gradient(90deg,var(--rw-accent),var(--rw-accent-dark));border-radius:2px;}
-.content h2{font-size:1.3rem;font-weight:600;color:var(--rw-text);margin-top:2rem;margin-bottom:1rem;padding-left:0.75rem;border-left:3px solid var(--rw-accent);}
-.content h2:first-child{margin-top:0;}
-.content h2 a.headerlink{display:none;}
-.content p,.content li{color:var(--rw-text);line-height:1.75;font-size:0.98rem;}
-.content ul{margin-left:1.1rem;}
-.content ul li{margin-bottom:0.7rem;padding-left:0.2rem;}
-.content strong{color:var(--rw-accent-dark);font-weight:700;}
-.content em{color:var(--rw-text);font-style:italic;font-weight:500;}
-.widget[data-type="profile"] .card-content{padding:2rem 1.5rem;text-align:center;}
-.widget[data-type="profile"] .avatar{border-radius:50% !important;box-shadow:0 8px 24px rgba(75,129,232,0.18),0 0 0 4px #fff,0 0 0 5px rgba(75,129,232,0.25);transition:transform 0.3s ease;}
-.widget[data-type="profile"] .avatar:hover{transform:scale(1.04);}
-.widget[data-type="profile"] .title.is-size-4{margin-top:0.8rem;font-weight:700;letter-spacing:-0.01em;}
-.widget[data-type="profile"] .button.is-primary{background:linear-gradient(135deg,var(--rw-accent),var(--rw-accent-dark)) !important;border:none !important;font-weight:600;letter-spacing:0.03em;padding:0.5rem 1.75rem;box-shadow:0 4px 14px rgba(75,129,232,0.35);transition:all 0.2s ease;}
-.widget[data-type="profile"] .button.is-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(75,129,232,0.45);}
-.widget[data-type="profile"] .button.is-transparent{color:var(--rw-text-muted) !important;background:transparent !important;border:none !important;transition:all 0.2s ease;width:2.5rem;height:2.5rem;border-radius:50%;}
-.widget[data-type="profile"] .button.is-transparent:hover{color:var(--rw-accent) !important;background:var(--rw-accent-soft) !important;transform:translateY(-2px);}
-.footer.rw-footer{background:transparent !important;margin-top:2rem;padding:1.5rem 1rem 2rem;}
-.footer.rw-footer p{color:var(--rw-text-muted) !important;letter-spacing:0.02em;}
-body.is-2-column>.section{padding-top:3.5rem;}
-.rw-demo-hero{margin:1rem 0 1.5rem 0;padding:2.2rem 1.5rem;border-radius:14px;background:linear-gradient(135deg,#3b6dc4 0%,#2c5dbf 60%,#1f4ba0 100%);position:relative;overflow:hidden;text-align:center;}
-.rw-demo-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,0.12) 0,transparent 40%),radial-gradient(circle at 80% 80%,rgba(255,255,255,0.08) 0,transparent 50%);pointer-events:none;}
-.rw-demo-hero-body{position:relative;z-index:1;color:#fff;}
-.rw-demo-hero h3{color:#fff !important;font-size:1.55rem !important;font-weight:700 !important;letter-spacing:-0.01em;margin:0 0 0.35rem 0 !important;border:none !important;padding:0 !important;}
-.rw-demo-tag{color:rgba(255,255,255,0.88) !important;font-size:0.95rem !important;margin:0 0 1rem 0 !important;font-weight:400;}
-.rw-demo-url{font-family:'Source Code Pro',monospace !important;color:rgba(255,255,255,0.75) !important;font-size:0.83rem !important;margin:0 0 1.2rem 0 !important;letter-spacing:0.02em;}
-.rw-demo-cta{display:inline-block;background:#fff;color:var(--rw-accent-dark) !important;padding:0.65rem 1.6rem;border-radius:999px;font-weight:600;letter-spacing:0.02em;font-size:0.93rem;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:transform 0.2s ease,box-shadow 0.2s ease;}
-.rw-demo-cta:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(0,0,0,0.22);color:var(--rw-accent-dark) !important;}
-.rw-demo-h3{font-size:1.05rem !important;font-weight:600 !important;color:var(--rw-text) !important;margin-top:1.5rem !important;margin-bottom:0.6rem !important;border-left:3px solid var(--rw-accent);padding-left:0.65rem !important;}
-.rw-demo-note{font-size:0.87rem !important;color:var(--rw-text-muted) !important;background:rgba(75,129,232,0.04);border-radius:6px;padding:0.7rem 0.9rem !important;border-left:2px solid rgba(75,129,232,0.3);margin-top:1rem !important;}
-.rw-demo-link{font-size:0.7rem;color:var(--rw-accent) !important;text-decoration:none;font-weight:600;letter-spacing:0.03em;padding:0.16rem 0.55rem;border-radius:999px;background:rgba(75,129,232,0.1);transition:all 0.2s ease;text-transform:uppercase;}
-.rw-demo-link:hover{background:var(--rw-accent);color:#fff !important;}
-.rw-systems-callout{padding:0.85rem 1.1rem;background:linear-gradient(135deg,rgba(75,129,232,0.09),rgba(75,129,232,0.03));border-radius:8px;border-left:3px solid var(--rw-accent);margin:0 0 1.5rem 0 !important;font-size:0.94rem !important;color:var(--rw-text) !important;line-height:1.55 !important;}
-.rw-systems-callout strong{color:var(--rw-accent-dark);}
-.rw-demo-inline{color:var(--rw-accent-dark) !important;font-weight:600;text-decoration:none;border-bottom:1px solid var(--rw-accent);}
-.rw-demo-inline:hover{background:var(--rw-accent-soft);}
-.rw-people-h3{font-size:0.92rem !important;font-weight:600 !important;color:var(--rw-text-muted) !important;text-transform:uppercase;letter-spacing:0.08em;margin-top:1.4rem !important;margin-bottom:0.5rem !important;border-left:none !important;padding-left:0 !important;}
-.rw-people-list{margin-left:0 !important;padding-left:0;list-style:none;}
-.rw-people-list li{margin-bottom:0.3rem !important;padding-left:0 !important;line-height:1.5 !important;font-size:0.93rem !important;}
-.rw-people-list li::before{content:'';}
-.rw-people-role{color:var(--rw-text-muted);font-size:0.86rem;font-weight:400;}
-.rw-people-inline{font-size:0.9rem !important;color:var(--rw-text) !important;line-height:1.8 !important;background:rgba(75,129,232,0.03);border-radius:8px;padding:0.85rem 1rem !important;margin:0.4rem 0 0 0 !important;}
-.section .columns{animation:rwFadeUp 0.6s ease both;}
-@keyframes rwFadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-.article .title.is-3{margin-bottom:0.35rem !important;padding-bottom:0 !important;border-bottom:none !important;}
-.article .title.is-3::after{display:none !important;}
-.rw-subtitle{color:var(--rw-text-muted) !important;font-size:0.95rem !important;font-weight:500;margin:0 0 1.5rem 0 !important;padding-bottom:0.85rem;letter-spacing:0.005em;position:relative;border-bottom:2px solid var(--rw-accent-soft);}
-.rw-subtitle::after{content:'';position:absolute;bottom:-2px;left:0;width:64px;height:2px;background:linear-gradient(90deg,var(--rw-accent),var(--rw-accent-dark));border-radius:2px;}
-.rw-systems-note{color:var(--rw-text-muted);font-size:0.92rem;font-style:italic;margin-bottom:1.2rem !important;}
-.rw-systems{display:grid;gap:0.9rem;margin:1.25rem 0 1.5rem 0;}
-.rw-card{border:1px solid rgba(75,129,232,0.12);border-left:3px solid var(--rw-accent);border-radius:10px;padding:1rem 1.15rem;background:linear-gradient(180deg,rgba(75,129,232,0.025),rgba(75,129,232,0));transition:all 0.25s ease;}
-.rw-card:hover{border-color:rgba(75,129,232,0.3);background:linear-gradient(180deg,rgba(75,129,232,0.055),rgba(75,129,232,0.01));transform:translateX(2px);}
-.rw-card-head{display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;margin-bottom:0.55rem;}
-.rw-card h3{font-size:1.05rem !important;font-weight:700 !important;color:var(--rw-accent-dark) !important;margin:0 !important;letter-spacing:-0.005em;border-left:none !important;padding-left:0 !important;}
-.rw-badge{font-size:0.7rem;font-weight:600;letter-spacing:0.04em;color:var(--rw-accent-dark);background:var(--rw-accent-soft);padding:0.18rem 0.6rem;border-radius:999px;text-transform:uppercase;white-space:nowrap;}
-.rw-card p{font-size:0.93rem !important;line-height:1.6 !important;margin-bottom:0.5rem !important;}
-.rw-card p.rw-card-result{font-size:0.88rem !important;color:var(--rw-text) !important;background:rgba(75,129,232,0.05);border-radius:6px;padding:0.55rem 0.75rem;margin-top:0.5rem !important;margin-bottom:0 !important;}
-.rw-publist{list-style-position:outside;padding-left:1.5rem;margin-top:0.75rem;}
-.rw-publist li{margin-bottom:1rem !important;line-height:1.6 !important;padding-left:0.25rem;}
-.rw-publist li::marker{color:var(--rw-accent);font-weight:600;}
-.rw-venue{font-size:0.86rem;color:var(--rw-text-muted);font-weight:500;}
-.rw-tag{font-size:0.7rem;font-weight:600;color:var(--rw-accent);background:var(--rw-accent-soft);padding:0.12rem 0.45rem;border-radius:4px;letter-spacing:0.03em;text-transform:uppercase;}
-.content code{background:rgba(75,129,232,0.08);color:var(--rw-accent-dark);padding:0.05rem 0.35rem;border-radius:4px;font-size:0.88em;font-family:'Source Code Pro',monospace;}
+*{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-.content h2[id]{scroll-margin-top:80px;}
-.rw-tabnav{display:flex;flex-wrap:wrap;gap:0;margin:0 0 1.75rem 0;padding:0;border-bottom:2px solid rgba(75,129,232,0.12);}
-.rw-tabnav a{padding:0.6rem 1.1rem;color:var(--rw-text-muted);text-decoration:none;font-weight:500;font-size:0.92rem;letter-spacing:0.01em;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s ease;cursor:pointer;}
-.rw-tabnav a:hover{color:var(--rw-accent);}
-.rw-tabnav a.is-active{color:var(--rw-accent-dark);border-bottom-color:var(--rw-accent);font-weight:600;}
-.rw-tab{display:none;}
-.rw-tab.is-active{display:block;animation:rwTabIn 0.3s ease;}
-@keyframes rwTabIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
-.rw-wordcloud{width:100%;height:320px;background:linear-gradient(135deg,rgba(75,129,232,0.045),rgba(75,129,232,0.01));border-radius:12px;margin:0.5rem 0 1rem 0;border:1px solid rgba(75,129,232,0.1);position:relative;overflow:hidden;display:flex;justify-content:center;align-items:center;}
+body{
+  margin:0;
+  padding:0;
+  font-family:Ubuntu,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:linear-gradient(180deg,#f6f8fc 0%,#eef2f7 100%);
+  background-attachment:fixed;
+  color:var(--rw-text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:var(--rw-accent-dark);}
+::selection{background:var(--rw-accent-soft);color:var(--rw-accent-dark);}
+
+/* Sticky top nav */
+.rw-topnav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,0.92);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rw-line);
+}
+.rw-topnav-inner{
+  max-width:860px;
+  margin:0 auto;
+  padding:0.85rem 1.25rem;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:0.2rem 1.4rem;
+}
+.rw-topnav a{
+  color:var(--rw-text-muted);
+  text-decoration:none;
+  font-weight:500;
+  font-size:0.9rem;
+  letter-spacing:0.02em;
+  padding:0.25rem 0;
+  border-bottom:2px solid transparent;
+  transition:color 0.2s ease,border-color 0.2s ease;
+}
+.rw-topnav a:hover{
+  color:var(--rw-accent-dark);
+  border-bottom-color:var(--rw-accent);
+}
+
+/* Hero */
+.rw-hero{
+  max-width:860px;
+  margin:0 auto;
+  padding:3rem 1.25rem 1.5rem;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.rw-hero-avatar{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 12px 36px rgba(75,129,232,0.2),0 0 0 5px #fff,0 0 0 6px rgba(75,129,232,0.25);
+  transition:transform 0.3s ease;
+}
+.rw-hero-avatar:hover{transform:scale(1.04);}
+.rw-hero-name{
+  font-size:2.3rem;
+  font-weight:800;
+  letter-spacing:-0.025em;
+  color:var(--rw-text);
+  margin:1.3rem 0 0.4rem;
+  line-height:1.1;
+}
+.rw-hero-subtitle{
+  font-size:1.02rem;
+  font-weight:500;
+  color:var(--rw-text-muted);
+  letter-spacing:0.005em;
+  margin:0 0 0.35rem;
+}
+.rw-hero-affil{
+  font-size:0.91rem;
+  color:var(--rw-text-muted);
+  margin:0 0 1.2rem;
+}
+.rw-hero-social{
+  display:flex;
+  gap:0.5rem;
+  justify-content:center;
+}
+.rw-hero-social a{
+  width:2.4rem;
+  height:2.4rem;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--rw-text-muted);
+  background:rgba(75,129,232,0.06);
+  text-decoration:none;
+  transition:all 0.2s ease;
+  font-size:0.95rem;
+}
+.rw-hero-social a:hover{
+  color:#fff;
+  background:var(--rw-accent);
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(75,129,232,0.3);
+}
+
+/* Main content */
+.rw-content{
+  max-width:860px;
+  margin:0 auto;
+  padding:0 1.5rem 3rem;
+}
+
+/* Section */
+.rw-section{
+  margin-top:2.5rem;
+  scroll-margin-top:5.5rem;
+}
+.rw-section h2{
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:-0.015em;
+  color:var(--rw-text);
+  margin:0 0 1.1rem;
+  padding-bottom:0.55rem;
+  border-bottom:2px solid var(--rw-line);
+  position:relative;
+}
+.rw-section h2::after{
+  content:'';
+  position:absolute;
+  bottom:-2px;
+  left:0;
+  width:50px;
+  height:2px;
+  background:linear-gradient(90deg,var(--rw-accent),var(--rw-accent-dark));
+  border-radius:2px;
+}
+.rw-section p,.rw-section li{
+  color:var(--rw-text);
+  line-height:1.7;
+  font-size:0.98rem;
+}
+.rw-section ul{padding-left:1.25rem;margin:0.5rem 0 1rem;}
+.rw-section ul li{margin-bottom:0.55rem;}
+.rw-section strong{color:var(--rw-accent-dark);font-weight:700;}
+.rw-section em{font-style:italic;color:var(--rw-text);font-weight:500;}
+.rw-section code{
+  background:rgba(75,129,232,0.08);
+  color:var(--rw-accent-dark);
+  padding:0.05rem 0.35rem;
+  border-radius:4px;
+  font-size:0.88em;
+  font-family:'Source Code Pro',monospace;
+}
+.rw-section a{
+  color:var(--rw-accent-dark);
+  text-decoration:none;
+  border-bottom:1px solid rgba(75,129,232,0.3);
+  transition:all 0.2s ease;
+}
+.rw-section a:hover{
+  background:var(--rw-accent-soft);
+  border-bottom-color:var(--rw-accent);
+}
+.rw-section-note{
+  color:var(--rw-text-muted);
+  font-size:0.93rem;
+  font-style:italic;
+  margin-bottom:1rem;
+}
+
+/* News */
+.rw-news{margin-top:0.5rem;}
+.rw-news-item{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:1rem;
+  padding:0.7rem 0;
+  border-top:1px solid var(--rw-line);
+  font-size:0.94rem;
+  line-height:1.5;
+}
+.rw-news-item:first-child{border-top:none;padding-top:0.3rem;}
+.rw-news-date{
+  color:var(--rw-text-muted);
+  font-family:'Source Code Pro',monospace;
+  font-size:0.83rem;
+  white-space:nowrap;
+}
+.rw-news-text{color:var(--rw-text);}
+.rw-news-text strong{color:var(--rw-accent-dark);}
+
+/* Item card (Systems / Publications) */
+.rw-itemcard,.rw-pubitem{
+  display:grid;
+  grid-template-columns:128px 1fr;
+  gap:1.2rem;
+  padding:1.1rem 0;
+  border-top:1px solid var(--rw-line);
+}
+.rw-systems-callout + .rw-itemcard,
+.rw-publist .rw-pubitem:first-child{border-top:none;}
+.rw-systems-callout + .rw-itemcard{padding-top:1.3rem;}
+.rw-itemcard-thumb{
+  width:128px;
+  height:92px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  color:#fff;
+  font-size:1.1rem;
+  letter-spacing:-0.01em;
+  text-shadow:0 1px 2px rgba(0,0,0,0.18);
+  transition:transform 0.3s ease,box-shadow 0.3s ease;
+  box-shadow:0 4px 14px rgba(0,0,0,0.1);
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+}
+.rw-itemcard:hover .rw-itemcard-thumb,
+.rw-pubitem:hover .rw-itemcard-thumb{
+  transform:scale(1.03);
+  box-shadow:0 6px 20px rgba(0,0,0,0.16);
+}
+.rw-itemcard-thumb::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.18),transparent 60%);
+  pointer-events:none;
+}
+.rw-itemcard-thumb.prism{background:linear-gradient(135deg,#4b81e8 0%,#2c5dbf 100%);}
+.rw-itemcard-thumb.bmpipe{background:linear-gradient(135deg,#6c5ce7 0%,#4834a8 100%);}
+.rw-itemcard-thumb.h2o{background:linear-gradient(135deg,#00b894 0%,#008a6f 100%);}
+.rw-itemcard-thumb.concord{background:linear-gradient(135deg,#e17055 0%,#b35540 100%);}
+.rw-itemcard-thumb.manumatic{background:linear-gradient(135deg,#f39c12 0%,#c87f0a 100%);}
+.rw-itemcard-thumb.neutral{background:linear-gradient(135deg,#7f8c9b 0%,#5a667a 100%);}
+.rw-itemcard-thumb span{position:relative;z-index:1;}
+.rw-pubitem .rw-itemcard-thumb{font-size:1.5rem;}
+.rw-itemcard-head{
+  display:flex;
+  align-items:center;
+  gap:0.55rem;
+  flex-wrap:wrap;
+  margin-bottom:0.45rem;
+}
+.rw-itemcard-head h3{
+  font-size:1.1rem;
+  font-weight:700;
+  color:var(--rw-accent-dark);
+  margin:0;
+  letter-spacing:-0.005em;
+  line-height:1.2;
+}
+.rw-itemcard-body p{
+  font-size:0.93rem;
+  line-height:1.6;
+  margin:0 0 0.45rem;
+}
+.rw-itemcard-body p.rw-card-result{
+  font-size:0.88rem;
+  color:var(--rw-text);
+  background:rgba(75,129,232,0.05);
+  border-radius:6px;
+  padding:0.55rem 0.75rem;
+  margin-top:0.5rem;
+  margin-bottom:0;
+}
+.rw-itemcard-links{margin-top:0.55rem;}
+.rw-itemcard-links a{
+  font-size:0.7rem;
+  font-weight:600;
+  color:var(--rw-accent);
+  text-decoration:none;
+  padding:0.18rem 0.55rem;
+  border-radius:999px;
+  background:rgba(75,129,232,0.1);
+  margin-right:0.35rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  border:none;
+  transition:all 0.2s ease;
+  display:inline-block;
+}
+.rw-itemcard-links a:hover{
+  background:var(--rw-accent);
+  color:#fff;
+}
+
+/* Badge */
+.rw-badge{
+  font-size:0.7rem;
+  font-weight:600;
+  letter-spacing:0.04em;
+  color:var(--rw-accent-dark);
+  background:var(--rw-accent-soft);
+  padding:0.18rem 0.6rem;
+  border-radius:999px;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+/* Publications */
+.rw-pubauthors{
+  font-size:0.93rem;
+  color:var(--rw-text);
+  margin:0 0 0.25rem;
+  line-height:1.5;
+}
+.rw-pubtitle{
+  font-size:0.96rem;
+  margin:0 0 0.3rem;
+  line-height:1.5;
+}
+.rw-pubvenue{
+  font-size:0.83rem;
+  color:var(--rw-text-muted);
+  margin:0;
+  line-height:1.5;
+}
+
+/* Systems callout */
+.rw-systems-callout{
+  padding:0.85rem 1.1rem;
+  background:linear-gradient(135deg,rgba(75,129,232,0.09),rgba(75,129,232,0.03));
+  border-radius:8px;
+  border-left:3px solid var(--rw-accent);
+  margin:0 0 1.5rem;
+  font-size:0.94rem;
+  line-height:1.55;
+  color:var(--rw-text);
+}
+.rw-systems-callout strong{color:var(--rw-accent-dark);}
+.rw-demo-inline{
+  color:var(--rw-accent-dark);
+  font-weight:600;
+  text-decoration:none;
+  border-bottom:1px solid var(--rw-accent);
+}
+.rw-demo-inline:hover{background:var(--rw-accent-soft);}
+
+/* Demo hero */
+.rw-demo-hero{
+  margin:1rem 0 1.5rem;
+  padding:2.2rem 1.5rem;
+  border-radius:14px;
+  background:linear-gradient(135deg,#3b6dc4 0%,#2c5dbf 60%,#1f4ba0 100%);
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+.rw-demo-hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,0.12) 0,transparent 40%),radial-gradient(circle at 80% 80%,rgba(255,255,255,0.08) 0,transparent 50%);
+  pointer-events:none;
+}
+.rw-demo-hero-body{position:relative;z-index:1;color:#fff;}
+.rw-demo-hero h3{color:#fff;font-size:1.55rem;font-weight:700;letter-spacing:-0.01em;margin:0 0 0.35rem;border:none;padding:0;}
+.rw-demo-tag{color:rgba(255,255,255,0.88);font-size:0.95rem;margin:0 0 1rem;}
+.rw-demo-url{font-family:'Source Code Pro',monospace;color:rgba(255,255,255,0.75);font-size:0.83rem;margin:0 0 1.2rem;letter-spacing:0.02em;}
+.rw-demo-cta{
+  display:inline-block;
+  background:#fff;
+  color:var(--rw-accent-dark);
+  padding:0.65rem 1.6rem;
+  border-radius:999px;
+  font-weight:600;
+  letter-spacing:0.02em;
+  font-size:0.93rem;
+  text-decoration:none;
+  border:none;
+  box-shadow:0 4px 16px rgba(0,0,0,0.15);
+  transition:transform 0.2s ease,box-shadow 0.2s ease;
+}
+.rw-demo-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 22px rgba(0,0,0,0.22);
+  color:var(--rw-accent-dark);
+  background:#fff;
+}
+.rw-demo-h3{
+  font-size:1.05rem;
+  font-weight:600;
+  color:var(--rw-text);
+  margin:1.5rem 0 0.6rem;
+  border-left:3px solid var(--rw-accent);
+  padding-left:0.65rem;
+  border-bottom:none;
+}
+.rw-demo-h3::after{display:none;}
+.rw-demo-note{
+  font-size:0.87rem;
+  color:var(--rw-text-muted);
+  background:rgba(75,129,232,0.04);
+  border-radius:6px;
+  padding:0.7rem 0.9rem;
+  border-left:2px solid rgba(75,129,232,0.3);
+  margin-top:1rem;
+}
+
+/* Word cloud */
+.rw-wordcloud{
+  width:100%;
+  height:300px;
+  background:linear-gradient(135deg,rgba(75,129,232,0.045),rgba(75,129,232,0.01));
+  border-radius:12px;
+  margin:0.5rem 0 1rem;
+  border:1px solid var(--rw-line);
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 .rw-wordcloud svg{display:block;}
-.rw-wordcloud .word{cursor:pointer;transition:fill 0.2s ease,opacity 0.2s ease;font-family:Ubuntu,'Source Code Pro',sans-serif;fill:#4a5266;}
+.rw-wordcloud .word{
+  cursor:pointer;
+  transition:fill 0.2s ease;
+  font-family:Ubuntu,sans-serif;
+  fill:#4a5266;
+}
 .rw-wordcloud .word:hover{fill:var(--rw-accent);}
 .rw-wordcloud .word.is-active{fill:var(--rw-accent-dark);font-weight:700;}
 .rw-cloud-fallback{color:var(--rw-text-muted);font-size:0.9rem;font-style:italic;}
-.rw-kw-info{padding:0.95rem 1.15rem;background:rgba(75,129,232,0.05);border-radius:8px;border-left:3px solid var(--rw-accent);margin:0 0 1.5rem 0;min-height:80px;transition:background 0.2s ease;}
-.rw-kw-info h3{font-size:0.98rem !important;font-weight:700 !important;color:var(--rw-accent-dark) !important;margin:0 0 0.4rem 0 !important;border-left:none !important;padding-left:0 !important;letter-spacing:0;}
-.rw-kw-info p{font-size:0.91rem !important;color:var(--rw-text-muted) !important;margin:0 !important;line-height:1.55 !important;}
-@media (max-width:600px){.rw-wordcloud{height:260px;}}
-</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
-          }
+.rw-kw-info{
+  padding:0.95rem 1.15rem;
+  background:rgba(75,129,232,0.05);
+  border-radius:8px;
+  border-left:3px solid var(--rw-accent);
+  margin:0;
+  min-height:80px;
+}
+.rw-kw-info h3{
+  font-size:0.98rem;
+  font-weight:700;
+  color:var(--rw-accent-dark);
+  margin:0 0 0.4rem;
+  border:none;
+  padding:0;
+  letter-spacing:0;
+}
+.rw-kw-info h3::after{display:none;}
+.rw-kw-info p{
+  font-size:0.91rem;
+  color:var(--rw-text-muted);
+  margin:0;
+  line-height:1.55;
+}
 
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
-          }
+/* People */
+.rw-people-h3{
+  font-size:0.85rem;
+  font-weight:600;
+  color:var(--rw-text-muted);
+  text-transform:uppercase;
+  letter-spacing:0.09em;
+  margin:1.4rem 0 0.55rem;
+  border-bottom:none;
+  padding:0;
+}
+.rw-people-h3::after{display:none;}
+.rw-people-list{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.rw-people-list li{
+  margin-bottom:0.3rem;
+  padding-left:0;
+  line-height:1.5;
+  font-size:0.93rem;
+}
+.rw-people-role{
+  color:var(--rw-text-muted);
+  font-size:0.85rem;
+  font-weight:400;
+}
+.rw-people-inline{
+  font-size:0.9rem;
+  color:var(--rw-text);
+  line-height:1.8;
+  background:rgba(75,129,232,0.03);
+  border-radius:8px;
+  padding:0.85rem 1rem;
+  margin:0.4rem 0 0;
+}
 
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
+/* Footer */
+.rw-footer{
+  max-width:860px;
+  margin:3rem auto 0;
+  padding:1.5rem 1.25rem 2rem;
+  text-align:center;
+  border-top:1px solid var(--rw-line);
+}
+.rw-footer p{
+  color:var(--rw-text-muted);
+  letter-spacing:0.02em;
+  font-size:0.85rem;
+  margin:0;
+}
+.rw-footer a{color:var(--rw-text-muted);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s ease;}
+.rw-footer a:hover{border-bottom-color:var(--rw-accent);}
 
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
-          }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
-      }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><script src="https://d3js.org/d3.v7.min.js" defer></script><script src="https://unpkg.com/d3-cloud/build/d3.layout.cloud.js" defer></script></head><body class="is-2-column"><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile">Ruiwen WANG</h1><p class="rw-subtitle">PhD Candidate · AI Infra · LLM Pretraining · Hybrid Parallelism</p><nav class="rw-tabnav" aria-label="Sections"><a data-tab="home" href="#home">Home</a><a data-tab="systems" href="#systems">Systems</a><a data-tab="demo" href="#demo">Demo</a><a data-tab="publications" href="#publications">Publications</a><a data-tab="about" href="#about">About</a></nav><div class="content"><div class="rw-tab is-active" id="tab-home"><h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>I am a third-year Ph.D. candidate in Computer Science at <strong>Sorbonne Université</strong> and <strong>EURECOM</strong>, working at the intersection of <strong>AI Systems</strong>, <strong>Parallel Computing</strong> and <strong>Performance Engineering</strong>. Jointly advised by Prof. Raja Appuswamy (EURECOM) and Prof. Chong Li (Huawei).</p>
+/* Fade-in */
+.rw-hero,.rw-section{animation:rwFadeUp 0.5s ease both;}
+@keyframes rwFadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:none;}
+}
+
+/* Mobile */
+@media (max-width:680px){
+  .rw-topnav-inner{gap:0.15rem 0.95rem;padding:0.7rem 1rem;}
+  .rw-topnav a{font-size:0.84rem;}
+  .rw-hero{padding:2rem 1rem 1rem;}
+  .rw-hero-avatar{width:140px;height:140px;}
+  .rw-hero-name{font-size:1.85rem;}
+  .rw-hero-subtitle{font-size:0.93rem;}
+  .rw-content{padding:0 1rem 2rem;}
+  .rw-section{margin-top:2rem;}
+  .rw-section h2{font-size:1.3rem;}
+  .rw-itemcard,.rw-pubitem{grid-template-columns:80px 1fr;gap:0.85rem;padding:0.9rem 0;}
+  .rw-itemcard-thumb{width:80px;height:60px;font-size:0.8rem;border-radius:8px;}
+  .rw-pubitem .rw-itemcard-thumb{font-size:1.1rem;}
+  .rw-news-item{grid-template-columns:60px 1fr;font-size:0.88rem;gap:0.7rem;}
+  .rw-news-date{font-size:0.78rem;}
+  .rw-wordcloud{height:260px;}
+}
+</style><script src="https://d3js.org/d3.v7.min.js" defer></script><script src="https://unpkg.com/d3-cloud/build/d3.layout.cloud.js" defer></script></head>
+<body>
+
+<nav class="rw-topnav"><div class="rw-topnav-inner"><a href="#about">About</a><a href="#news">News</a><a href="#topics">Topics</a><a href="#systems">Systems</a><a href="#demo">Demo</a><a href="#publications">Publications</a><a href="#people">People</a></div></nav>
+
+<header class="rw-hero">
+<img class="rw-hero-avatar" src="/images/avatar.jpg" alt="Ruiwen WANG">
+<h1 class="rw-hero-name">Ruiwen WANG</h1>
+<p class="rw-hero-subtitle">PhD Candidate · AI Infra · LLM Pretraining · Hybrid Parallelism</p>
+<p class="rw-hero-affil">Sorbonne Université × EURECOM × Huawei Paris · Paris, France</p>
+<div class="rw-hero-social">
+<a href="mailto:wangrw0124@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+<a href="https://scholar.google.com/citations?user=AR1nHEUAAAAJ" target="_blank" rel="noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+<a href="https://orcid.org/0009-0000-6709-5970" target="_blank" rel="noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
+<a href="https://www.linkedin.com/in/ruiwen-wang1" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/wang-ruiwen" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+</div>
+</header>
+
+<main class="rw-content">
+
+<section class="rw-section" id="about">
+<h2>About</h2>
+<p>I am a third-year Ph.D. candidate in Computer Science at <strong>Sorbonne Université</strong> and <strong>EURECOM</strong>, working at the intersection of <strong>AI Systems</strong>, <strong>Parallel Computing</strong> and <strong>Performance Engineering</strong>. Jointly advised by Prof. Raja Appuswamy (EURECOM) and Prof. Chong Li (Huawei).</p>
 <p>I studied Computer Science at Paris-Saclay Université (B.Sc., 2016–2019) and Sorbonne Université (M.Sc., 2019–2022). I joined <strong>Huawei's Paris Research Center</strong> in 2021 as a research engineer in <strong>AI infrastructure</strong>, working on hybrid parallelism and memory optimisation for the <strong>LLM pretraining</strong> stack behind the company's foundation-scale models. In 2023 the work evolved into a Ph.D. under the French CIFRE programme; the planners studied in the thesis are integrated into Huawei's MindSpore / D-Rec runtime, benchmarked against Megatron-LM, and validated on Ascend-910 production clusters of up to <strong>16,384 NPUs</strong>. I expect to defend in 2026.</p>
-<h2 id="Research"><a href="#Research" class="headerlink" title="Research focus"></a>Research focus</h2><p>My thesis, <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em>, asks one question: <em>how do we systematically plan parallelism for foundation-scale training without per-cluster profiling, and without losing portability when the hardware or model changes?</em> The work decomposes into five threads — each instantiated as a named planner described in the <a data-tab="systems" href="#systems">Systems</a> tab.</p>
+</section>
+
+<section class="rw-section" id="research">
+<h2>Research focus</h2>
+<p>My thesis, <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em>, asks one question: <em>how do we systematically plan parallelism for foundation-scale training without per-cluster profiling, and without losing portability when the hardware or model changes?</em> The work decomposes into five threads — each instantiated as a named planner described in the <a href="#systems">Systems</a> section.</p>
 <ul>
 <li><strong>Cost modelling.</strong> Closed-form, hardware-parametric memory and communication cost surfaces for transformer and MoE training under arbitrary recomputation policies — a thread running through all five systems, deepest in PRISM.</li>
 <li><strong>Pipeline bubble optimisation.</strong> Tri-category bubble taxonomy (recomputation, imbalance, preparation) and joint pipeline–memory ILP for very-large DNN training under tight memory budgets.</li>
@@ -141,7 +586,77 @@ html{scroll-behavior:smooth;}
 <li><strong>Incremental re-planning.</strong> Dependency-keyed (<em>κ</em>, <em>σ</em>) interface that turns repeated planner calls across model revisions into incremental, full-search-equivalent work.</li>
 <li><strong>Runtime fidelity.</strong> Structured strategy injection that lets users pin a small set of performance-critical operators, closing the gap between cost-model predictions and production-framework runtime.</li>
 </ul>
-<h2 id="Topics"><a href="#Topics" class="headerlink" title="Topics"></a>Topics</h2><p class="rw-systems-note">An associative map of recurring themes across my publications — click a keyword to see how it fits in my work.</p><div id="rw-wordcloud" class="rw-wordcloud" aria-label="Keyword cloud"><div class="rw-cloud-fallback">Loading keywords…</div></div><div class="rw-kw-info" id="rw-kw-info"><h3 id="rw-kw-title">Pick a keyword</h3><p id="rw-kw-desc">Each keyword corresponds to a specific thread of my research. Click one above to see the context.</p></div></div><div class="rw-tab" id="tab-systems"><h2 id="Systems"><a href="#Systems" class="headerlink" title="Systems"></a>Systems</h2><p class="rw-systems-note">Five named planners built during my PhD. Each is a concrete instantiation of one of four production-readiness properties — portability without profiling, joint optimisation across all parallelism dimensions, incremental re-planning across model revisions, and runtime fidelity on production frameworks.</p><p class="rw-systems-callout">⚡ Three of these — <strong>PRISM</strong>, <strong>BMPipe</strong> and <strong>H²O</strong> — are combined in a live interactive demo: <a class="rw-demo-inline" data-tab="demo" href="#demo">SAPP Search Studio →</a></p><div class="rw-systems"><div class="rw-card"><div class="rw-card-head"><h3>PRISM</h3><span class="rw-badge">SCA / HPCAsia 2026</span><a class="rw-demo-link" data-tab="demo" href="#demo">→ SAPP demo</a></div><p>Profiling-free symbolic memory-driven strategy planner. Predicts memory under arbitrary recomputation policies via closed-form per-component expressions; the communication side is modelled with collective-volume and topology-aware templates.</p><p class="rw-card-result"><strong>92–96 %</strong> memory-prediction accuracy (median error ≈ 7 %) across DeepSeek3 / Llama2-3 / Mistral / TextHawk / Llama-MoE on Ascend-910 up to <strong>1,024 NPUs</strong>; up to <strong>1.43× MFU</strong> speedup over Megatron-LM.</p></div><div class="rw-card"><div class="rw-card-head"><h3>BMPipe</h3><span class="rw-badge">IEEE CLUSTER 2025</span><a class="rw-demo-link" data-tab="demo" href="#demo">→ SAPP demo</a></div><p>Bubble–memory co-optimisation strategy planner. Formalises pipeline idle time into a tri-category taxonomy — <em>recomputation, imbalance, preparation bubbles</em> — and solves a joint pipeline–memory ILP for very-large DNN training.</p><p class="rw-card-result"><strong>1.36×</strong> speedup over Megatron-Even on a <strong>16,384-NPU</strong> Ascend-910 cluster; up to <strong>1.70×</strong> under 1F1B-Interleave; ILP solves in <strong>&lt; 200 ms</strong> at production scale.</p></div><div class="rw-card"><div class="rw-card-head"><h3>H²O</h3><span class="rw-badge">Euro-Par 2025 · 🏆 Best Poster</span><a class="rw-demo-link" data-tab="demo" href="#demo">→ SAPP demo</a></div><p>Holistic hyper-parameter optimisation. A two-level optimiser searches the macro tuple <code>(DP, TP, PP, OP, micro-batch)</code> with a fast symbolic Delta cost model; the inner level refines layer-to-stage assignment and per-layer recomputation via ILP — the first joint solver across all macro degrees plus stage assignment.</p><p class="rw-card-result"><strong>+36.72 %</strong> speedup over the D-Rec baseline on 128-device clusters; <strong>35.73 % MFU</strong> on DeepSeek-141B — without any accelerator-time profiling.</p></div><div class="rw-card"><div class="rw-card-head"><h3>Concord</h3><span class="rw-badge">Under review · 2026</span></div><p>Dependency-keyed re-planning. Each closed-form cost evaluation carries a static dependency set <em>κ</em> and a runtime value signature <em>σ</em>; a formal equivalence result establishes that warm re-planning preserves the macro candidate set and the top-1 plan that a cold full search would return.</p><p class="rw-card-result"><strong>1.14–1.24×</strong> end-to-end speedup over an expert-tuned Megatron baseline on 256–4,096 NPU MoE workloads; <strong>2.74× median</strong> planner wall-clock speedup over cache-disabled full search; <strong>54 / 54</strong> top-1 agreement, <strong>0 / 162</strong> stale-hit value mismatches.</p></div><div class="rw-card"><div class="rw-card-head"><h3>ManuMatic</h3><span class="rw-badge">IFIP NPC 2025</span></div><p>Strategy injection for robust automatic hybrid parallelism. A structured interface lets users pin a small set of performance-critical operators while the planner derives a globally consistent strategy for the rest of the graph; built atop the D-Rec planner inside MindSpore and degenerates exactly to D-Rec when no constraints are provided.</p><p class="rw-card-result">Up to <strong>2.24×</strong> over D-Rec on Mixtral-8×7B with expert parallelism (8 NPUs); <strong>2.04×</strong> on Llama3-8B at 8 K context; <strong>1.45× / 1.30×</strong> on Qwen2.5-72B at 32 K context (64 NPUs, combined with BMPipe).</p></div></div></div><div class="rw-tab" id="tab-demo"><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p class="rw-systems-note">An interactive integration of three planners from the <a data-tab="systems" href="#systems">Systems</a> tab — PRISM (ND cost surface), BMPipe (PPB solver) and H²O (two-level search) — running as a single browser-based research tool.</p><div class="rw-demo-hero"><div class="rw-demo-hero-body"><h3>SAPP Search Studio</h3><p class="rw-demo-tag">Unified ND + PPB strategy search for large-scale LLM training</p><p class="rw-demo-url">sapp.ruiwen.wang</p><a class="rw-demo-cta" href="https://sapp.ruiwen.wang" target="_blank" rel="noopener">Open live demo ↗</a></div></div><h3 class="rw-demo-h3">What you'll see</h3><ul>
+</section>
+
+<section class="rw-section" id="news">
+<h2>News</h2>
+<div class="rw-news">
+<div class="rw-news-item"><div class="rw-news-date">2026.01</div><div class="rw-news-text">📄 Presented <strong>PRISM</strong> at SCA / HPCAsia 2026, Osaka.</div></div>
+<div class="rw-news-item"><div class="rw-news-date">2026.01</div><div class="rw-news-text">📄 Co-author on <em>MLLM Pipeline Bubble Modeling</em> at SCA / HPCAsia 2026, Osaka.</div></div>
+<div class="rw-news-item"><div class="rw-news-date">2025.11</div><div class="rw-news-text">📄 Presented <strong>ManuMatic</strong> at IFIP NPC 2025, Nha Trang.</div></div>
+<div class="rw-news-item"><div class="rw-news-date">2025.09</div><div class="rw-news-text">📄 Presented <strong>BMPipe</strong> at IEEE CLUSTER 2025, Edinburgh.</div></div>
+<div class="rw-news-item"><div class="rw-news-date">2025.08</div><div class="rw-news-text">🏆 <strong>H²O</strong> received the <strong>Best Poster Award</strong> at Euro-Par 2025, Dresden.</div></div>
+<div class="rw-news-item"><div class="rw-news-date">2025.06</div><div class="rw-news-text">📄 Presented <strong>SCOPE</strong> at the DP2E-AI 2025 Workshop, Paris.</div></div>
+<div class="rw-news-item"><div class="rw-news-date">2025</div><div class="rw-news-text">📝 <strong>Concord</strong> manuscript under review.</div></div>
+</div>
+</section>
+
+<section class="rw-section" id="topics">
+<h2>Topics</h2>
+<p class="rw-section-note">An associative map of recurring themes across my publications — click a keyword to see how it fits in my work.</p>
+<div id="rw-wordcloud" class="rw-wordcloud" aria-label="Keyword cloud"><div class="rw-cloud-fallback">Loading keywords…</div></div>
+<div class="rw-kw-info" id="rw-kw-info"><h3 id="rw-kw-title">Pick a keyword</h3><p id="rw-kw-desc">Each keyword corresponds to a specific thread of my research. Click one above to see the context.</p></div>
+</section>
+
+<section class="rw-section" id="systems">
+<h2>Systems</h2>
+<p class="rw-section-note">Five named planners built during my PhD. Each is a concrete instantiation of one of four production-readiness properties — portability without profiling, joint optimisation across all parallelism dimensions, incremental re-planning across model revisions, and runtime fidelity on production frameworks.</p>
+<p class="rw-systems-callout">⚡ Three of these — <strong>PRISM</strong>, <strong>BMPipe</strong> and <strong>H²O</strong> — are combined in a live interactive demo: <a class="rw-demo-inline" href="#demo">SAPP Search Studio →</a></p>
+
+<div class="rw-itemcard"><div class="rw-itemcard-thumb prism"><span>PRISM</span></div><div class="rw-itemcard-body">
+<div class="rw-itemcard-head"><h3>PRISM</h3><span class="rw-badge">SCA / HPCAsia 2026</span></div>
+<p>Profiling-free symbolic memory-driven strategy planner. Predicts memory under arbitrary recomputation policies via closed-form per-component expressions; the communication side is modelled with collective-volume and topology-aware templates.</p>
+<p class="rw-card-result"><strong>92–96 %</strong> memory-prediction accuracy (median error ≈ 7 %) across DeepSeek3 / Llama2-3 / Mistral / TextHawk / Llama-MoE on Ascend-910 up to <strong>1,024 NPUs</strong>; up to <strong>1.43× MFU</strong> speedup over Megatron-LM.</p>
+<div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
+</div></div>
+
+<div class="rw-itemcard"><div class="rw-itemcard-thumb bmpipe"><span>BMPipe</span></div><div class="rw-itemcard-body">
+<div class="rw-itemcard-head"><h3>BMPipe</h3><span class="rw-badge">IEEE CLUSTER 2025</span></div>
+<p>Bubble–memory co-optimisation strategy planner. Formalises pipeline idle time into a tri-category taxonomy — <em>recomputation, imbalance, preparation bubbles</em> — and solves a joint pipeline–memory ILP for very-large DNN training.</p>
+<p class="rw-card-result"><strong>1.36×</strong> speedup over Megatron-Even on a <strong>16,384-NPU</strong> Ascend-910 cluster; up to <strong>1.70×</strong> under 1F1B-Interleave; ILP solves in <strong>&lt; 200 ms</strong> at production scale.</p>
+<div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
+</div></div>
+
+<div class="rw-itemcard"><div class="rw-itemcard-thumb h2o"><span>H²O</span></div><div class="rw-itemcard-body">
+<div class="rw-itemcard-head"><h3>H²O</h3><span class="rw-badge">Euro-Par 2025 · 🏆 Best Poster</span></div>
+<p>Holistic hyper-parameter optimisation. A two-level optimiser searches the macro tuple <code>(DP, TP, PP, OP, micro-batch)</code> with a fast symbolic Delta cost model; the inner level refines layer-to-stage assignment and per-layer recomputation via ILP — the first joint solver across all macro degrees plus stage assignment.</p>
+<p class="rw-card-result"><strong>+36.72 %</strong> speedup over the D-Rec baseline on 128-device clusters; <strong>35.73 % MFU</strong> on DeepSeek-141B — without any accelerator-time profiling.</p>
+<div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
+</div></div>
+
+<div class="rw-itemcard"><div class="rw-itemcard-thumb concord"><span>Concord</span></div><div class="rw-itemcard-body">
+<div class="rw-itemcard-head"><h3>Concord</h3><span class="rw-badge">Under review · 2026</span></div>
+<p>Dependency-keyed re-planning. Each closed-form cost evaluation carries a static dependency set <em>κ</em> and a runtime value signature <em>σ</em>; a formal equivalence result establishes that warm re-planning preserves the macro candidate set and the top-1 plan that a cold full search would return.</p>
+<p class="rw-card-result"><strong>1.14–1.24×</strong> end-to-end speedup over an expert-tuned Megatron baseline on 256–4,096 NPU MoE workloads; <strong>2.74× median</strong> planner wall-clock speedup over cache-disabled full search; <strong>54 / 54</strong> top-1 agreement, <strong>0 / 162</strong> stale-hit value mismatches.</p>
+</div></div>
+
+<div class="rw-itemcard"><div class="rw-itemcard-thumb manumatic"><span>ManuMatic</span></div><div class="rw-itemcard-body">
+<div class="rw-itemcard-head"><h3>ManuMatic</h3><span class="rw-badge">IFIP NPC 2025</span></div>
+<p>Strategy injection for robust automatic hybrid parallelism. A structured interface lets users pin a small set of performance-critical operators while the planner derives a globally consistent strategy for the rest of the graph; built atop the D-Rec planner inside MindSpore and degenerates exactly to D-Rec when no constraints are provided.</p>
+<p class="rw-card-result">Up to <strong>2.24×</strong> over D-Rec on Mixtral-8×7B with expert parallelism (8 NPUs); <strong>2.04×</strong> on Llama3-8B at 8 K context; <strong>1.45× / 1.30×</strong> on Qwen2.5-72B at 32 K context (64 NPUs, combined with BMPipe).</p>
+</div></div>
+</section>
+
+<section class="rw-section" id="demo">
+<h2>Demo</h2>
+<p class="rw-section-note">An interactive integration of three planners from the <a href="#systems">Systems</a> section — PRISM (ND cost surface), BMPipe (PPB solver) and H²O (two-level search) — running as a single browser-based research tool.</p>
+<div class="rw-demo-hero"><div class="rw-demo-hero-body">
+<h3>SAPP Search Studio</h3>
+<p class="rw-demo-tag">Unified ND + PPB strategy search for large-scale LLM training</p>
+<p class="rw-demo-url">sapp.ruiwen.wang</p>
+<a class="rw-demo-cta" href="https://sapp.ruiwen.wang" target="_blank" rel="noopener">Open live demo ↗</a>
+</div></div>
+<h3 class="rw-demo-h3">What you'll see</h3><ul>
 <li>Configure a strategy search: framework device, top-K candidates, PPB time / memory budget, search dimensions.</li>
 <li>Launch the inner PPB solver — BMPipe's bubble-memory ILP — under tight memory constraints.</li>
 <li>Inspect the ranked candidate table: predicted end time, ND peak memory, PPB solver peak, perf score, feasibility.</li>
@@ -152,24 +667,61 @@ html{scroll-behavior:smooth;}
 <li><strong>PPB solver</strong> — BMPipe's joint pipeline–memory ILP segments layers under tight memory budgets and selects per-layer recomputation.</li>
 <li><strong>Top-K refinement</strong> — H²O's two-level decomposition: a fast macro-degree search yields top-K candidates, refined by the inner solver.</li>
 </ul>
-<p class="rw-demo-note">Note: first-time visitors land on an empty workspace. Click <em>Launch search study</em> to run a real solver pass and populate the timeline and candidate table — the demo executes actual workloads server-side.</p></div><div class="rw-tab" id="tab-publications"><h2 id="Publications"><a href="#Publications" class="headerlink" title="Publications"></a>Publications</h2><ol class="rw-publist">
-<li><strong>Ruiwen Wang</strong>, Philippe Fang, Chong Li, Thibaut Tachon, Raja Appuswamy.<br><em>PRISM: Profiling-Free Symbolic Memory-Driven Strategy Planner for Large DNN Model Training.</em><br><span class="rw-venue">SCA / HPCAsia 2026, Osaka, Japan · Jan 26–29, 2026</span> &nbsp;·&nbsp; <span class="rw-tag">PRISM</span></li>
-<li>Zhengdao Yu, <strong>Ruiwen Wang</strong>, Nelson Lossing, Chong Li.<br><em>MLLM Pipeline Bubble Modeling for Large-Scale Training.</em><br><span class="rw-venue">SCA / HPCAsia 2026, Osaka, Japan · Jan 26–29, 2026</span></li>
-<li>Xinzhang Liu, Chao Wang, Zhihua Yang, Zhuo Jiang, …, <strong>Ruiwen Wang</strong>, <em>et al.</em><br><em>Training Report of TeleChat3-MoE.</em><br><span class="rw-venue">arXiv preprint, 2025</span></li>
-<li><strong>Ruiwen Wang</strong>, Chong Li, Hongxing Wang, Raja Appuswamy, Yujie Yuan.<br><em>ManuMatic: Strategy Injection for Robust Automatic Hybrid Parallelism in Distributed DNN Training.</em><br><span class="rw-venue">22nd IFIP NPC 2025, Nha Trang, Vietnam · Nov 14–16, 2025</span> &nbsp;·&nbsp; <span class="rw-tag">ManuMatic</span></li>
-<li><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy, Teng Su.<br><em>BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training.</em><br><span class="rw-venue">27th IEEE CLUSTER 2025, Edinburgh, UK · Sep 2–5, 2025</span> &nbsp;·&nbsp; <span class="rw-tag">BMPipe</span></li>
-<li><strong>Ruiwen Wang</strong>, Chong Li, Raja Appuswamy, Yujie Yuan.<br><em>H²O: Holistic Hyper-Parameter Optimization for Large-Scale Deep Neural Network Training.</em><br><span class="rw-venue">31st Euro-Par 2025, Dresden, Germany · Aug 25–29, 2025</span> &nbsp;·&nbsp; 🏆 Best Poster Award &nbsp;·&nbsp; <span class="rw-tag">H²O</span></li>
-<li><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy.<br><em>SCOPE — Symbolic Computation-Memory Optimization for Pipeline Efficiency in Ultra-Scale DNN Training.</em><br><span class="rw-venue">DP2E-AI 2025 Workshop, Paris, France · Jun 2–6, 2025</span></li>
-</ol></div><div class="rw-tab" id="tab-about"><h2 id="Experience"><a href="#Experience" class="headerlink" title="Experience"></a>Experience</h2><ul>
-<li>🔬 <strong>Huawei Paris Research Center</strong> — Research Engineer · 2021–present<br>HPC and AI system optimisations for large-scale LLM training and inference, on Ascend-910 production clusters of up to 16,384 NPUs.</li>
-<li>🎓 <strong>Sorbonne Université × EURECOM</strong> — CIFRE Joint Ph.D. Programme · 2023–present<br>Doctoral research in HPC / MLSys under joint academic and industrial supervision.</li>
-</ul>
-<h2 id="Education"><a href="#Education" class="headerlink" title="Education"></a>Education</h2><ul>
-<li><strong>Ph.D. in Computer Science</strong> — <em>Joint programme</em><br>Sorbonne Université · EURECOM · in collaboration with Huawei Paris Research Center · 2023 – 2026 (expected)</li>
-<li><strong>M.Sc. in Computer Science</strong> — Sorbonne Université, Paris · 2019 – 2022</li>
-<li><strong>B.Sc. in Computer Science</strong> — Paris-Saclay Université, Paris · 2016 – 2019</li>
-</ul>
-<h2 id="People"><a href="#People" class="headerlink" title="People"></a>People</h2><p class="rw-systems-note">The people who shaped this work — advisors, committee members, mentors, co-authors and colleagues.</p>
+<p class="rw-demo-note">Note: first-time visitors land on an empty workspace. Click <em>Launch search study</em> to run a real solver pass and populate the timeline and candidate table — the demo executes actual workloads server-side.</p>
+</section>
+
+<section class="rw-section" id="publications">
+<h2>Publications</h2>
+<div class="rw-publist">
+
+<div class="rw-pubitem"><div class="rw-itemcard-thumb prism"><span>1</span></div><div class="rw-itemcard-body">
+<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Philippe Fang, Chong Li, Thibaut Tachon, Raja Appuswamy.</p>
+<p class="rw-pubtitle"><em>PRISM: Profiling-Free Symbolic Memory-Driven Strategy Planner for Large DNN Model Training.</em></p>
+<p class="rw-pubvenue">SCA / HPCAsia 2026, Osaka, Japan · Jan 26–29, 2026</p>
+</div></div>
+
+<div class="rw-pubitem"><div class="rw-itemcard-thumb neutral"><span>2</span></div><div class="rw-itemcard-body">
+<p class="rw-pubauthors">Zhengdao Yu, <strong>Ruiwen Wang</strong>, Nelson Lossing, Chong Li.</p>
+<p class="rw-pubtitle"><em>MLLM Pipeline Bubble Modeling for Large-Scale Training.</em></p>
+<p class="rw-pubvenue">SCA / HPCAsia 2026, Osaka, Japan · Jan 26–29, 2026</p>
+</div></div>
+
+<div class="rw-pubitem"><div class="rw-itemcard-thumb neutral"><span>3</span></div><div class="rw-itemcard-body">
+<p class="rw-pubauthors">Xinzhang Liu, Chao Wang, Zhihua Yang, Zhuo Jiang, …, <strong>Ruiwen Wang</strong>, <em>et al.</em></p>
+<p class="rw-pubtitle"><em>Training Report of TeleChat3-MoE.</em></p>
+<p class="rw-pubvenue">arXiv preprint · 2025</p>
+</div></div>
+
+<div class="rw-pubitem"><div class="rw-itemcard-thumb manumatic"><span>4</span></div><div class="rw-itemcard-body">
+<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Hongxing Wang, Raja Appuswamy, Yujie Yuan.</p>
+<p class="rw-pubtitle"><em>ManuMatic: Strategy Injection for Robust Automatic Hybrid Parallelism in Distributed DNN Training.</em></p>
+<p class="rw-pubvenue">22nd IFIP NPC 2025, Nha Trang, Vietnam · Nov 14–16, 2025</p>
+</div></div>
+
+<div class="rw-pubitem"><div class="rw-itemcard-thumb bmpipe"><span>5</span></div><div class="rw-itemcard-body">
+<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy, Teng Su.</p>
+<p class="rw-pubtitle"><em>BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training.</em></p>
+<p class="rw-pubvenue">27th IEEE CLUSTER 2025, Edinburgh, UK · Sep 2–5, 2025</p>
+</div></div>
+
+<div class="rw-pubitem"><div class="rw-itemcard-thumb h2o"><span>6</span></div><div class="rw-itemcard-body">
+<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Raja Appuswamy, Yujie Yuan.</p>
+<p class="rw-pubtitle"><em>H²O: Holistic Hyper-Parameter Optimization for Large-Scale Deep Neural Network Training.</em></p>
+<p class="rw-pubvenue">31st Euro-Par 2025, Dresden, Germany · Aug 25–29, 2025 · 🏆 Best Poster Award</p>
+</div></div>
+
+<div class="rw-pubitem"><div class="rw-itemcard-thumb neutral"><span>7</span></div><div class="rw-itemcard-body">
+<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy.</p>
+<p class="rw-pubtitle"><em>SCOPE — Symbolic Computation-Memory Optimization for Pipeline Efficiency in Ultra-Scale DNN Training.</em></p>
+<p class="rw-pubvenue">DP2E-AI 2025 Workshop, Paris, France · Jun 2–6, 2025</p>
+</div></div>
+
+</div>
+</section>
+
+<section class="rw-section" id="people">
+<h2>People</h2>
+<p class="rw-section-note">The people who shaped this work — advisors, committee members, mentors, co-authors and colleagues.</p>
 <h3 class="rw-people-h3">PhD supervisors</h3><ul class="rw-people-list">
 <li><strong>Prof. Raja Appuswamy</strong> — EURECOM <span class="rw-people-role">· director</span></li>
 <li><strong>Prof. Chong Li</strong> — Huawei Paris Research Center <span class="rw-people-role">· co-director</span></li>
@@ -191,52 +743,30 @@ html{scroll-behavior:smooth;}
 <li><strong>Zhengdao Yu</strong> <span class="rw-people-role">· MLLM Pipeline Bubble</span></li>
 <li><strong>Nelson Lossing</strong> <span class="rw-people-role">· MLLM Pipeline Bubble</span></li>
 </ul>
-<h3 class="rw-people-h3">Colleagues — Huawei Paris</h3><p class="rw-people-inline">Pierre Leca · Lei Wang · Weizhong Zhao · Mengxiao Li · Shijie Shen · Peng Zhang · Xunyi Zhao · Quentin Petit · Zeruizhi Cheng · Xinyu Shi · Yangyang Long · Yujuan Cao · Ioannis Lamprou · Etienne Filhol · Zhen Zhang · Harenome Ranaivoarivony-Razanajato · Benjamin Priour · Haoran Wang</p></div>
-</div></article></div><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/images/avatar.jpg" alt="Ruiwen WANG"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Ruiwen WANG</p><p class="is-size-6 is-block">PhD candidate</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Paris, France</span></p></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://www.linkedin.com/in/ruiwen-wang1" target="_blank" rel="me noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Email" href="mailto:wangrw0124@gmail.com"><i class="fas fa-envelope"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="google_scholar" href="https://scholar.google.com/citations?user=AR1nHEUAAAAJ"><i class="fas fa-graduation-cap"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="ORCID" href="https://orcid.org/0009-0000-6709-5970"><i class="fab fa-orcid"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="linkedin" href="https://www.linkedin.com/in/ruiwen-wang1"><i class="fab fa-linkedin"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/wang-ruiwen"><i class="fab fa-github"></i></a></div></div></div><!--!--><!--!--><!--!--><!--!--><!--!--></div><!--!--></div></div></section><footer class="footer rw-footer"><div class="container"><p class="is-size-7 has-text-centered"><span>&copy; 2025 Ruiwen WANG</span></p></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
-      window.cookieconsent.initialise({
-        type: "info",
-        theme: "edgeless",
-        static: false,
-        position: "bottom-left",
-        content: {
-          message: "This website uses cookies to improve your experience.",
-          dismiss: "Got it!",
-          allow: "Allow cookies",
-          deny: "Decline",
-          link: "Learn more",
-          policy: "Cookie Policy",
-          href: "https://www.cookiesandyou.com/",
-        },
-        palette: {
-          popup: {
-            background: "#edeff5",
-            text: "#838391"
-          },
-          button: {
-            background: "#4b81e8"
-          },
-        },
-      });
-    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
-        });</script><script>
+<h3 class="rw-people-h3">Colleagues — Huawei Paris</h3>
+<p class="rw-people-inline">Pierre Leca · Lei Wang · Weizhong Zhao · Mengxiao Li · Shijie Shen · Peng Zhang · Xunyi Zhao · Quentin Petit · Zeruizhi Cheng · Xinyu Shi · Yangyang Long · Yujuan Cao · Ioannis Lamprou · Etienne Filhol · Zhen Zhang · Harenome Ranaivoarivony-Razanajato · Benjamin Priour · Haoran Wang</p>
+</section>
+
+<section class="rw-section" id="cv">
+<h2>Experience &amp; Education</h2>
+<h3 class="rw-people-h3">Experience</h3>
+<ul class="rw-people-list">
+<li>🔬 <strong>Huawei Paris Research Center</strong> — Research Engineer · 2021–present <span class="rw-people-role">· HPC and AI system optimisations for large-scale LLM training and inference, on Ascend-910 production clusters of up to 16,384 NPUs</span></li>
+<li>🎓 <strong>Sorbonne Université × EURECOM</strong> — CIFRE Joint Ph.D. Programme · 2023–present <span class="rw-people-role">· Doctoral research in HPC / MLSys under joint academic and industrial supervision</span></li>
+</ul>
+<h3 class="rw-people-h3">Education</h3>
+<ul class="rw-people-list">
+<li><strong>Ph.D. in Computer Science</strong> — Sorbonne Université · EURECOM · with Huawei Paris Research Center · 2023 – 2026 (expected)</li>
+<li><strong>M.Sc. in Computer Science</strong> — Sorbonne Université, Paris · 2019 – 2022</li>
+<li><strong>B.Sc. in Computer Science</strong> — Paris-Saclay Université, Paris · 2016 – 2019</li>
+</ul>
+</section>
+
+</main>
+
+<footer class="rw-footer"><p>© 2025 Ruiwen WANG · <a href="mailto:wangrw0124@gmail.com">wangrw0124@gmail.com</a></p></footer>
+
+<script>
 (function(){
   var keywords = [
     {text:"hybrid parallelism",weight:18,desc:"The combinatorial composition of DP, TP, PP, VPP, SP, EP and OP that defines the search space my thesis navigates without exhaustive profiling."},
@@ -268,7 +798,7 @@ html{scroll-behavior:smooth;}
     var c=document.getElementById('rw-wordcloud');
     if(!c)return;
     c.innerHTML='';
-    var w=c.clientWidth||600, h=c.clientHeight||320;
+    var w=c.clientWidth||600, h=c.clientHeight||300;
     d3.layout.cloud()
       .size([w,h])
       .words(keywords.map(function(k){return{text:k.text,size:11+k.weight*1.4,info:k};}))
@@ -302,41 +832,9 @@ html{scroll-behavior:smooth;}
   }
 
   var resizeT;
-  window.rwBuildCloud=tryBuild;
   window.addEventListener('load',tryBuild);
   window.addEventListener('resize',function(){clearTimeout(resizeT);resizeT=setTimeout(build,200);});
 })();
-(function(){
-  var tabs=['home','systems','demo','publications','about'];
-  function showTab(name){
-    if(tabs.indexOf(name)===-1)name='home';
-    tabs.forEach(function(t){
-      var section=document.getElementById('tab-'+t);
-      var link=document.querySelector('.rw-tabnav a[data-tab="'+t+'"]');
-      if(section)section.classList.toggle('is-active',t===name);
-      if(link)link.classList.toggle('is-active',t===name);
-    });
-    if(name==='home'&&typeof window.rwBuildCloud==='function'){setTimeout(window.rwBuildCloud,60);}
-  }
-  function init(){
-    document.querySelectorAll('a[data-tab]').forEach(function(a){
-      a.addEventListener('click',function(e){
-        e.preventDefault();
-        var name=this.getAttribute('data-tab');
-        showTab(name);
-        history.replaceState(null,'','#'+name);
-        window.scrollTo({top:0,behavior:'smooth'});
-      });
-    });
-    var initial=(location.hash||'#home').substring(1);
-    if(tabs.indexOf(initial)===-1)initial='home';
-    showTab(initial);
-  }
-  if(document.readyState!=='loading'){init();}
-  else{document.addEventListener('DOMContentLoaded',init);}
-  window.addEventListener('hashchange',function(){
-    var name=(location.hash||'#home').substring(1);
-    showTab(name);
-  });
-})();
-</script></body></html>
+</script>
+
+</body></html>
