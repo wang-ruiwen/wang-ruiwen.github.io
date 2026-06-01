@@ -30,9 +30,7 @@ a{color:var(--rw-accent-dark);}
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(255,255,255,0.92);
-  -webkit-backdrop-filter:blur(10px);
-  backdrop-filter:blur(10px);
+  background:#fafafa;
   border-bottom:1px solid var(--rw-line);
 }
 .rw-topnav-inner{
@@ -63,60 +61,52 @@ a{color:var(--rw-accent-dark);}
 .rw-hero{
   max-width:860px;
   margin:0 auto;
-  padding:3rem 1.25rem 1.5rem;
+  padding:2rem 1.25rem 1rem;
   text-align:center;
   display:flex;
   flex-direction:column;
   align-items:center;
 }
 .rw-hero-avatar{
-  width:160px;
-  height:160px;
+  width:110px;
+  height:110px;
   border-radius:50%;
   object-fit:cover;
-  border:1px solid rgba(0,0,0,0.08);
+  border:1px solid rgba(0,0,0,0.1);
 }
 .rw-hero-name{
-  font-size:2.3rem;
-  font-weight:800;
-  letter-spacing:-0.025em;
+  font-size:1.95rem;
+  font-weight:700;
+  letter-spacing:-0.02em;
   color:var(--rw-text);
-  margin:1.3rem 0 0.4rem;
+  margin:0.85rem 0 0.25rem;
   line-height:1.1;
 }
 .rw-hero-subtitle{
-  font-size:1.02rem;
+  font-size:0.96rem;
   font-weight:500;
   color:var(--rw-text-muted);
   letter-spacing:0.005em;
-  margin:0 0 0.35rem;
+  margin:0 0 0.25rem;
 }
 .rw-hero-affil{
-  font-size:0.91rem;
+  font-size:0.88rem;
   color:var(--rw-text-muted);
-  margin:0 0 1.2rem;
+  margin:0 0 0.8rem;
 }
 .rw-hero-social{
   display:flex;
-  gap:0.5rem;
+  gap:0.9rem;
   justify-content:center;
 }
 .rw-hero-social a{
-  width:2.4rem;
-  height:2.4rem;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   color:var(--rw-text-muted);
-  background:rgba(75,129,232,0.06);
+  background:transparent;
   text-decoration:none;
-  transition:all 0.2s ease;
-  font-size:0.95rem;
+  font-size:1rem;
 }
 .rw-hero-social a:hover{
   color:var(--rw-accent-dark);
-  background:rgba(75,129,232,0.12);
 }
 
 /* Main content */
@@ -128,7 +118,7 @@ a{color:var(--rw-accent-dark);}
 
 /* Section */
 .rw-section{
-  margin-top:2.5rem;
+  margin-top:2rem;
   scroll-margin-top:5.5rem;
 }
 .rw-section h2{
@@ -150,12 +140,10 @@ a{color:var(--rw-accent-dark);}
 .rw-section strong{color:var(--rw-accent-dark);font-weight:700;}
 .rw-section em{font-style:italic;color:var(--rw-text);font-weight:500;}
 .rw-section code{
-  background:rgba(75,129,232,0.08);
-  color:var(--rw-accent-dark);
-  padding:0.05rem 0.35rem;
-  border-radius:4px;
-  font-size:0.88em;
+  color:var(--rw-text);
+  font-size:0.92em;
   font-family:'Source Code Pro',monospace;
+  letter-spacing:-0.01em;
 }
 .rw-section a{
   color:var(--rw-accent-dark);
@@ -197,12 +185,12 @@ a{color:var(--rw-accent-dark);}
 
 /* Item card (Systems / Publications) — text-only academic rows */
 .rw-itemcard,.rw-pubitem{
-  padding:1rem 0;
+  padding:0.75rem 0;
   border-top:1px solid var(--rw-line);
 }
 .rw-systems-callout + .rw-itemcard,
 .rw-publist .rw-pubitem:first-child{border-top:none;}
-.rw-systems-callout + .rw-itemcard{padding-top:1.2rem;}
+.rw-systems-callout + .rw-itemcard{padding-top:1rem;}
 .rw-itemcard-head{
   display:flex;
   align-items:center;
@@ -308,33 +296,28 @@ a{color:var(--rw-accent-dark);}
 /* Demo hero */
 .rw-demo-hero{
   margin:1rem 0 1.5rem;
-  padding:1.8rem 1.5rem;
-  border-radius:6px;
-  background:#2c5dbf;
+  padding:1.2rem 1.3rem;
+  border-radius:4px;
+  background:#f3f4f6;
+  border-left:3px solid var(--rw-accent);
   position:relative;
-  overflow:hidden;
-  text-align:center;
+  text-align:left;
 }
-.rw-demo-hero-body{position:relative;z-index:1;color:#fff;}
-.rw-demo-hero h3{color:#fff;font-size:1.55rem;font-weight:700;letter-spacing:-0.01em;margin:0 0 0.35rem;border:none;padding:0;}
-.rw-demo-tag{color:rgba(255,255,255,0.88);font-size:0.95rem;margin:0 0 1rem;}
-.rw-demo-url{font-family:'Source Code Pro',monospace;color:rgba(255,255,255,0.75);font-size:0.83rem;margin:0 0 1.2rem;letter-spacing:0.02em;}
+.rw-demo-hero-body{color:var(--rw-text);}
+.rw-demo-hero h3{color:var(--rw-accent-dark);font-size:1.1rem;font-weight:600;letter-spacing:-0.005em;margin:0 0 0.35rem;border:none;padding:0;display:inline;}
+.rw-demo-tag{color:var(--rw-text-muted);font-size:0.94rem;margin:0 0 0.6rem;display:inline;}
+.rw-demo-hero h3::after{content:" — ";color:var(--rw-text-muted);font-weight:400;}
+.rw-demo-url{font-family:'Source Code Pro',monospace;color:var(--rw-text-muted);font-size:0.84rem;margin:0.6rem 0 0;letter-spacing:0.02em;}
 .rw-demo-cta{
   display:inline-block;
-  background:#fff;
   color:var(--rw-accent-dark);
-  padding:0.55rem 1.3rem;
-  border-radius:4px;
   font-weight:600;
-  letter-spacing:0.01em;
   font-size:0.92rem;
   text-decoration:none;
-  border:1px solid rgba(255,255,255,0.4);
+  border-bottom:1px solid var(--rw-accent);
+  margin-left:0.6rem;
 }
-.rw-demo-cta:hover{
-  background:#f5f5f5;
-  color:var(--rw-accent-dark);
-}
+.rw-demo-cta:hover{background:var(--rw-accent-soft);color:var(--rw-accent-dark);}
 .rw-demo-h3{
   font-size:1.05rem;
   font-weight:600;
@@ -355,53 +338,12 @@ a{color:var(--rw-accent-dark);}
   margin-top:1rem;
 }
 
-/* Word cloud */
-.rw-wordcloud{
-  width:100%;
-  height:300px;
-  background:linear-gradient(135deg,rgba(75,129,232,0.045),rgba(75,129,232,0.01));
-  border-radius:12px;
-  margin:0.5rem 0 1rem;
-  border:1px solid var(--rw-line);
-  position:relative;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.rw-wordcloud svg{display:block;}
-.rw-wordcloud .word{
-  cursor:pointer;
-  transition:fill 0.2s ease;
-  font-family:Ubuntu,sans-serif;
-  fill:#4a5266;
-}
-.rw-wordcloud .word:hover{fill:var(--rw-accent);}
-.rw-wordcloud .word.is-active{fill:var(--rw-accent-dark);font-weight:700;}
-.rw-cloud-fallback{color:var(--rw-text-muted);font-size:0.9rem;font-style:italic;}
-.rw-kw-info{
-  padding:0.95rem 1.15rem;
-  background:rgba(75,129,232,0.05);
-  border-radius:8px;
-  border-left:3px solid var(--rw-accent);
-  margin:0;
-  min-height:80px;
-}
-.rw-kw-info h3{
-  font-size:0.98rem;
-  font-weight:700;
-  color:var(--rw-accent-dark);
-  margin:0 0 0.4rem;
-  border:none;
-  padding:0;
-  letter-spacing:0;
-}
-.rw-kw-info h3::after{display:none;}
-.rw-kw-info p{
-  font-size:0.91rem;
+/* Topics — inline keyword list */
+.rw-keywords{
+  font-size:0.96rem;
+  line-height:1.85;
   color:var(--rw-text-muted);
-  margin:0;
-  line-height:1.55;
+  margin:0.4rem 0 0.5rem;
 }
 
 /* People */
@@ -445,19 +387,21 @@ a{color:var(--rw-accent-dark);}
 /* Footer */
 .rw-footer{
   max-width:860px;
-  margin:3rem auto 0;
-  padding:1.5rem 1.25rem 2rem;
+  margin:2.5rem auto 0;
+  padding:1.25rem 1.25rem 2rem;
   text-align:center;
   border-top:1px solid var(--rw-line);
 }
 .rw-footer p{
   color:var(--rw-text-muted);
-  letter-spacing:0.02em;
+  letter-spacing:0.01em;
   font-size:0.85rem;
-  margin:0;
+  margin:0 0 0.3rem;
 }
+.rw-footer p.rw-footer-meta{font-size:0.8rem;color:var(--rw-text-muted);opacity:0.85;}
+.rw-footer p:last-child{margin-bottom:0;}
 .rw-footer a{color:var(--rw-text-muted);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s ease;}
-.rw-footer a:hover{border-bottom-color:var(--rw-accent);}
+.rw-footer a:hover{border-bottom-color:var(--rw-accent);color:var(--rw-accent-dark);}
 
 /* No load animations — academic restraint */
 
@@ -477,7 +421,7 @@ a{color:var(--rw-accent-dark);}
   .rw-news-date{font-size:0.78rem;}
   .rw-wordcloud{height:260px;}
 }
-</style><script src="https://d3js.org/d3.v7.min.js" defer></script><script src="https://unpkg.com/d3-cloud/build/d3.layout.cloud.js" defer></script></head>
+</style></head>
 <body>
 
 <nav class="rw-topnav"><div class="rw-topnav-inner"><a href="#about">About</a><a href="#news">News</a><a href="#topics">Topics</a><a href="#systems">Systems</a><a href="#demo">Demo</a><a href="#publications">Publications</a><a href="#people">People</a></div></nav>
@@ -529,9 +473,7 @@ a{color:var(--rw-accent-dark);}
 
 <section class="rw-section" id="topics">
 <h2>Topics</h2>
-<p class="rw-section-note">An associative map of recurring themes across my publications — click a keyword to see how it fits in my work.</p>
-<div id="rw-wordcloud" class="rw-wordcloud" aria-label="Keyword cloud"><div class="rw-cloud-fallback">Loading keywords…</div></div>
-<div class="rw-kw-info" id="rw-kw-info"><h3 id="rw-kw-title">Pick a keyword</h3><p id="rw-kw-desc">Each keyword corresponds to a specific thread of my research. Click one above to see the context.</p></div>
+<p class="rw-keywords">hybrid parallelism · distributed training · symbolic cost modelling · AI Infra · large-scale LLM · LLM pretraining · pipeline parallelism · automatic planning · Mixture of Experts · Ascend NPU · portability · ILP optimisation · tensor parallelism · activation recomputation · pipeline bubbles · memory modelling · communication cost · strategy injection · expert parallelism · MFU optimisation · transformer training</p>
 </section>
 
 <section class="rw-section" id="systems">
@@ -680,76 +622,15 @@ a{color:var(--rw-accent-dark);}
 
 </main>
 
-<footer class="rw-footer"><p>© 2025 Ruiwen WANG · <a href="mailto:wangrw0124@gmail.com">wangrw0124@gmail.com</a></p></footer>
-
-<script>
-(function(){
-  var keywords = [
-    {text:"hybrid parallelism",weight:18,desc:"The combinatorial composition of DP, TP, PP, VPP, SP, EP and OP that defines the search space my thesis navigates without exhaustive profiling."},
-    {text:"distributed training",weight:16,desc:"Foundation-scale training on thousands of accelerators for weeks at a time — the operational reality my planners are designed for."},
-    {text:"symbolic cost modelling",weight:15,desc:"Closed-form, profiling-free expressions for memory and communication cost across arbitrary parallelism compositions; the core contribution of PRISM."},
-    {text:"AI Infra",weight:14,desc:"I work on the infrastructure layer of AI: distributed training systems, automatic parallelism planners, and the cost models that decide how foundation-scale models meet the hardware they run on."},
-    {text:"large-scale LLM",weight:13,desc:"All planners are validated on real-world model families (Llama, Mistral, DeepSeek, Qwen, Mixtral, …) at production scale, up to multi-trillion-parameter MoE."},
-    {text:"LLM pretraining",weight:12,desc:"My thesis targets the pretraining regime — multi-week jobs on thousands of accelerators where strategy choice dictates wall-clock cost. All evaluations use real pretraining workloads (DeepSeek3, Llama-MoE, Mixtral, Qwen2.5)."},
-    {text:"pipeline parallelism",weight:12,desc:"Splitting layers across devices to fit within memory limits; the source of the bubbles that BMPipe formalises into a tri-category taxonomy."},
-    {text:"automatic planning",weight:12,desc:"Replacing weeks of manual tuning by experts with an automatic planner that returns a near-optimal hybrid-parallel strategy in seconds."},
-    {text:"Mixture of Experts",weight:11,desc:"Sparse models with expert parallelism (EP) add routing and all-to-all communication complexity. ManuMatic explicitly targets MoE workloads — Mixtral-8×7B and Qwen2.5-72B with expert parallelism."},
-    {text:"Ascend NPU",weight:10,desc:"All planners are validated on Huawei Ascend-910 production clusters up to 10K+ NPUs; the cost models are hardware-parametric and portable to other accelerators."},
-    {text:"portability",weight:10,desc:"A planner is portable if it works on a new cluster without re-profiling. My symbolic surface is hardware-parametric — porting only re-instantiates bandwidth and kernel-cost parameters."},
-    {text:"ILP optimisation",weight:9,desc:"Integer linear programming jointly determines pipeline segmentation, layer-to-stage assignment, recomputation strategy and VPP chunk size — solving in under 200 ms at production scale."},
-    {text:"tensor parallelism",weight:9,desc:"Sharding individual operators (MatMul, attention) across devices — one of the seven parallelism dimensions my cost surface composes."},
-    {text:"activation recomputation",weight:9,desc:"Trading compute for memory by recomputing activations in the backward pass; the symbolic surface models full, selective and per-layer recomputation policies in closed form."},
-    {text:"pipeline bubbles",weight:9,desc:"BMPipe formalises pipeline idle time into a tri-category taxonomy — recomputation, imbalance, and preparation bubbles — with closed-form expressions per category."},
-    {text:"memory modelling",weight:9,desc:"Per-component closed-form expressions for parameter, gradient, optimiser-state and activation memory — accurate to within ~7 % median error across five model families."},
-    {text:"communication cost",weight:8,desc:"Collective-volume and topology-aware templates that predict communication time across hardware tiers without per-cluster profiling."},
-    {text:"strategy injection",weight:7,desc:"ManuMatic lets users pin a small set of performance-critical operators while the planner derives a globally consistent strategy for the rest of the graph, closing the planner–runtime gap."},
-    {text:"expert parallelism",weight:7,desc:"EP shards experts in a MoE FFN across devices; my work analyses how EP couples with DP / TP / PP and how to inject MoE-specific pin strategies via ManuMatic."},
-    {text:"MFU optimisation",weight:7,desc:"Model FLOPs Utilisation is the bottom-line metric. My planners push it up to 35.73 % on DeepSeek-141B and deliver up to 1.43× MFU speedup over Megatron-LM."},
-    {text:"transformer training",weight:6,desc:"All cost templates target transformer architectures — attention, FFN, normalisation, MoE routing — decomposed into composable operators."}
-  ];
-
-  function build(){
-    if(typeof d3==='undefined'||!d3.layout||!d3.layout.cloud){return;}
-    var c=document.getElementById('rw-wordcloud');
-    if(!c)return;
-    c.innerHTML='';
-    var w=c.clientWidth||600, h=c.clientHeight||300;
-    d3.layout.cloud()
-      .size([w,h])
-      .words(keywords.map(function(k){return{text:k.text,size:11+k.weight*1.4,info:k};}))
-      .padding(3)
-      .rotate(function(){return 0;})
-      .font('Ubuntu')
-      .fontSize(function(d){return d.size;})
-      .on('end',function(words){
-        var svg=d3.select('#rw-wordcloud').append('svg').attr('width',w).attr('height',h);
-        var g=svg.append('g').attr('transform','translate('+(w/2)+','+(h/2)+')');
-        g.selectAll('text').data(words).enter().append('text')
-          .attr('class','word')
-          .style('font-size',function(d){return d.size+'px';})
-          .attr('text-anchor','middle')
-          .attr('transform',function(d){return 'translate('+d.x+','+d.y+')';})
-          .text(function(d){return d.text;})
-          .on('click',function(_,d){
-            d3.selectAll('#rw-wordcloud .word').classed('is-active',false);
-            d3.select(this).classed('is-active',true);
-            var t=document.getElementById('rw-kw-title'), p=document.getElementById('rw-kw-desc');
-            if(t)t.textContent=d.info.text;
-            if(p)p.textContent=d.info.desc;
-          });
-      })
-      .start();
-  }
-
-  function tryBuild(){
-    if(typeof d3!=='undefined'&&d3.layout&&d3.layout.cloud){build();}
-    else{setTimeout(tryBuild,120);}
-  }
-
-  var resizeT;
-  window.addEventListener('load',tryBuild);
-  window.addEventListener('resize',function(){clearTimeout(resizeT);resizeT=setTimeout(build,200);});
-})();
-</script>
+<footer class="rw-footer">
+<p>© 2026 Ruiwen WANG · <a href="mailto:wangrw0124@gmail.com">wangrw0124@gmail.com</a></p>
+<p class="rw-footer-meta">
+<a href="https://orcid.org/0009-0000-6709-5970" target="_blank" rel="noopener">ORCID</a> ·
+<a href="https://scholar.google.com/citations?user=AR1nHEUAAAAJ" target="_blank" rel="noopener">Google Scholar</a> ·
+<a href="https://github.com/wang-ruiwen" target="_blank" rel="noopener">GitHub</a> ·
+<a href="https://www.linkedin.com/in/ruiwen-wang-ai" target="_blank" rel="noopener">LinkedIn</a>
+</p>
+<p class="rw-footer-meta">Last updated June 2026 · <a href="https://github.com/wang-ruiwen/wang-ruiwen.github.io" target="_blank" rel="noopener">Source on GitHub</a></p>
+</footer>
 
 </body></html>
