@@ -1,1 +1,21 @@
-{"name":"Home page","short_name":null,"start_url":"/index.html","theme_color":null,"background_color":null,"display":"standalone","icons":[{"src":"","sizes":"","type":null}]}
+{
+  "name": "Ruiwen WANG",
+  "short_name": "Ruiwen WANG",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#4b81e8",
+  "icons": [
+    {
+      "src": "/img/favicon.png?v=2",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/favicon.svg?v=2",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
