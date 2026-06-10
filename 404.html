@@ -4,12 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#fafafa">
+<meta name="theme-color" content="#fffff8" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#1e1e1a" media="(prefers-color-scheme:dark)">
 <title>404 — Ruiwen WANG</title>
-<link rel="icon" type="image/png" sizes="256x256" href="/img/favicon.png?v=2">
-<link rel="icon" type="image/svg+xml" href="/img/favicon.svg?v=2">
+<link rel="icon" type="image/png" sizes="256x256" href="/img/favicon.png?v=3">
+<link rel="icon" type="image/svg+xml" href="/img/favicon.svg?v=3">
 <style>
-:root{--rw-accent:#4b81e8;--rw-accent-dark:#2c5dbf;--rw-text:#1a1f36;--rw-text-muted:#5a667a;}
+@font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 700;font-display:swap;src:url('/fonts/source-serif-4-latin-wght-normal.woff2') format('woff2');}
+@font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400 700;font-display:swap;src:url('/fonts/source-serif-4-latin-wght-italic.woff2') format('woff2');}
+:root{
+  --bg:#fffff8;--ink:#1a1a18;--muted:#5a5a50;--soft:#73735f;
+  --line:rgba(175,170,148,0.32);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#1e1e1a;--ink:#f0efe8;--muted:#d4d2c8;--soft:#8a8a7e;
+    --line:rgba(175,170,148,0.18);
+    color-scheme:dark;
+  }
+}
 *{box-sizing:border-box;}
 html,body{height:100%;}
 body{
@@ -21,47 +35,43 @@ body{
   justify-content:center;
   padding:2rem;
   text-align:center;
-  background:#fafafa;
-  color:var(--rw-text);
-  font-family:'Source Serif 4',Charter,'Iowan Old Style',Georgia,'Times New Roman',serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Source Serif 4',Palatino,'Iowan Old Style',Georgia,serif;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
 .rw-404-code{
-  font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  font-size:4.5rem;
-  font-weight:800;
-  letter-spacing:-0.03em;
-  color:var(--rw-accent-dark);
+  font-size:3.6rem;
+  font-weight:400;
+  font-style:italic;
+  color:var(--soft);
   line-height:1;
   margin:0;
+  font-variant-numeric:oldstyle-nums;
 }
 .rw-404-title{
-  font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  font-size:1.25rem;
-  font-weight:600;
+  font-size:1.35rem;
+  font-weight:400;
+  font-style:italic;
   margin:1rem 0 0.5rem;
 }
 .rw-404-text{
-  color:var(--rw-text-muted);
+  color:var(--muted);
   font-size:1rem;
-  line-height:1.6;
-  margin:0 0 1.75rem;
+  line-height:1.7;
+  margin:0 0 1.6rem;
   max-width:32rem;
 }
 .rw-404-home{
-  font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  display:inline-block;
-  font-size:0.95rem;
-  font-weight:600;
-  color:#fff;
-  background:var(--rw-accent);
+  font-size:1rem;
+  color:var(--ink);
   text-decoration:none;
-  padding:0.6rem 1.3rem;
-  border-radius:999px;
-  transition:background 0.2s ease;
+  border-bottom:1px solid var(--line);
+  transition:border-color 0.2s ease;
+  padding-bottom:1px;
 }
-.rw-404-home:hover{background:var(--rw-accent-dark);}
+.rw-404-home:hover{border-bottom-color:var(--muted);}
 </style>
 </head>
 <body>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fffff8" media="(prefers-color-scheme:light)"><meta name="theme-color" content="#1e1e1a" media="(prefers-color-scheme:dark)"><title>Ruiwen WANG — AI Infra & LLM Pretraining</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ruiwen WANG"><meta name="msapplication-TileImage" content="/img/favicon.png?v=2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ruiwen WANG"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM, working at the intersection of AI Systems, Parallel Computing and Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism (DP/TP/PP/VPP/SP/EP/OP), pipeline-bubble optimisation, automatic strategy planning. Four planners — PRISM, BMPipe, H²O, ManuMatic — deployed on Huawei Ascend-910 clusters up to 10K+ NPUs, benchmarked against Megatron-LM. PCT patent WO 2025/020165 A1 on ML execution-plan generation. Distributed training, foundation models, MLSys, HPC."><meta name="author" content="Ruiwen WANG"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"><meta property="og:type" content="profile"><meta property="profile:first_name" content="Ruiwen"><meta property="profile:last_name" content="WANG"><meta property="og:title" content="Ruiwen WANG — AI Infra & LLM Pretraining"><meta property="og:url" content="https://ruiwen.wang/"><meta property="og:site_name" content="Ruiwen WANG"><meta property="og:description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Four planners (PRISM, BMPipe, H²O, ManuMatic) on Huawei Ascend-910 clusters up to 10K+ NPUs."><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ruiwen.wang/img/og_image.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:image:src" content="https://ruiwen.wang/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen WANG","givenName":"Ruiwen","familyName":"WANG","url":"https://ruiwen.wang/","image":"https://ruiwen.wang/img/og_image.png","jobTitle":"PhD Candidate","worksFor":{"@type":"Organization","name":"Huawei"},"affiliation":[{"@type":"CollegeOrUniversity","name":"Sorbonne Université"},{"@type":"Organization","name":"EURECOM"}],"alumniOf":[{"@type":"CollegeOrUniversity","name":"Sorbonne Université"},{"@type":"CollegeOrUniversity","name":"Université Paris-Saclay"}],"knowsAbout":["AI Systems","Parallel Computing","LLM pretraining","Hybrid parallelism","Pipeline parallelism","Mixture of Experts","High-Performance Computing","Distributed training"],"sameAs":["https://scholar.google.com/citations?user=AR1nHEUAAAAJ","https://orcid.org/0009-0000-6709-5970","https://www.linkedin.com/in/ruiwen-wang-ai","https://github.com/wang-ruiwen"],"description":"Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Four planners (PRISM, BMPipe, H²O, ManuMatic) on Huawei Ascend-910 clusters up to 10K+ NPUs, benchmarked against Megatron-LM."}</script><link rel="canonical" href="https://ruiwen.wang/"><link rel="icon" type="image/png" sizes="256x256" href="/img/favicon.png?v=2"><link rel="icon" type="image/svg+xml" href="/img/favicon.svg?v=2"><link rel="preload" href="/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/source-serif-4-latin-wght-italic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin><style>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fffff8" media="(prefers-color-scheme:light)"><meta name="theme-color" content="#1e1e1a" media="(prefers-color-scheme:dark)"><title>Ruiwen WANG — AI Infra & LLM Pretraining</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ruiwen WANG"><meta name="msapplication-TileImage" content="/img/favicon.png?v=3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ruiwen WANG"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM, working at the intersection of AI Systems, Parallel Computing and Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism (DP/TP/PP/VPP/SP/EP/OP), pipeline-bubble optimisation, automatic strategy planning. Four planners — PRISM, BMPipe, H²O, ManuMatic — deployed on Huawei Ascend-910 clusters up to 10K+ NPUs, benchmarked against Megatron-LM. PCT patent WO 2025/020165 A1 on ML execution-plan generation. Distributed training, foundation models, MLSys, HPC."><meta name="author" content="Ruiwen WANG"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"><meta property="og:type" content="profile"><meta property="profile:first_name" content="Ruiwen"><meta property="profile:last_name" content="WANG"><meta property="og:title" content="Ruiwen WANG — AI Infra & LLM Pretraining"><meta property="og:url" content="https://ruiwen.wang/"><meta property="og:site_name" content="Ruiwen WANG"><meta property="og:description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Four planners (PRISM, BMPipe, H²O, ManuMatic) on Huawei Ascend-910 clusters up to 10K+ NPUs."><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ruiwen.wang/img/og_image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:image:src" content="https://ruiwen.wang/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen WANG","givenName":"Ruiwen","familyName":"WANG","url":"https://ruiwen.wang/","image":"https://ruiwen.wang/img/og_image.png","jobTitle":"PhD Candidate","worksFor":{"@type":"Organization","name":"Huawei"},"affiliation":[{"@type":"CollegeOrUniversity","name":"Sorbonne Université"},{"@type":"Organization","name":"EURECOM"}],"alumniOf":[{"@type":"CollegeOrUniversity","name":"Sorbonne Université"},{"@type":"CollegeOrUniversity","name":"Université Paris-Saclay"}],"knowsAbout":["AI Systems","Parallel Computing","LLM pretraining","Hybrid parallelism","Pipeline parallelism","Mixture of Experts","High-Performance Computing","Distributed training"],"sameAs":["https://scholar.google.com/citations?user=AR1nHEUAAAAJ","https://orcid.org/0009-0000-6709-5970","https://www.linkedin.com/in/ruiwen-wang-ai","https://github.com/wang-ruiwen"],"description":"Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Four planners (PRISM, BMPipe, H²O, ManuMatic) on Huawei Ascend-910 clusters up to 10K+ NPUs, benchmarked against Megatron-LM."}</script><link rel="canonical" href="https://ruiwen.wang/"><link rel="icon" type="image/png" sizes="256x256" href="/img/favicon.png?v=3"><link rel="icon" type="image/svg+xml" href="/img/favicon.svg?v=3"><link rel="preload" href="/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/source-serif-4-latin-wght-italic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin><style>
 @font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 700;font-display:swap;src:url('/fonts/source-serif-4-latin-wght-normal.woff2') format('woff2');}
 @font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400 700;font-display:swap;src:url('/fonts/source-serif-4-latin-wght-italic.woff2') format('woff2');}
 @font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url('/fonts/inter-latin-wght-normal.woff2') format('woff2');}
@@ -12,7 +12,7 @@
   --rw-ink:#1a1a18;
   --rw-text:#1a1a18;
   --rw-text-muted:#5a5a50;
-  --rw-text-soft:#8a8a78;
+  --rw-text-soft:#73735f;
   --rw-bg:#fffff8;
   --rw-nav-bg:rgba(255,255,248,0.84);
   --rw-surface:rgba(255,255,248,0.60);
@@ -32,7 +32,7 @@
     --rw-ink:#f0efe8;
     --rw-text:#d4d2c8;
     --rw-text-muted:#8a8a78;
-    --rw-text-soft:#68675e;
+    --rw-text-soft:#8a8a7e;
     --rw-bg:#1e1e1a;
     --rw-nav-bg:rgba(26,26,22,0.86);
     --rw-surface:rgba(30,30,26,0.70);
@@ -476,20 +476,17 @@ a{color:var(--rw-accent-dark);}
   margin-top:1rem;
 }
 
-/* Topics — chips */
-.rw-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin:0.5rem 0 0.25rem;}
+/* Topics — quiet italic index line, Tufte-style */
+.rw-chips{margin:0.4rem 0 0.25rem;max-width:72ch;line-height:1.95;}
 .rw-chip{
-  font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  font-size:0.79rem;
-  font-weight:500;
+  display:inline-block;
+  font-style:italic;
+  font-size:0.97rem;
   color:var(--rw-text-muted);
-  background:var(--rw-surface);
-  border:1px solid var(--rw-border);
-  border-radius:999px;
-  padding:0.22rem 0.78rem;
-  line-height:1.5;
   white-space:nowrap;
 }
+.rw-chip::after{content:"\00a0·\00a0";color:var(--rw-text-soft);font-style:normal;}
+.rw-chip:last-child::after{content:none;}
 
 /* People */
 .rw-people-h3{
@@ -595,7 +592,7 @@ a{color:var(--rw-accent-dark);}
 <nav class="rw-topnav" aria-label="Section"><div class="rw-topnav-inner"><a href="#about">About</a><a href="#research">Research</a><a href="#news">News</a><a href="#topics">Topics</a><a href="#systems">Systems</a><a href="#demo">Demo</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#people">People</a><a href="#cv">CV</a></div></nav>
 
 <header class="rw-hero">
-<img class="rw-hero-avatar" src="/images/avatar.jpg" alt="Ruiwen WANG" width="384" height="384" fetchpriority="high" decoding="async">
+<picture><source srcset="/images/avatar.webp" type="image/webp"><img class="rw-hero-avatar" src="/images/avatar.jpg" alt="Ruiwen WANG" width="384" height="384" fetchpriority="high" decoding="async"></picture>
 <h1 class="rw-hero-name">Ruiwen WANG</h1>
 <p class="rw-hero-subtitle">PhD Candidate · AI Infra · LLM Pretraining · Hybrid Parallelism</p>
 <p class="rw-hero-affil">Sorbonne Université × EURECOM × Huawei Paris · Paris, France</p>
