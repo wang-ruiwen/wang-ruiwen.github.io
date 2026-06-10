@@ -94,7 +94,8 @@ a{color:var(--rw-accent-dark);}
   border-bottom:2px solid transparent;
   transition:color 0.2s ease,border-color 0.2s ease;
 }
-.rw-topnav a:hover{
+.rw-topnav a:hover,
+.rw-topnav a.rw-active{
   color:var(--rw-accent-dark);
   border-bottom-color:var(--rw-accent);
 }
@@ -110,8 +111,8 @@ a{color:var(--rw-accent-dark);}
   align-items:center;
 }
 .rw-hero-avatar{
-  width:104px;
-  height:104px;
+  width:120px;
+  height:120px;
   border-radius:50%;
   object-fit:cover;
   border:1px solid var(--rw-avatar-ring);
@@ -396,12 +397,19 @@ a{color:var(--rw-accent-dark);}
   margin-top:1rem;
 }
 
-/* Topics — inline keyword list */
-.rw-keywords{
-  font-size:0.96rem;
-  line-height:1.85;
+/* Topics — chips */
+.rw-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin:0.5rem 0 0.25rem;}
+.rw-chip{
+  font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:0.79rem;
+  font-weight:500;
   color:var(--rw-text-muted);
-  margin:0.4rem 0 0.5rem;
+  background:var(--rw-surface);
+  border:1px solid var(--rw-border);
+  border-radius:999px;
+  padding:0.22rem 0.78rem;
+  line-height:1.5;
+  white-space:nowrap;
 }
 
 /* People */
@@ -462,7 +470,10 @@ a{color:var(--rw-accent-dark);}
 .rw-footer a{color:var(--rw-text-muted);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s ease;}
 .rw-footer a:hover{border-bottom-color:var(--rw-accent);color:var(--rw-accent-dark);}
 
-/* No load animations — academic restraint */
+/* Scroll-in animations — opt-in via .rw-js class added by script */
+.rw-js .rw-section{opacity:0;transform:translateY(13px);transition:opacity 0.5s cubic-bezier(0.4,0,0.2,1),transform 0.5s cubic-bezier(0.4,0,0.2,1);}
+.rw-js .rw-section.rw-visible{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){.rw-js .rw-section{opacity:1!important;transform:none!important;}}
 
 /* Mobile */
 @media (max-width:680px){
@@ -479,10 +490,20 @@ a{color:var(--rw-accent-dark);}
   .rw-news-item{grid-template-columns:62px 1fr;font-size:0.9rem;gap:0.7rem;}
   .rw-news-date{font-size:0.79rem;}
 }
+@media print{
+  .rw-topnav,.rw-hero-social,.rw-demo-hero,.rw-itemcard-links,.rw-systems-callout{display:none!important;}
+  body{font-size:10pt;line-height:1.5;}
+  .rw-section{break-inside:avoid;margin-top:1.5rem;opacity:1!important;transform:none!important;}
+  .rw-itemcard,.rw-pubitem{break-inside:avoid;}
+  .rw-card-result{border:1px solid #ccc;background:none;}
+  .rw-badge{border:1px solid #ccc;background:none;color:#444;}
+  a{color:inherit!important;}
+  .rw-pubvenue a::after{content:" (" attr(href) ")";font-size:0.82em;}
+}
 </style></head>
 <body>
 
-<nav class="rw-topnav"><div class="rw-topnav-inner"><a href="#about">About</a><a href="#news">News</a><a href="#topics">Topics</a><a href="#systems">Systems</a><a href="#demo">Demo</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#people">People</a></div></nav>
+<nav class="rw-topnav"><div class="rw-topnav-inner"><a href="#about">About</a><a href="#research">Research</a><a href="#news">News</a><a href="#topics">Topics</a><a href="#systems">Systems</a><a href="#demo">Demo</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#people">People</a><a href="#cv">CV</a></div></nav>
 
 <header class="rw-hero">
 <img class="rw-hero-avatar" src="/images/avatar.jpg" alt="Ruiwen WANG" width="384" height="384" fetchpriority="high" decoding="async">
@@ -533,7 +554,7 @@ a{color:var(--rw-accent-dark);}
 
 <section class="rw-section" id="topics">
 <h2>Topics</h2>
-<p class="rw-keywords">hybrid parallelism · distributed training · symbolic cost modelling · AI Infra · large-scale LLM · LLM pretraining · pipeline parallelism · automatic planning · Mixture of Experts · Ascend NPU · portability · ILP optimisation · tensor parallelism · activation recomputation · pipeline bubbles · memory modelling · communication cost · strategy injection · expert parallelism · MFU optimisation · transformer training</p>
+<div class="rw-chips"><span class="rw-chip">hybrid parallelism</span><span class="rw-chip">distributed training</span><span class="rw-chip">symbolic cost modelling</span><span class="rw-chip">AI Infra</span><span class="rw-chip">large-scale LLM</span><span class="rw-chip">LLM pretraining</span><span class="rw-chip">pipeline parallelism</span><span class="rw-chip">automatic planning</span><span class="rw-chip">Mixture of Experts</span><span class="rw-chip">Ascend NPU</span><span class="rw-chip">portability</span><span class="rw-chip">ILP optimisation</span><span class="rw-chip">tensor parallelism</span><span class="rw-chip">activation recomputation</span><span class="rw-chip">pipeline bubbles</span><span class="rw-chip">memory modelling</span><span class="rw-chip">communication cost</span><span class="rw-chip">strategy injection</span><span class="rw-chip">expert parallelism</span><span class="rw-chip">MFU optimisation</span><span class="rw-chip">transformer training</span></div>
 </section>
 
 <section class="rw-section" id="systems">
@@ -702,4 +723,39 @@ a{color:var(--rw-accent-dark);}
 <p class="rw-footer-meta">Last updated June 2026 · <a href="https://github.com/wang-ruiwen/wang-ruiwen.github.io" target="_blank" rel="noopener">Source on GitHub</a></p>
 </footer>
 
+<script>
+(function(){
+  'use strict';
+  var links=Array.from(document.querySelectorAll('.rw-topnav a[href^="#"]'));
+  var navEl=document.querySelector('.rw-topnav');
+  var sections=links.map(function(l){return document.getElementById(l.getAttribute('href').slice(1));}).filter(Boolean);
+  var activeId=null;
+  function setActive(id){
+    if(activeId===id)return;
+    activeId=id;
+    links.forEach(function(l){l.classList.toggle('rw-active',l.getAttribute('href')==='#'+id);});
+  }
+  function updateNav(){
+    var scrollY=window.scrollY;
+    var navH=navEl?navEl.offsetHeight:60;
+    var threshold=scrollY+navH+32;
+    var cur=null;
+    for(var i=0;i<sections.length;i++){if(sections[i].offsetTop<=threshold)cur=sections[i].id;}
+    setActive(cur);
+  }
+  window.addEventListener('scroll',updateNav,{passive:true});
+  updateNav();
+  // Scroll-in fade
+  document.documentElement.classList.add('rw-js');
+  var animObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('rw-visible');animObs.unobserve(e.target);}
+    });
+  },{threshold:0.04,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.rw-section').forEach(function(s){
+    if(s.getBoundingClientRect().top<window.innerHeight){s.classList.add('rw-visible');}
+    else{animObs.observe(s);}
+  });
+})();
+</script>
 </body></html>
