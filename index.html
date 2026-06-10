@@ -329,6 +329,18 @@ a{color:var(--rw-accent-dark);}
 }
 
 /* Publications */
+.rw-publist{counter-reset:rw-pub;}
+.rw-publist .rw-pubitem{position:relative;padding-left:2.5rem;}
+.rw-publist .rw-pubitem::before{
+  counter-increment:rw-pub;
+  content:counter(rw-pub);
+  position:absolute;left:0;top:0.95rem;
+  width:1.7rem;text-align:right;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:0.78rem;font-weight:600;
+  color:var(--rw-text-soft);
+  font-variant-numeric:tabular-nums lining-nums;
+}
 .rw-pubauthors{
   font-size:0.93rem;
   color:var(--rw-text);
@@ -468,6 +480,12 @@ a{color:var(--rw-accent-dark);}
   margin:0.4rem 0 0;
 }
 
+/* CV timeline */
+.rw-cv-list{margin:0.4rem 0 1.1rem;padding:0;list-style:none;}
+.rw-cv-list li{display:grid;grid-template-columns:5.5rem 1fr;gap:1.1rem;padding:0.45rem 0;align-items:baseline;}
+.rw-cv-year{font-family:'Source Code Pro',monospace;font-size:0.82rem;color:var(--rw-text-soft);font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:0.01em;}
+.rw-cv-body{font-size:0.95rem;line-height:1.55;color:var(--rw-text);}
+
 /* Footer */
 .rw-footer{
   max-width:var(--rw-maxw);
@@ -486,6 +504,7 @@ a{color:var(--rw-accent-dark);}
 .rw-footer p:last-child{margin-bottom:0;}
 .rw-footer a{color:var(--rw-text-muted);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s ease;}
 .rw-footer a:hover{border-bottom-color:var(--rw-accent);color:var(--rw-accent-dark);}
+.rw-colophon{font-style:italic;letter-spacing:0.01em;opacity:0.85;}
 
 /* Scroll-in animations — opt-in via .rw-js class added by script */
 .rw-js .rw-section{opacity:0;transform:translateY(13px);transition:opacity 0.5s cubic-bezier(0.4,0,0.2,1),transform 0.5s cubic-bezier(0.4,0,0.2,1);}
@@ -718,15 +737,15 @@ a{color:var(--rw-accent-dark);}
 <section class="rw-section" id="cv">
 <h2>Experience &amp; Education</h2>
 <h3 class="rw-people-h3">Experience</h3>
-<ul class="rw-people-list">
-<li><strong>Huawei Paris</strong> — Research Engineer · 2021–present <span class="rw-people-role">· HPC and AI system optimisations for large-scale LLM training and inference, on Ascend-910 production clusters of up to 10K+ NPUs</span></li>
-<li><strong>Sorbonne Université × EURECOM</strong> — CIFRE Joint Ph.D. Programme · 2023–present <span class="rw-people-role">· Doctoral research in HPC / MLSys under joint academic and industrial supervision</span></li>
+<ul class="rw-cv-list">
+<li><span class="rw-cv-year">2021–</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Research Engineer <span class="rw-people-role">· HPC and AI system optimisations for large-scale LLM training and inference, on Ascend-910 production clusters of up to 10K+ NPUs</span></span></li>
+<li><span class="rw-cv-year">2023–</span><span class="rw-cv-body"><strong>Sorbonne Université × EURECOM</strong> — CIFRE Joint Ph.D. Programme <span class="rw-people-role">· Doctoral research in HPC / MLSys under joint academic and industrial supervision</span></span></li>
 </ul>
 <h3 class="rw-people-h3">Education</h3>
-<ul class="rw-people-list">
-<li><strong>Ph.D. in Computer Science</strong> — Sorbonne Université · EURECOM · with Huawei Paris · 2023 – 2026 (expected)</li>
-<li><strong>M.Sc. in Computer Science</strong> — Sorbonne Université, Paris · 2019 – 2022</li>
-<li><strong>B.Sc. in Computer Science</strong> — Paris-Saclay Université, Paris · 2016 – 2019</li>
+<ul class="rw-cv-list">
+<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>Ph.D. in Computer Science</strong> — Sorbonne Université · EURECOM · with Huawei Paris <span class="rw-people-role">· expected</span></span></li>
+<li><span class="rw-cv-year">2019–22</span><span class="rw-cv-body"><strong>M.Sc. in Computer Science</strong> — Sorbonne Université, Paris</span></li>
+<li><span class="rw-cv-year">2016–19</span><span class="rw-cv-body"><strong>B.Sc. in Computer Science</strong> — Paris-Saclay Université, Paris</span></li>
 </ul>
 </section>
 
@@ -741,6 +760,7 @@ a{color:var(--rw-accent-dark);}
 <a href="https://www.linkedin.com/in/ruiwen-wang-ai" target="_blank" rel="noopener">LinkedIn</a>
 </p>
 <p class="rw-footer-meta">Last updated June 2026 · <a href="https://github.com/wang-ruiwen/wang-ruiwen.github.io" target="_blank" rel="noopener">Source on GitHub</a></p>
+<p class="rw-footer-meta rw-colophon">Typeset in Source Serif 4 &amp; Inter · hand-coded as a single static file.</p>
 </footer>
 
 <script>
