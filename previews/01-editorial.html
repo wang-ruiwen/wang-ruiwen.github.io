@@ -1,0 +1,26 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>preview</title><style>
+@font-face{font-family:'Source Serif 4';font-weight:400 700;font-display:swap;src:url('/fonts/source-serif-4-latin-wght-normal.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-weight:400 700;font-display:swap;src:url('/fonts/inter-latin-wght-normal.woff2') format('woff2');}
+@font-face{font-family:'Source Code Pro';font-weight:400;font-display:swap;src:url('/fonts/source-code-pro-latin-400-normal.woff2') format('woff2');}
+*{box-sizing:border-box;}
+
+body{margin:0;background:#fafafa;color:#1d2336;font-family:'Source Serif 4',Georgia,serif;line-height:1.65;}
+.wrap{max-width:760px;margin:0 auto;padding:48px 28px;counter-reset:s;}
+.hero{text-align:center;}
+.hero img{width:104px;height:104px;border-radius:50%;object-fit:cover;border:1px solid rgba(20,26,43,.12);box-shadow:0 10px 30px rgba(20,26,43,.06);}
+.name{font-size:2rem;font-weight:700;letter-spacing:-.025em;color:#141a2b;margin:.7rem 0 .25rem;}
+.role{font-family:Inter,sans-serif;font-size:.9rem;color:#535d6f;margin:0 0 .2rem;}
+.affil{font-family:Inter,sans-serif;font-size:.82rem;color:#6a7488;margin:0 0 .7rem;}
+.links a{font-family:Inter,sans-serif;color:#2c5dbf;text-decoration:none;margin:0 .4rem;font-size:.85rem;border-bottom:1px solid rgba(75,129,232,.3);}
+h2{font-family:Inter,sans-serif;font-size:1.25rem;color:#141a2b;border-bottom:1px solid rgba(75,129,232,.14);padding-bottom:.4rem;margin:2.3rem 0 1rem;}
+h2::before{counter-increment:s;content:counter(s,decimal-leading-zero) " ";color:#4b81e8;font-size:.7em;}
+p{font-size:1rem;}
+.pub{border-top:1px solid rgba(75,129,232,.12);padding:.7rem 0;}
+.pa{font-size:.88rem;margin:0 0 .12rem;}.pa b{color:#2c5dbf;}
+.pt{font-size:.95rem;font-style:italic;margin:0 0 .12rem;}
+.pv{font-family:Inter,sans-serif;font-size:.79rem;color:#6a7488;margin:0;}
+</style></head><body><div class=wrap><div class=hero><img src="/images/avatar.jpg" alt="">
+<h1 class=name>Ruiwen WANG</h1><p class=role>PhD Candidate · AI Infra · LLM Pretraining · Hybrid Parallelism</p><p class=affil>Sorbonne Université × EURECOM × Huawei Paris · Paris, France</p>
+<p class=links><a class="" href="mailto:wangrw0124@gmail.com">Email</a><a class="" href="https://scholar.google.com/citations?user=AR1nHEUAAAAJ">Scholar</a><a class="" href="https://orcid.org/0009-0000-6709-5970">ORCID</a><a class="" href="https://github.com/wang-ruiwen">GitHub</a></p></div>
+<h2>About</h2><p>Third-year PhD candidate in Computer Science at Sorbonne Université and EURECOM, working at the intersection of AI Systems, Parallel Computing and Performance Engineering.</p><p>I build profiling-free planners for hybrid-parallel LLM pretraining — validated on Huawei Ascend-910 clusters of up to 10K+ NPUs and benchmarked against Megatron-LM.</p>
+<h2>Selected publications</h2><div class=pub><p class=pa><b>R. Wang</b>, P. Fang, C. Li, T. Tachon, R. Appuswamy</p><p class=pt>PRISM: Profiling-Free Symbolic Memory-Driven Strategy Planner for Large DNN Training.</p><p class=pv>SCA / HPCAsia 2026</p></div><div class=pub><p class=pa><b>R. Wang</b>, C. Li, T. Tachon, R. Appuswamy, T. Su</p><p class=pt>BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training.</p><p class=pv>IEEE CLUSTER 2025</p></div><div class=pub><p class=pa><b>R. Wang</b>, C. Li, R. Appuswamy, Y. Yuan</p><p class=pt>H²O: Holistic Hyper-Parameter Optimization for Large-Scale DNN Training.</p><p class=pv>Euro-Par 2025 · Best Poster</p></div><div class=pub><p class=pa><b>R. Wang</b>, C. Li, H. Wang, R. Appuswamy, Y. Yuan</p><p class=pt>ManuMatic: Strategy Injection for Robust Automatic Hybrid Parallelism.</p><p class=pv>IFIP NPC 2025</p></div></div></body></html>

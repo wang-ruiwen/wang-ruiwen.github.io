@@ -1,0 +1,31 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>preview</title><style>
+@font-face{font-family:'Source Serif 4';font-weight:400 700;font-display:swap;src:url('/fonts/source-serif-4-latin-wght-normal.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-weight:400 700;font-display:swap;src:url('/fonts/inter-latin-wght-normal.woff2') format('woff2');}
+@font-face{font-family:'Source Code Pro';font-weight:400;font-display:swap;src:url('/fonts/source-code-pro-latin-400-normal.woff2') format('woff2');}
+*{box-sizing:border-box;}
+
+body{margin:0;background:#fff;color:#111;font-family:'Source Serif 4',Georgia,'Times New Roman',serif;line-height:1.5;}
+.wrap{max-width:660px;margin:0 auto;padding:56px 32px;counter-reset:s;}
+.title{text-align:center;font-size:1.7rem;font-weight:700;line-height:1.25;margin:0 0 .9rem;}
+.authors{text-align:center;font-size:1.05rem;margin:0 0 .15rem;}
+.affil2{text-align:center;font-size:.85rem;color:#444;font-style:italic;margin:0 0 1.5rem;}
+.abs{margin:0 1.6rem 1.7rem;font-size:.9rem;}
+.abs .h{text-align:center;font-variant:all-small-caps;letter-spacing:.06em;font-weight:700;font-size:.95rem;margin-bottom:.25rem;}
+h2{font-size:1.05rem;font-weight:700;margin:1.7rem 0 .5rem;}
+h2::before{counter-increment:s;content:counter(s) "\00a0\00a0";}
+p{font-size:.95rem;text-align:justify;hyphens:auto;margin:0 0 .7rem;}
+.r{font-size:.86rem;margin:0 0 .55rem;padding-left:1.7rem;text-indent:-1.7rem;line-height:1.45;}
+.r b{font-weight:700;}.r i{font-style:italic;color:#333;}
+a{color:#7a1f2b;text-decoration:none;}
+</style></head><body><div class=wrap>
+<h1 class=title>Systematic &amp; Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</h1>
+<p class=authors>Ruiwen WANG</p>
+<p class=affil2>Sorbonne Université · EURECOM · Huawei Paris</p>
+<div class=abs><div class=h>Abstract</div><p>Third-year PhD candidate in Computer Science at Sorbonne Université and EURECOM, working at the intersection of AI Systems, Parallel Computing and Performance Engineering. I build profiling-free planners for hybrid-parallel LLM pretraining — validated on Huawei Ascend-910 clusters of up to 10K+ NPUs and benchmarked against Megatron-LM.</p></div>
+<h2>Research</h2><p>I formulate parallelism planning as closed-form, hardware-parametric
+cost surfaces solved by lightweight ILPs — spanning DP/TP/PP/VPP/SP/EP/OP — so that
+foundation-scale training is planned without per-cluster profiling and stays portable
+across hardware and model changes.</p>
+<h2>Selected Publications</h2><p class=r>[1]&ensp;R. Wang, P. Fang, C. Li, T. Tachon, R. Appuswamy. <b>PRISM: Profiling-Free Symbolic Memory-Driven Strategy Planner for Large DNN Training</b>. <i>SCA / HPCAsia 2026</i>.</p><p class=r>[2]&ensp;R. Wang, C. Li, T. Tachon, R. Appuswamy, T. Su. <b>BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training</b>. <i>IEEE CLUSTER 2025</i>.</p><p class=r>[3]&ensp;R. Wang, C. Li, R. Appuswamy, Y. Yuan. <b>H²O: Holistic Hyper-Parameter Optimization for Large-Scale DNN Training</b>. <i>Euro-Par 2025 · Best Poster</i>.</p><p class=r>[4]&ensp;R. Wang, C. Li, H. Wang, R. Appuswamy, Y. Yuan. <b>ManuMatic: Strategy Injection for Robust Automatic Hybrid Parallelism</b>. <i>IFIP NPC 2025</i>.</p>
+<p style="font-size:.82rem;color:#666;margin-top:1.4rem"><a class="" href="mailto:wangrw0124@gmail.com">Email</a> · <a class="" href="https://scholar.google.com/citations?user=AR1nHEUAAAAJ">Scholar</a> · <a class="" href="https://orcid.org/0009-0000-6709-5970">ORCID</a> · <a class="" href="https://github.com/wang-ruiwen">GitHub</a></p>
+</div></body></html>
