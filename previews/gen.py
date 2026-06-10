@@ -430,10 +430,105 @@ h2{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.025em;line-he
 """
     return page(css, body)
 
+# ---------------------------------------------------------------- 12 tufte-frost
+def tufte_frost():
+    css = """
+:root{
+  --bg:#fffff8;--ink:#1a1a18;--muted:#5a5a50;--faint:#8a8a78;
+  --frost-nav:rgba(255,255,248,0.82);
+  --line:rgba(175,170,148,0.30);--bdr:rgba(185,180,160,0.36);
+}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Source Serif 4',Palatino,Georgia,serif;
+  line-height:1.72;font-size:1.06rem;}
+.nav{position:sticky;top:0;z-index:10;
+  background:var(--frost-nav);
+  backdrop-filter:saturate(1.5) blur(20px);
+  -webkit-backdrop-filter:saturate(1.5) blur(20px);
+  border-bottom:1px solid var(--bdr);}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 60px 0 80px;
+  display:flex;align-items:center;gap:28px;height:44px;
+  font-family:Inter,sans-serif;font-size:.79rem;color:var(--muted);}
+.nav-in .brand{color:var(--ink);font-weight:600;letter-spacing:-.01em;}
+.nav-in .sp{flex:1;}
+.nav-in a{color:var(--muted);text-decoration:none;}
+.nav-in a:hover{color:var(--ink);}
+.wrap{max-width:1100px;margin:0 auto;padding:56px 60px 80px 80px;}
+.hero{display:flex;gap:24px;align-items:flex-start;margin-bottom:2.6rem;}
+.hero img{width:72px;height:72px;border-radius:50%;object-fit:cover;
+  flex-shrink:0;border:1px solid var(--bdr);margin-top:3px;}
+.hname{font-size:1.85rem;font-weight:600;letter-spacing:-.015em;
+  line-height:1.1;margin:0 0 .18rem;}
+.hrole{font-family:Inter,sans-serif;font-size:.83rem;color:var(--muted);
+  margin:0 0 .1rem;line-height:1.5;}
+.haffil{font-family:Inter,sans-serif;font-size:.77rem;color:var(--faint);
+  margin:0 0 .6rem;line-height:1.5;}
+.links a{font-family:Inter,sans-serif;font-size:.79rem;color:var(--muted);
+  text-decoration:none;margin-right:.75rem;border-bottom:1px solid var(--line);}
+.links a:hover{color:var(--ink);}
+.body{max-width:55%;}
+.sn{float:right;clear:right;width:34%;margin-right:-44%;
+  margin-top:.3rem;font-family:Inter,sans-serif;
+  font-size:.77rem;line-height:1.55;color:var(--faint);font-style:italic;}
+h2{font-size:1.3rem;font-weight:400;font-style:italic;
+  margin:2.4rem 0 .6rem;color:var(--ink);}
+p{margin:0 0 .9rem;}
+.topics{display:flex;flex-wrap:wrap;gap:.3rem .85rem;margin:.1rem 0 .5rem;}
+.topic{font-family:Inter,sans-serif;font-size:.78rem;color:var(--muted);
+  border-bottom:1px solid var(--line);}
+.pub{border-top:1px solid var(--line);padding:.8rem 0;}
+.pub:last-child{border-bottom:1px solid var(--line);}
+.pub .pt{font-style:italic;font-size:1rem;margin:0 0 .15rem;line-height:1.45;}
+.pub .pa{font-family:Inter,sans-serif;font-size:.78rem;color:var(--muted);margin:0 0 .08rem;}
+.pub .pv{font-family:Inter,sans-serif;font-size:.74rem;color:var(--faint);}
+.foot{border-top:1px solid var(--line);padding-top:.9rem;margin-top:2.6rem;
+  font-family:Inter,sans-serif;font-size:.75rem;color:var(--faint);}
+.foot a{color:var(--muted);text-decoration:none;margin-right:.8rem;}
+.foot a:hover{color:var(--ink);}
+"""
+    sn = ("Planners integrated into Huawei MindSpore / D-Rec runtime; "
+          "validated on Ascend-910 clusters up to 10K+ NPUs.")
+    pubs = "".join(
+        f'<div class=pub><div class=pt>{t}</div>'
+        f'<div class=pa>{a}</div><div class=pv>{v}</div></div>'
+        for a,t,v in PUBS)
+    topics = "".join(f'<span class=topic>{x}</span>' for x in TOPICS)
+    flinks = " ".join(f'<a href="{u}">{tx}</a>' for tx,u in LINKS)
+    body = f"""
+<nav class=nav><div class=nav-in>
+  <span class=brand>{NAME}</span><span class=sp></span>
+  <a href="#about">About</a>
+  <a href="#research">Research</a>
+  <a href="#pubs">Publications</a>
+</div></nav>
+<div class=wrap>
+<div class=hero>
+  <img src="{AV}" alt="">
+  <div>
+    <h1 class=hname>{NAME}</h1>
+    <p class=hrole>{ROLE}</p>
+    <p class=haffil>{AFFIL}</p>
+    <p class=links>{links_html()}</p>
+  </div>
+</div>
+<div class=body>
+<h2 id=about>About</h2>
+<p><span class=sn>{sn}</span>{A1}</p>
+<p>{A2}</p>
+<h2 id=research>Research interests</h2>
+<div class=topics>{topics}</div>
+<h2 id=pubs>Selected publications</h2>
+{pubs}
+<div class=foot>{flinks}</div>
+</div>
+</div>"""
+    return page(css, body)
+
 SKINS = [("01-editorial",editorial),("02-latex",latex),("03-tufte",tufte),
          ("04-swiss",swiss),("05-terminal",terminal),("06-air",air),
          ("07-brutalist",brutalist),("08-magazine",magazine),
-         ("09-broadsheet",broadsheet),("10-glass",glass),("11-apple",apple)]
+         ("09-broadsheet",broadsheet),("10-glass",glass),("11-apple",apple),
+         ("12-tufte-frost",tufte_frost)]
 
 here = os.path.dirname(os.path.abspath(__file__))
 for fid, fn in SKINS:
