@@ -344,10 +344,96 @@ p{font-size:1rem;margin:0 0 .6rem;}
 <div class=card><h2>Selected publications</h2>{pubs}</div></div>"""
     return page(css, body)
 
+# ---------------------------------------------------------------- 11 apple
+def apple():
+    css = """
+:root{--t:#1d1d1f;--s:#6e6e73;--g:#86868b;--blue:#0066cc;--btn:#0071e3;--panel:#f5f5f7;}
+body{margin:0;background:#fff;color:var(--t);font-family:Inter,-apple-system,'SF Pro Display',BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.47;letter-spacing:-.01em;}
+.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.72);backdrop-filter:saturate(1.8) blur(20px);-webkit-backdrop-filter:saturate(1.8) blur(20px);border-bottom:1px solid rgba(0,0,0,.08);}
+.nav-in{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:26px;height:46px;padding:0 22px;font-size:.82rem;}
+.nav-in .brand{font-weight:600;}.nav-in .sp{flex:1;}
+.nav-in a{color:#1d1d1f;opacity:.82;text-decoration:none;}.nav-in a:hover{opacity:1;color:var(--blue);}
+section{padding:88px 22px;text-align:center;}
+.wrapn{max-width:820px;margin:0 auto;}
+.eyebrow{font-size:1.2rem;color:var(--g);font-weight:600;margin:0 0 4px;}
+h1{font-size:clamp(2.6rem,7vw,4.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:.18em 0 .28em;}
+.hero img{width:92px;height:92px;border-radius:50%;object-fit:cover;box-shadow:0 6px 24px rgba(0,0,0,.12);}
+.hero .sub{font-size:clamp(1.2rem,2.6vw,1.55rem);color:var(--s);font-weight:500;letter-spacing:-.01em;margin:0 auto 1.5em;max-width:26ch;}
+.cta{display:inline-flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:center;}
+.btn{background:var(--btn);color:#fff;font-size:1.06rem;padding:.7em 1.35em;border-radius:980px;text-decoration:none;}
+.lnk{color:var(--blue);font-size:1.06rem;text-decoration:none;}
+.lnk::after{content:" ›";}
+h2{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.025em;line-height:1.08;margin:0 0 .32em;}
+.panel{background:var(--panel);}
+.lead{font-size:clamp(1.15rem,2.3vw,1.4rem);color:var(--s);font-weight:400;max-width:36ch;margin:0 auto;line-height:1.42;}
+.dark{background:#000;color:#f5f5f7;}
+.dark h2{color:#f5f5f7;}
+.stats{display:flex;justify-content:center;gap:60px;flex-wrap:wrap;margin-top:28px;}
+.num{font-size:clamp(2.6rem,6vw,3.9rem);font-weight:700;letter-spacing:-.02em;line-height:1;}
+.lab{color:var(--g);font-size:1rem;margin-top:10px;}
+.accent{color:#2997ff;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:980px;margin:44px auto 0;text-align:left;}
+.tile{background:var(--panel);border-radius:22px;padding:30px 30px 26px;}
+.tile .ev{font-size:.82rem;color:var(--g);font-weight:600;margin:0 0 10px;}
+.tile h3{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;margin:0 0 8px;}
+.tile p{font-size:1rem;color:var(--s);margin:0 0 14px;line-height:1.42;}
+.tile .lnk{font-size:1rem;}
+.pubs{max-width:720px;margin:0 auto;text-align:left;}
+.pub{padding:20px 0;border-top:1px solid rgba(0,0,0,.1);}.pub:first-child{border-top:none;}
+.pub h4{font-size:1.15rem;font-weight:600;letter-spacing:-.01em;margin:0 0 4px;}
+.pub .pv{color:var(--g);font-size:.95rem;}
+.foot{background:var(--panel);color:var(--g);font-size:.78rem;padding:30px 22px;text-align:center;border-top:1px solid rgba(0,0,0,.08);}
+.foot a{color:var(--g);text-decoration:none;}
+"""
+    SYS = [
+      ("PRISM","SCA / HPCAsia 2026","Profiling-free symbolic memory-driven strategy planner. 92–96% memory-prediction accuracy; up to 1.43× MFU over Megatron-LM."),
+      ("BMPipe","IEEE CLUSTER 2025","Bubble–memory co-optimisation planner. 1.36× over Megatron-Even on 10K+ NPUs; ILP solves in under 200 ms."),
+      ("H²O","Euro-Par 2025 · Best Poster","Holistic two-level hyper-parameter optimisation. +36.7% over the D-Rec baseline on 128 devices — without profiling."),
+      ("ManuMatic","IFIP NPC 2025","Strategy injection for robust automatic hybrid parallelism. Up to 2.24× over D-Rec with expert parallelism."),
+    ]
+    tiles = "".join(f'<div class=tile><p class=ev>{v}</p><h3>{n}</h3><p>{b}</p>'
+                    f'<a class=lnk href="#work">Learn more</a></div>' for n,v,b in SYS)
+    pubs = "".join(f'<div class=pub><h4>{t}</h4><div class=pv>{v} · {a}</div></div>'
+                   for a,t,v in PUBS)
+    flinks = " · ".join(f'<a href="{u}">{tx}</a>' for tx,u in LINKS)
+    body = f"""
+<nav class=nav><div class=nav-in><span class=brand>Ruiwen WANG</span><span class=sp></span>
+<a href="#work">Research</a><a href="#work">Systems</a><a href="#pubs">Publications</a><a href="{LINKS[0][1]}">Contact</a></div></nav>
+<section class=hero><div class=wrapn>
+<img src="{AV}" alt="">
+<p class=eyebrow>PhD Candidate · AI Infra · LLM Pretraining</p>
+<h1>Ruiwen WANG</h1>
+<p class=sub>Profiling-free planning for hybrid-parallel LLM pretraining.</p>
+<p class=cta><a class=btn href="#work">Read the work</a><a class=lnk href="{LINKS[0][1]}">Get in touch</a></p>
+</div></section>
+<section class=panel><div class=wrapn>
+<h2>Research.</h2>
+<p class=lead>Closed-form, hardware-parametric cost surfaces solved by lightweight ILPs — planning parallelism at foundation scale without per-cluster profiling, and staying portable when the hardware or model changes.</p>
+</div></section>
+<section class=dark><div class=wrapn>
+<h2>Proven at scale.</h2>
+<div class=stats>
+<div><div class=num>10K+</div><div class=lab>Ascend-910 NPUs</div></div>
+<div><div class="num accent">1.43×</div><div class=lab>MFU vs Megatron-LM</div></div>
+<div><div class=num>&lt;200ms</div><div class=lab>ILP at production scale</div></div>
+</div></div></section>
+<section id=work><div class=wrapn style="max-width:980px">
+<h2>Systems.</h2>
+<p class=lead>Four planners built during the PhD — each a concrete production-readiness property.</p>
+<div class=grid>{tiles}</div>
+</div></section>
+<section id=pubs class=panel><div class=wrapn>
+<h2>Selected publications.</h2>
+<div class=pubs>{pubs}</div>
+</div></section>
+<footer class=foot>© 2026 Ruiwen WANG · {flinks}</footer>
+"""
+    return page(css, body)
+
 SKINS = [("01-editorial",editorial),("02-latex",latex),("03-tufte",tufte),
          ("04-swiss",swiss),("05-terminal",terminal),("06-air",air),
          ("07-brutalist",brutalist),("08-magazine",magazine),
-         ("09-broadsheet",broadsheet),("10-glass",glass)]
+         ("09-broadsheet",broadsheet),("10-glass",glass),("11-apple",apple)]
 
 here = os.path.dirname(os.path.abspath(__file__))
 for fid, fn in SKINS:
