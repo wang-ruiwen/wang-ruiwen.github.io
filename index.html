@@ -208,7 +208,8 @@ a{color:var(--rw-accent-dark);}
 .rw-section>p:not(.rw-systems-callout),.rw-section>ul>li{max-width:72ch;font-variant-numeric:oldstyle-nums proportional-nums;}
 .rw-section ul{padding-left:1.25rem;margin:0.5rem 0 1rem;}
 .rw-section ul li{margin-bottom:0.55rem;}
-.rw-section strong{color:var(--rw-accent-dark);font-weight:700;}
+.rw-section strong{color:var(--rw-ink);font-weight:700;}
+.rw-pubauthors strong,.rw-news-text strong,.rw-systems-callout strong,.rw-card-result strong{color:var(--rw-accent-dark);}
 .rw-section em{font-style:italic;color:var(--rw-text);font-weight:500;}
 .rw-section code{
   color:var(--rw-text);
@@ -233,6 +234,18 @@ a{color:var(--rw-accent-dark);}
   margin-bottom:1rem;
 }
 #about>p:first-of-type{font-size:1.075rem;line-height:1.7;}
+#about>p:first-of-type::first-letter{
+  font-size:3.35em;font-weight:700;line-height:0.79;
+  float:left;margin-right:0.08em;margin-top:0.05em;
+  color:var(--rw-ink);
+}
+.rw-pullquote{
+  margin:1rem 0 1rem 1.4rem;
+  padding:0.05rem 0 0.05rem 1.1rem;
+  border-left:2px solid var(--rw-line);
+  font-size:1.01rem;line-height:1.65;
+  color:var(--rw-text-muted);font-style:italic;
+}
 
 /* News */
 .rw-news{margin-top:0.5rem;}
@@ -414,6 +427,7 @@ a{color:var(--rw-accent-dark);}
   margin:1.4rem 0 0.55rem;
   border:none;
   padding:0;
+  font-variant-caps:all-small-caps;
 }
 .rw-demo-h3::after{display:none;}
 .rw-demo-note{
@@ -451,6 +465,7 @@ a{color:var(--rw-accent-dark);}
   margin:1.5rem 0 0.6rem;
   border-bottom:none;
   padding:0;
+  font-variant-caps:all-small-caps;
 }
 .rw-people-h3::after{display:none;}
 .rw-people-list{
@@ -566,7 +581,8 @@ a{color:var(--rw-accent-dark);}
 
 <section class="rw-section" id="research">
 <h2>Research focus</h2>
-<p>My thesis, <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em>, asks one question: <em>how do we systematically plan parallelism for foundation-scale training without per-cluster profiling, and without losing portability when the hardware or model changes?</em> The work decomposes into four threads — each instantiated as a named planner described in the <a href="#systems">Systems</a> section.</p>
+<p>My thesis, <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em>, is built around one question, explored through four named planners described in the <a href="#systems">Systems</a> section.</p>
+<blockquote class="rw-pullquote">How do we systematically plan parallelism for foundation-scale training without per-cluster profiling, and without losing portability when the hardware or model changes?</blockquote>
 <ul>
 <li><strong>Cost modelling.</strong> Closed-form, hardware-parametric memory and communication cost surfaces for transformer and MoE training under arbitrary recomputation policies — a thread running through all five systems, deepest in PRISM.</li>
 <li><strong>Pipeline bubble optimisation.</strong> Tri-category bubble taxonomy (recomputation, imbalance, preparation) and joint pipeline–memory ILP for very-large DNN training under tight memory budgets.</li>
