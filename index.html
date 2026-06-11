@@ -60,6 +60,7 @@ body{
   text-rendering:optimizeLegibility;
   font-variant-ligatures:common-ligatures contextual;
   font-kerning:normal;
+  text-wrap:pretty;
 }
 .rw-topnav a,.rw-hero-name,.rw-hero-subtitle,.rw-hero-affil,.rw-section h2,.rw-itemcard-head h3,.rw-badge,.rw-itemcard-links a,.rw-people-h3,.rw-demo-hero h3,.rw-demo-tag,.rw-demo-cta,.rw-demo-h3,.rw-news-date,.rw-pubvenue,.rw-section-note,.rw-systems-callout{
   font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
@@ -148,11 +149,13 @@ a{color:var(--rw-accent-dark);}
   color:var(--rw-text-muted);
   letter-spacing:0.01em;
   margin:0 0 0.2rem;
+  text-wrap:balance;
 }
 .rw-hero-affil{
   font-size:0.86rem;
   color:var(--rw-text-soft);
   margin:0 0 0.5rem;
+  text-wrap:balance;
 }
 .rw-hero-social{
   display:flex;
@@ -190,17 +193,17 @@ a{color:var(--rw-accent-dark);}
 
 /* Section */
 .rw-section{
-  margin-top:3.2rem;
+  margin-top:3.6rem;
   scroll-margin-top:5.5rem;
 }
 .rw-section h2{
-  font-size:1.35rem;
+  font-size:1.4rem;
   font-weight:400;
   font-style:italic;
   letter-spacing:0.005em;
   color:var(--rw-ink);
-  margin:0 0 1.1rem;
-  padding-bottom:0.45rem;
+  margin:0 0 1.25rem;
+  padding-bottom:0.5rem;
   border-bottom:1px solid var(--rw-line);
   text-wrap:balance;
 }
@@ -302,15 +305,30 @@ a{color:var(--rw-accent-dark);}
 .rw-news-text{color:var(--rw-text);}
 .rw-news-text strong{color:var(--rw-accent-dark);}
 
-/* Item card (Systems / Publications) — text-only academic rows */
-.rw-itemcard,.rw-pubitem{
+/* Publication / patent rows — flat numbered reference list */
+.rw-pubitem{
   padding:0.75rem 0;
   border-top:1px solid var(--rw-line);
 }
-.rw-systems-callout + .rw-itemcard,
 .rw-publist .rw-pubitem:first-child,
 #patents>.rw-pubitem{border-top:none;}
-.rw-systems-callout + .rw-itemcard{padding-top:1rem;}
+
+/* System cards — gently elevated objects that lift off the warm page,
+   giving the four flagship planners their own visual layer */
+.rw-itemcard{
+  background:var(--rw-surface-soft);
+  border:1px solid var(--rw-border);
+  border-radius:12px;
+  padding:1.05rem 1.2rem;
+  margin-bottom:0.8rem;
+  transition:box-shadow 0.25s ease,transform 0.25s ease,border-color 0.25s ease;
+}
+.rw-itemcard:last-of-type{margin-bottom:0;}
+.rw-itemcard:hover{
+  box-shadow:var(--rw-shadow);
+  border-color:var(--rw-avatar-ring);
+  transform:translateY(-2px);
+}
 .rw-itemcard-head{
   display:flex;
   align-items:center;
@@ -334,11 +352,10 @@ a{color:var(--rw-accent-dark);}
 .rw-itemcard-body p.rw-card-result{
   font-size:0.89rem;
   color:var(--rw-text);
-  background:var(--rw-surface-soft);
-  border:1px solid var(--rw-border);
+  background:var(--rw-accent-soft);
   border-radius:8px;
-  padding:0.6rem 0.8rem;
-  margin-top:0.55rem;
+  padding:0.6rem 0.85rem;
+  margin-top:0.7rem;
   margin-bottom:0;
 }
 .rw-itemcard-links{margin-top:0.55rem;}
@@ -400,6 +417,7 @@ a{color:var(--rw-accent-dark);}
   font-size:0.96rem;
   margin:0 0 0.3rem;
   line-height:1.5;
+  text-wrap:balance;
 }
 .rw-pubvenue{
   font-size:0.84rem;
@@ -432,13 +450,16 @@ a{color:var(--rw-accent-dark);}
 .rw-demo-hero{
   margin:1rem 0 1.5rem;
   padding:1.3rem 1.4rem;
-  border-radius:10px;
+  border-radius:12px;
   background:var(--rw-surface);
   border:1px solid var(--rw-border);
   border-left:3px solid var(--rw-accent);
+  box-shadow:var(--rw-shadow);
   position:relative;
   text-align:left;
+  transition:box-shadow 0.25s ease,transform 0.25s ease;
 }
+.rw-demo-hero:hover{transform:translateY(-2px);}
 .rw-demo-hero-body{color:var(--rw-text);}
 .rw-demo-hero h3{color:var(--rw-accent-dark);font-size:1.1rem;font-weight:600;letter-spacing:-0.005em;margin:0 0 0.35rem;border:none;padding:0;display:inline;}
 .rw-demo-tag{color:var(--rw-text-muted);font-size:0.94rem;margin:0 0 0.6rem;display:inline;}
@@ -570,7 +591,8 @@ a{color:var(--rw-accent-dark);}
   .rw-content{padding:0 1rem 2rem;}
   .rw-section{margin-top:2.2rem;}
   .rw-section h2{font-size:1.32rem;}
-  .rw-itemcard,.rw-pubitem{padding:0.85rem 0;}
+  .rw-pubitem{padding:0.85rem 0;}
+  .rw-itemcard{padding:0.95rem 1rem;}
   .rw-news-item{grid-template-columns:62px 1fr;font-size:0.9rem;gap:0.7rem;}
   .rw-news-date{font-size:0.79rem;}
   .rw-cv-list li{grid-template-columns:4rem 1fr;gap:0.7rem;}
@@ -594,8 +616,8 @@ a{color:var(--rw-accent-dark);}
 <header class="rw-hero">
 <picture><source srcset="/images/avatar.webp" type="image/webp"><img class="rw-hero-avatar" src="/images/avatar.jpg" alt="Ruiwen WANG" width="384" height="384" fetchpriority="high" decoding="async"></picture>
 <h1 class="rw-hero-name">Ruiwen WANG</h1>
-<p class="rw-hero-subtitle">PhD Candidate · AI Infra · LLM Pretraining · Hybrid Parallelism</p>
-<p class="rw-hero-affil">Sorbonne Université × EURECOM × Huawei Paris · Paris, France</p>
+<p class="rw-hero-subtitle">PhD Candidate&nbsp;· AI Infra&nbsp;· LLM Pretraining&nbsp;· Hybrid Parallelism</p>
+<p class="rw-hero-affil">Sorbonne Université&nbsp;× EURECOM&nbsp;× Huawei Paris&nbsp;· Paris, France</p>
 <div class="rw-hero-social">
 <a href="mailto:wangrw0124@gmail.com" title="Email" aria-label="Email"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></svg></a>
 <a href="https://scholar.google.com/citations?user=AR1nHEUAAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a>
@@ -611,7 +633,7 @@ a{color:var(--rw-accent-dark);}
 <h2>About</h2>
 <p>I am a third-year PhD candidate in Computer Science at Sorbonne Université and EURECOM, working at the intersection of AI systems, parallel computing and performance engineering, jointly advised by Dr. Raja Appuswamy (EURECOM) and Dr. Chong Li (Huawei).</p>
 <p>I read Computer Science at Université Paris-Saclay (BSc, 2016–2019), where a machine-learning project class taught by Isabelle Guyon and Zhengying Liu first drew me toward the field, then took my MSc at Sorbonne Université (2019–2022) under Profs. Emmanuel Chailloux and Jacques Malenfant.</p>
-<p>I joined Huawei Paris in 2021 as a research engineer in AI infrastructure, working on hybrid parallelism and memory optimisation for the LLM pretraining stack behind the company's foundation-scale models. In 2023 the work evolved into a PhD under the French CIFRE programme; the planners studied in the thesis are integrated into Huawei's MindSpore / D-Rec runtime and validated on Ascend-910 production clusters of 10K+ NPUs. I expect to defend in 2026.</p>
+<p>I joined Huawei Paris in 2021 as a research engineer in AI infrastructure, working on hybrid parallelism and memory optimisation for the LLM pretraining stack behind the company's foundation-scale models. In 2023 the work evolved into a PhD under the French CIFRE programme; the planners studied in the thesis are integrated into Huawei's MindSpore / D-Rec runtime and validated on Ascend-910 production clusters of 10K+&nbsp;NPUs. I expect to defend in 2026.</p>
 </section>
 
 <section class="rw-section" id="research">
@@ -652,28 +674,28 @@ a{color:var(--rw-accent-dark);}
 <div class="rw-itemcard"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>PRISM</h3><span class="rw-badge">SCA / HPCAsia 2026</span></div>
 <p>Profiling-free symbolic memory-driven strategy planner. Predicts memory under arbitrary recomputation policies via closed-form per-component expressions; the communication side is modelled with collective-volume and topology-aware templates.</p>
-<p class="rw-card-result"><strong>92–96%</strong> memory-prediction accuracy (median error ≈ 7%) across DeepSeek3 / Llama2-3 / Mistral / TextHawk / Llama-MoE on Ascend-910 up to <strong>1,024 NPUs</strong>; up to <strong>1.43× MFU</strong> speedup over Megatron-LM.</p>
+<p class="rw-card-result"><strong>92–96%</strong> memory-prediction accuracy (median error ≈ 7%) across DeepSeek3 / Llama2-3 / Mistral / TextHawk / Llama-MoE on Ascend-910 up to <strong>1,024&nbsp;NPUs</strong>; up to <strong>1.43×&nbsp;MFU</strong> speedup over Megatron-LM.</p>
 <div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
 </div></div>
 
 <div class="rw-itemcard"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>BMPipe</h3><span class="rw-badge">IEEE CLUSTER 2025</span></div>
 <p>Bubble–memory co-optimisation strategy planner. Formalises pipeline idle time into a tri-category taxonomy — <em>recomputation, imbalance, preparation bubbles</em> — and solves a joint pipeline–memory ILP for very-large DNN training.</p>
-<p class="rw-card-result"><strong>1.36×</strong> speedup over Megatron-Even on a <strong>10K+ NPU</strong> Ascend-910 cluster; up to <strong>1.70×</strong> under 1F1B-Interleave; the ILP solves in <strong>under 200 ms</strong> at production scale.</p>
+<p class="rw-card-result"><strong>1.36×</strong> speedup over Megatron-Even on a <strong>10K+&nbsp;NPU</strong> Ascend-910 cluster; up to <strong>1.70×</strong> under 1F1B-Interleave; the ILP solves in <strong>under 200&nbsp;ms</strong> at production scale.</p>
 <div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
 </div></div>
 
 <div class="rw-itemcard"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>H²O</h3><span class="rw-badge">Euro-Par 2025 · Best Poster</span></div>
 <p>Holistic hyper-parameter optimisation. A two-level optimiser searches the macro tuple <code>(DP, TP, PP, OP, micro-batch)</code> with a fast symbolic Delta cost model; the inner level refines layer-to-stage assignment and per-layer recomputation via ILP — a joint solver spanning all macro degrees and stage assignment simultaneously.</p>
-<p class="rw-card-result"><strong>+36.7%</strong> speedup over the D-Rec baseline on 128-device clusters; <strong>35.7% MFU</strong> on DeepSeek-141B — without any accelerator-time profiling.</p>
+<p class="rw-card-result"><strong>+36.7%</strong> speedup over the D-Rec baseline on 128-device clusters; <strong>35.7%&nbsp;MFU</strong> on DeepSeek-141B — without any accelerator-time profiling.</p>
 <div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
 </div></div>
 
 <div class="rw-itemcard"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>ManuMatic</h3><span class="rw-badge">IFIP NPC 2025</span></div>
 <p>Strategy injection for robust automatic hybrid parallelism. A structured interface lets users pin a small set of performance-critical operators while the planner derives a globally consistent strategy for the rest of the graph; built atop the D-Rec planner inside MindSpore, and reduces exactly to D-Rec when no constraints are provided.</p>
-<p class="rw-card-result">Up to <strong>2.24×</strong> over D-Rec on Mixtral-8×7B with expert parallelism (8 NPUs); <strong>2.04×</strong> on Llama3-8B at 8K context; <strong>1.45× / 1.30×</strong> on Qwen2.5-72B at 32 K context (64 NPUs, combined with BMPipe).</p>
+<p class="rw-card-result">Up to <strong>2.24×</strong> over D-Rec on Mixtral-8×7B with expert parallelism (8&nbsp;NPUs); <strong>2.04×</strong> on Llama3-8B at 8K&nbsp;context; <strong>1.45× / 1.30×</strong> on Qwen2.5-72B at 32K&nbsp;context (64&nbsp;NPUs, combined with BMPipe).</p>
 </div></div>
 </section>
 
@@ -789,7 +811,7 @@ a{color:var(--rw-accent-dark);}
 <h2>Experience &amp; Education</h2>
 <h3 class="rw-people-h3">Experience</h3>
 <ul class="rw-cv-list">
-<li><span class="rw-cv-year">2021–</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Research Engineer <span class="rw-people-role">· HPC and AI system optimisations for large-scale LLM training and inference, on Ascend-910 production clusters of 10K+ NPUs</span></span></li>
+<li><span class="rw-cv-year">2021–</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Research Engineer <span class="rw-people-role">· HPC and AI system optimisations for large-scale LLM training and inference, on Ascend-910 production clusters of 10K+&nbsp;NPUs</span></span></li>
 <li><span class="rw-cv-year">2023–</span><span class="rw-cv-body"><strong>Sorbonne Université × EURECOM</strong> — CIFRE Joint PhD Programme <span class="rw-people-role">· Doctoral research in HPC / MLSys under joint academic and industrial supervision</span></span></li>
 </ul>
 <h3 class="rw-people-h3">Education</h3>
