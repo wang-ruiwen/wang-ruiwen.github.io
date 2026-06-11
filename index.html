@@ -638,16 +638,10 @@ a{color:var(--rw-accent-dark);}
 
 <section class="rw-section" id="research">
 <h2>Research focus</h2>
-<p>I work on AI systems for large-scale model training — the planning layer that decides how a model is partitioned and scheduled across thousands of accelerators, and how efficiently that hardware is then used. My work centres on one question:</p>
+<p>Scaling AI is increasingly a systems problem. A frontier model is trained by spreading one computation across thousands of accelerators for days or weeks at a time, and how that computation is partitioned and scheduled across them — the parallelism strategy — largely sets how much of the hardware is actually used, and with it the time, energy and cost of a run.</p>
+<p>Today that strategy is mostly found by hand: re-tuned for each model and cluster through profiling and expert intuition, and redone whenever the hardware or model changes. I want to know whether it can instead be reasoned about from first principles:</p>
 <blockquote class="rw-pullquote">How do we systematically plan parallelism for foundation-scale training without per-cluster profiling, and without losing portability when the hardware or model changes?</blockquote>
-<p>A few threads recur in pursuing it:</p>
-<ul>
-<li><em>Cost modelling without profiling</em> — closed-form memory and communication models for transformer and MoE training.</li>
-<li><em>Pipeline efficiency</em> — taming pipeline bubbles under tight memory budgets.</li>
-<li><em>Joint parallelism planning</em> — optimising across every parallelism dimension at once.</li>
-<li><em>Runtime fidelity</em> — keeping cost-model predictions faithful to production frameworks.</li>
-</ul>
-<p class="rw-section-note">Each is realised in one of the planners described under <a href="#systems">Systems</a>.</p>
+<p>My approach builds closed-form cost models that predict how a strategy will behave before it runs — so a good plan can be found analytically, then carried across hardware and model changes rather than rebuilt each time. The planners that come out of this are described under <a href="#systems">Systems</a>.</p>
 </section>
 
 <section class="rw-section" id="news">
