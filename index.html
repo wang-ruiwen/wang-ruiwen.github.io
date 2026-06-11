@@ -638,14 +638,16 @@ a{color:var(--rw-accent-dark);}
 
 <section class="rw-section" id="research">
 <h2>Research focus</h2>
-<p><span class="rw-sidenote">The planners are named for what they do: PRISM (symbolic memory), BMPipe (bubble–memory), H²O (hyper-parameter optimisation), ManuMatic (manual + automatic strategy).</span>My thesis, <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em>, is built around one question, explored through the four planners described in the <a href="#systems">Systems</a> section.</p>
+<p>I work on AI systems for large-scale model training — the planning layer that decides how a model is partitioned and scheduled across thousands of accelerators, and how efficiently that hardware is then used. My work centres on one question:</p>
 <blockquote class="rw-pullquote">How do we systematically plan parallelism for foundation-scale training without per-cluster profiling, and without losing portability when the hardware or model changes?</blockquote>
+<p>A few threads recur in pursuing it:</p>
 <ul>
-<li><em>Cost modelling.</em> Closed-form, hardware-parametric memory and communication cost surfaces for transformer and MoE training under arbitrary recomputation policies — a thread running through every planner, deepest in PRISM.</li>
-<li><em>Pipeline bubble optimisation.</em> Tri-category bubble taxonomy (recomputation, imbalance, preparation) and joint pipeline–memory ILP for very-large DNN training under tight memory budgets.</li>
-<li><em>Joint hybrid-parallel planning.</em> A single optimisation across <code>DP / TP / PP / VPP / SP / EP / OP</code>, decomposed into a fast macro-degree search refined by an inner stage-assignment ILP.</li>
-<li><em>Runtime fidelity.</em> Structured strategy injection that lets users pin a small set of performance-critical operators, closing the gap between cost-model predictions and production-framework runtime.</li>
+<li><em>Cost modelling without profiling</em> — closed-form memory and communication models for transformer and MoE training.</li>
+<li><em>Pipeline efficiency</em> — taming pipeline bubbles under tight memory budgets.</li>
+<li><em>Joint parallelism planning</em> — optimising across every parallelism dimension at once.</li>
+<li><em>Runtime fidelity</em> — keeping cost-model predictions faithful to production frameworks.</li>
 </ul>
+<p class="rw-section-note">Each is realised in one of the planners described under <a href="#systems">Systems</a>.</p>
 </section>
 
 <section class="rw-section" id="news">
@@ -668,7 +670,7 @@ a{color:var(--rw-accent-dark);}
 
 <section class="rw-section" id="systems">
 <h2>Systems</h2>
-<p class="rw-section-note">Four planners built during my PhD, each addressing a core requirement of production training — portability without profiling, joint optimisation across all parallelism dimensions, and runtime fidelity on production frameworks.</p>
+<p class="rw-section-note"><span class="rw-sidenote">The planners are named for what they do: PRISM (symbolic memory), BMPipe (bubble–memory), H²O (hyper-parameter optimisation), ManuMatic (manual + automatic strategy).</span>Four planners built during my PhD — each turning one research thread into a strategy planner you can run.</p>
 <p class="rw-systems-callout">Three of these — <strong>PRISM</strong>, <strong>BMPipe</strong> and <strong>H²O</strong> — are combined in a live interactive demo: <a class="rw-demo-inline" href="#demo">SAPP Search Studio →</a></p>
 
 <div class="rw-itemcard"><div class="rw-itemcard-body">
@@ -816,7 +818,7 @@ a{color:var(--rw-accent-dark);}
 </ul>
 <h3 class="rw-people-h3">Education</h3>
 <ul class="rw-cv-list">
-<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>PhD in Computer Science</strong> — Sorbonne Université · EURECOM · with Huawei Paris <span class="rw-people-role">· expected</span></span></li>
+<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>PhD in Computer Science</strong> — Sorbonne Université · EURECOM · with Huawei Paris <span class="rw-people-role">· thesis: <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em> · expected</span></span></li>
 <li><span class="rw-cv-year">2019–22</span><span class="rw-cv-body"><strong>MSc in Computer Science</strong> — Sorbonne Université, Paris</span></li>
 <li><span class="rw-cv-year">2016–19</span><span class="rw-cv-body"><strong>BSc in Computer Science</strong> — Université Paris-Saclay</span></li>
 </ul>
