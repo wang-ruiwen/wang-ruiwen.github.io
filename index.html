@@ -393,6 +393,13 @@ a{color:var(--rw-accent-dark);}
   text-transform:uppercase;
   white-space:nowrap;
 }
+/* Award badge — an honour, not a venue: a filled, inverted pill that
+   sets it apart from the neutral conference tag beside it */
+.rw-badge-award{
+  color:var(--rw-bg);
+  background:var(--rw-ink);
+  border-color:var(--rw-ink);
+}
 
 /* Publications */
 .rw-publist{counter-reset:rw-pub;}
@@ -682,7 +689,7 @@ a{color:var(--rw-accent-dark);}
 </div></div>
 
 <div class="rw-itemcard"><div class="rw-itemcard-body">
-<div class="rw-itemcard-head"><h3>H²O</h3><span class="rw-badge">Euro-Par 2025 · Best Poster</span></div>
+<div class="rw-itemcard-head"><h3>H²O</h3><span class="rw-badge">Euro-Par 2025</span><span class="rw-badge rw-badge-award">Best Poster</span></div>
 <p>Holistic hyper-parameter optimisation. A two-level optimiser searches the macro tuple <code>(DP, TP, PP, OP, micro-batch)</code> with a fast symbolic Delta cost model; the inner level refines layer-to-stage assignment and per-layer recomputation via ILP — a joint solver spanning all macro degrees and stage assignment simultaneously.</p>
 <p class="rw-card-result"><strong>+36.7%</strong> speedup over the D-Rec baseline on 128-device clusters; <strong>35.7%&nbsp;MFU</strong> on DeepSeek-141B — without any accelerator-time profiling.</p>
 <div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
@@ -755,7 +762,7 @@ a{color:var(--rw-accent-dark);}
 <div class="rw-pubitem"><div class="rw-itemcard-body">
 <p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Raja Appuswamy, Yujie Yuan.</p>
 <p class="rw-pubtitle"><em>H²O: Holistic Hyper-Parameter Optimization for Large-Scale Deep Neural Network Training.</em></p>
-<p class="rw-pubvenue">31st Euro-Par 2025, Dresden, Germany · Aug 25–29, 2025 · Best Poster Award</p>
+<p class="rw-pubvenue">31st Euro-Par 2025, Dresden, Germany · Aug 25–29, 2025 · <strong>Best Poster Award</strong></p>
 </div></div>
 
 <div class="rw-pubitem"><div class="rw-itemcard-body">
