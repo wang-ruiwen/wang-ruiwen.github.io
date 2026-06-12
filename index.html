@@ -81,6 +81,18 @@ a{color:var(--rw-accent-dark);}
 #rw-main{scroll-margin-top:1rem;}
 #rw-main:focus{outline:none;}
 
+/* Reading-progress bar — a hairline that fills as the page scrolls,
+   pinned just above the sticky nav */
+.rw-progress{
+  position:fixed;top:0;left:0;
+  height:2px;width:100%;
+  z-index:101;
+  background:var(--rw-accent);
+  transform:scaleX(0);
+  transform-origin:0 50%;
+  will-change:transform;
+}
+
 /* Sticky top nav */
 .rw-topnav{
   position:sticky;
@@ -605,7 +617,7 @@ a{color:var(--rw-accent-dark);}
   .rw-cv-list li{grid-template-columns:4rem 1fr;gap:0.7rem;}
 }
 @media print{
-  .rw-topnav,.rw-hero-social,.rw-demo-hero,.rw-itemcard-links,.rw-systems-callout{display:none!important;}
+  .rw-topnav,.rw-progress,.rw-hero-social,.rw-demo-hero,.rw-itemcard-links,.rw-systems-callout{display:none!important;}
   body{font-size:10pt;line-height:1.5;}
   .rw-section{break-inside:avoid;margin-top:1.5rem;opacity:1!important;transform:none!important;}
   .rw-itemcard,.rw-pubitem{break-inside:avoid;}
@@ -618,6 +630,7 @@ a{color:var(--rw-accent-dark);}
 <body>
 
 <a class="rw-skip" href="#rw-main">Skip to content</a>
+<div class="rw-progress" id="rw-progress" aria-hidden="true"></div>
 <nav class="rw-topnav" aria-label="Section"><div class="rw-topnav-inner"><a href="#about">About</a><a href="#research">Research</a><a href="#news">News</a><a href="#topics">Topics</a><a href="#systems">Systems</a><a href="#demo">Demo</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#people">People</a><a href="#cv">Experience</a></div></nav>
 
 <header class="rw-hero">
@@ -819,11 +832,10 @@ a{color:var(--rw-accent-dark);}
 <h3 class="rw-people-h3">Experience</h3>
 <ul class="rw-cv-list">
 <li><span class="rw-cv-year">2021–</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Research Engineer <span class="rw-people-role">· HPC and AI system optimisations for large-scale LLM training and inference, on Ascend-910 production clusters of 10K+&nbsp;NPUs</span></span></li>
-<li><span class="rw-cv-year">2023–</span><span class="rw-cv-body"><strong>Sorbonne Université × EURECOM</strong> — CIFRE Joint PhD Programme <span class="rw-people-role">· Doctoral research in HPC / MLSys under joint academic and industrial supervision</span></span></li>
 </ul>
 <h3 class="rw-people-h3">Education</h3>
 <ul class="rw-cv-list">
-<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>PhD in Computer Science</strong> — Sorbonne Université · EURECOM · with Huawei Paris <span class="rw-people-role">· advised by Raja Appuswamy &amp; Chong Li · expected</span><br><span class="rw-people-role">Thesis: <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em></span></span></li>
+<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>PhD in Computer Science</strong> — Sorbonne Université · EURECOM <span class="rw-people-role">· CIFRE programme with Huawei Paris · advised by Raja Appuswamy &amp; Chong Li · expected 2026</span><br><span class="rw-people-role">Thesis: <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em></span></span></li>
 <li><span class="rw-cv-year">2019–22</span><span class="rw-cv-body"><strong>MSc in Computer Science</strong> — Sorbonne Université, Paris <span class="rw-people-role">· advised by Emmanuel Chailloux &amp; Jacques Malenfant</span></span></li>
 <li><span class="rw-cv-year">2016–19</span><span class="rw-cv-body"><strong>BSc in Computer Science</strong> — Université Paris-Saclay <span class="rw-people-role">· mentored by Isabelle Guyon, Viviane Pons &amp; Zhengying Liu</span></span></li>
 </ul>
@@ -848,6 +860,7 @@ a{color:var(--rw-accent-dark);}
   'use strict';
   var links=Array.from(document.querySelectorAll('.rw-topnav a[href^="#"]'));
   var navEl=document.querySelector('.rw-topnav');
+  var progressEl=document.getElementById('rw-progress');
   var sections=links.map(function(l){return document.getElementById(l.getAttribute('href').slice(1));}).filter(Boolean);
   var offsets=[];
   var activeId=null;
@@ -872,6 +885,10 @@ a{color:var(--rw-accent-dark);}
       cur=sections[sections.length-1].id;
     }
     setActive(cur);
+    if(progressEl){
+      var max=document.documentElement.scrollHeight-window.innerHeight;
+      progressEl.style.transform='scaleX('+(max>0?Math.min(window.scrollY/max,1):0)+')';
+    }
   }
   var ticking=false;
   function onScroll(){
