@@ -1,11 +1,16 @@
 {
   "name": "Ruiwen WANG",
   "short_name": "Ruiwen WANG",
+  "description": "PhD candidate in AI systems & parallel computing — AI infrastructure for large-scale LLM pretraining.",
+  "lang": "en",
+  "dir": "ltr",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#fffff8",
   "theme_color": "#fffff8",
+  "categories": ["education", "science"],
   "icons": [
     {
       "src": "/img/favicon.png?v=3",

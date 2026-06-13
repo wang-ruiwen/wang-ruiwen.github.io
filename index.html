@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fffff8" media="(prefers-color-scheme:light)"><meta name="theme-color" content="#1e1e1a" media="(prefers-color-scheme:dark)"><title>Ruiwen WANG — AI Infra & LLM Pretraining</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ruiwen WANG"><meta name="msapplication-TileImage" content="/img/favicon.png?v=3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ruiwen WANG"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM, working at the intersection of AI Systems, Parallel Computing and Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism (DP/TP/PP/VPP/SP/EP/OP), pipeline-bubble optimisation, automatic strategy planning. Four planners — PRISM, BMPipe, H²O, ManuMatic — deployed on Huawei Ascend-910 clusters of 10K+ NPUs, benchmarked against Megatron-LM. PCT patent WO 2025/020165 A1 on ML execution-plan generation. Distributed training, foundation models, MLSys, HPC."><meta name="author" content="Ruiwen WANG"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"><meta property="og:type" content="profile"><meta property="profile:first_name" content="Ruiwen"><meta property="profile:last_name" content="WANG"><meta property="og:title" content="Ruiwen WANG — AI Infra & LLM Pretraining"><meta property="og:url" content="https://ruiwen.wang/"><meta property="og:site_name" content="Ruiwen WANG"><meta property="og:description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Four planners (PRISM, BMPipe, H²O, ManuMatic) on Huawei Ascend-910 clusters of 10K+ NPUs."><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ruiwen.wang/img/og_image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:image:src" content="https://ruiwen.wang/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen WANG","givenName":"Ruiwen","familyName":"WANG","url":"https://ruiwen.wang/","image":"https://ruiwen.wang/img/og_image.png","jobTitle":"PhD Candidate","worksFor":{"@type":"Organization","name":"Huawei"},"affiliation":[{"@type":"CollegeOrUniversity","name":"Sorbonne Université"},{"@type":"Organization","name":"EURECOM"}],"alumniOf":[{"@type":"CollegeOrUniversity","name":"Sorbonne Université"},{"@type":"CollegeOrUniversity","name":"Université Paris-Saclay"}],"knowsAbout":["AI Systems","Parallel Computing","LLM pretraining","Hybrid parallelism","Pipeline parallelism","Mixture of Experts","High-Performance Computing","Distributed training"],"sameAs":["https://scholar.google.com/citations?user=AR1nHEUAAAAJ","https://orcid.org/0009-0000-6709-5970","https://www.linkedin.com/in/ruiwen-wang-ai","https://github.com/wang-ruiwen"],"description":"Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Four planners (PRISM, BMPipe, H²O, ManuMatic) on Huawei Ascend-910 clusters of 10K+ NPUs, benchmarked against Megatron-LM."}</script><link rel="canonical" href="https://ruiwen.wang/"><link rel="icon" type="image/png" sizes="256x256" href="/img/favicon.png?v=3"><link rel="icon" type="image/svg+xml" href="/img/favicon.svg?v=3"><link rel="preload" href="/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/source-serif-4-latin-wght-italic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin><style>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fffff8" media="(prefers-color-scheme:light)"><meta name="theme-color" content="#1e1e1a" media="(prefers-color-scheme:dark)"><title>Ruiwen WANG — AI Infra & LLM Pretraining</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ruiwen WANG"><meta name="msapplication-TileImage" content="/img/favicon.png?v=3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ruiwen WANG"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM, working at the intersection of AI Systems, Parallel Computing and Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism (DP/TP/PP/VPP/SP/EP/OP), pipeline-bubble optimisation, automatic strategy planning. Four planners — PRISM, BMPipe, H²O, ManuMatic — deployed on Huawei Ascend-910 clusters of 10K+ NPUs, benchmarked against Megatron-LM. PCT patent WO 2025/020165 A1 on ML execution-plan generation. Distributed training, foundation models, MLSys, HPC."><meta name="author" content="Ruiwen WANG"><meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"><meta property="og:type" content="profile"><meta property="profile:first_name" content="Ruiwen"><meta property="profile:last_name" content="WANG"><meta property="og:title" content="Ruiwen WANG — AI Infra & LLM Pretraining"><meta property="og:url" content="https://ruiwen.wang/"><meta property="og:site_name" content="Ruiwen WANG"><meta property="og:description" content="Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Four planners (PRISM, BMPipe, H²O, ManuMatic) on Huawei Ascend-910 clusters of 10K+ NPUs."><meta property="og:locale" content="en_US"><meta property="og:image" content="https://ruiwen.wang/img/og_image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:type" content="image/png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:image:src" content="https://ruiwen.wang/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen WANG","givenName":"Ruiwen","familyName":"WANG","url":"https://ruiwen.wang/","image":"https://ruiwen.wang/img/og_image.png","jobTitle":"PhD Candidate","worksFor":{"@type":"Organization","name":"Huawei"},"affiliation":[{"@type":"CollegeOrUniversity","name":"Sorbonne Université"},{"@type":"Organization","name":"EURECOM"}],"alumniOf":[{"@type":"CollegeOrUniversity","name":"Sorbonne Université"},{"@type":"CollegeOrUniversity","name":"Université Paris-Saclay"}],"knowsAbout":["AI Systems","Parallel Computing","LLM pretraining","Hybrid parallelism","Pipeline parallelism","Mixture of Experts","High-Performance Computing","Distributed training"],"sameAs":["https://scholar.google.com/citations?user=AR1nHEUAAAAJ","https://orcid.org/0009-0000-6709-5970","https://www.linkedin.com/in/ruiwen-wang-ai","https://github.com/wang-ruiwen"],"description":"Ruiwen WANG — PhD candidate at Sorbonne Université & EURECOM. AI Systems · Parallel Computing · Performance Engineering. AI Infrastructure for large-scale LLM pretraining: hybrid parallelism, pipeline-bubble optimisation, automatic strategy planning. Four planners (PRISM, BMPipe, H²O, ManuMatic) on Huawei Ascend-910 clusters of 10K+ NPUs, benchmarked against Megatron-LM."}</script><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ScholarlyArticle","headline":"PRISM: Profiling-Free Symbolic Memory-Driven Strategy Planner for Large DNN Model Training","name":"PRISM: Profiling-Free Symbolic Memory-Driven Strategy Planner for Large DNN Model Training","author":[{"@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen Wang"},{"@type":"Person","name":"Philippe Fang"},{"@type":"Person","name":"Chong Li"},{"@type":"Person","name":"Thibaut Tachon"},{"@type":"Person","name":"Raja Appuswamy"}],"datePublished":"2026-01","isAccessibleForFree":true,"creator":{"@id":"https://ruiwen.wang/#person"},"isPartOf":{"@type":"CreativeWork","name":"SCA / HPCAsia 2026"},"url":"https://doi.org/10.1145/3773656.3773667","sameAs":"https://doi.org/10.1145/3773656.3773667"},{"@type":"ScholarlyArticle","headline":"MLLM Pipeline Bubble Modeling for Large-Scale Training","name":"MLLM Pipeline Bubble Modeling for Large-Scale Training","author":[{"@type":"Person","name":"Zhengdao Yu"},{"@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen Wang"},{"@type":"Person","name":"Nelson Lossing"},{"@type":"Person","name":"Chong Li"}],"datePublished":"2026-01","isAccessibleForFree":true,"creator":{"@id":"https://ruiwen.wang/#person"},"isPartOf":{"@type":"CreativeWork","name":"SCA / HPCAsia 2026"}},{"@type":"ScholarlyArticle","headline":"Training Report of TeleChat3-MoE","name":"Training Report of TeleChat3-MoE","author":[{"@type":"Person","name":"Xinzhang Liu"},{"@type":"Person","name":"Chao Wang"},{"@type":"Person","name":"Zhihua Yang"},{"@type":"Person","name":"Zhuo Jiang"},{"@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen Wang"}],"datePublished":"2025-12","isAccessibleForFree":true,"creator":{"@id":"https://ruiwen.wang/#person"},"publisher":{"@type":"Organization","name":"arXiv"},"url":"https://arxiv.org/abs/2512.24157","sameAs":"https://arxiv.org/abs/2512.24157"},{"@type":"ScholarlyArticle","headline":"ManuMatic: Strategy Injection for Robust Automatic Hybrid Parallelism in Distributed DNN Training","name":"ManuMatic: Strategy Injection for Robust Automatic Hybrid Parallelism in Distributed DNN Training","author":[{"@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen Wang"},{"@type":"Person","name":"Chong Li"},{"@type":"Person","name":"Hongxing Wang"},{"@type":"Person","name":"Raja Appuswamy"},{"@type":"Person","name":"Yujie Yuan"}],"datePublished":"2025-11","isAccessibleForFree":true,"creator":{"@id":"https://ruiwen.wang/#person"},"isPartOf":{"@type":"CreativeWork","name":"IFIP NPC 2025"},"url":"https://doi.org/10.1007/978-3-032-10466-3_14","sameAs":"https://doi.org/10.1007/978-3-032-10466-3_14"},{"@type":"ScholarlyArticle","headline":"BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training","name":"BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training","author":[{"@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen Wang"},{"@type":"Person","name":"Chong Li"},{"@type":"Person","name":"Thibaut Tachon"},{"@type":"Person","name":"Raja Appuswamy"},{"@type":"Person","name":"Teng Su"}],"datePublished":"2025-09","isAccessibleForFree":true,"creator":{"@id":"https://ruiwen.wang/#person"},"isPartOf":{"@type":"CreativeWork","name":"IEEE CLUSTER 2025"},"url":"https://ieeexplore.ieee.org/document/11186487/","sameAs":"https://ieeexplore.ieee.org/document/11186487/"},{"@type":"ScholarlyArticle","headline":"H²O: Holistic Hyper-Parameter Optimization for Large-Scale Deep Neural Network Training","name":"H²O: Holistic Hyper-Parameter Optimization for Large-Scale Deep Neural Network Training","author":[{"@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen Wang"},{"@type":"Person","name":"Chong Li"},{"@type":"Person","name":"Raja Appuswamy"},{"@type":"Person","name":"Yujie Yuan"}],"datePublished":"2025-08","isAccessibleForFree":true,"creator":{"@id":"https://ruiwen.wang/#person"},"isPartOf":{"@type":"CreativeWork","name":"Euro-Par 2025"},"award":"Best Poster Award"},{"@type":"ScholarlyArticle","headline":"SCOPE: Symbolic Computation-Memory Optimization for Pipeline Efficiency in Ultra-Scale DNN Training","name":"SCOPE: Symbolic Computation-Memory Optimization for Pipeline Efficiency in Ultra-Scale DNN Training","author":[{"@type":"Person","@id":"https://ruiwen.wang/#person","name":"Ruiwen Wang"},{"@type":"Person","name":"Chong Li"},{"@type":"Person","name":"Thibaut Tachon"},{"@type":"Person","name":"Raja Appuswamy"}],"datePublished":"2025-06","isAccessibleForFree":true,"creator":{"@id":"https://ruiwen.wang/#person"},"isPartOf":{"@type":"CreativeWork","name":"DP2E-AI 2025 Workshop"}}]}</script><link rel="canonical" href="https://ruiwen.wang/"><link rel="icon" type="image/png" sizes="256x256" href="/img/favicon.png?v=3"><link rel="icon" type="image/svg+xml" href="/img/favicon.svg?v=3"><link rel="preload" href="/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/source-serif-4-latin-wght-italic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin><style>
 @font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 700;font-display:swap;src:url('/fonts/source-serif-4-latin-wght-normal.woff2') format('woff2');}
 @font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400 700;font-display:swap;src:url('/fonts/source-serif-4-latin-wght-italic.woff2') format('woff2');}
 @font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url('/fonts/inter-latin-wght-normal.woff2') format('woff2');}
@@ -80,6 +80,18 @@ a{color:var(--rw-accent-dark);}
 .rw-skip:focus{top:0.5rem;}
 #rw-main{scroll-margin-top:1rem;}
 #rw-main:focus{outline:none;}
+
+/* Reading-progress bar — a hairline that fills as the page scrolls,
+   pinned just above the sticky nav */
+.rw-progress{
+  position:fixed;top:0;left:0;
+  height:2px;width:100%;
+  z-index:101;
+  background:var(--rw-accent);
+  transform:scaleX(0);
+  transform-origin:0 50%;
+  will-change:transform;
+}
 
 /* Sticky top nav */
 .rw-topnav{
@@ -181,6 +193,22 @@ a{color:var(--rw-accent-dark);}
   fill:currentColor;
   display:block;
   transition:transform 0.2s ease;
+}
+.rw-hero-status{
+  font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:0.84rem;
+  color:var(--rw-text-muted);
+  margin:0.15rem 0 0.65rem;
+  text-wrap:balance;
+  max-width:48ch;
+}
+.rw-status-dot{
+  display:inline-block;
+  width:7px;height:7px;border-radius:50%;
+  background:#52a374;
+  box-shadow:0 0 0 3px rgba(82,163,116,0.18);
+  margin-right:0.5rem;
+  vertical-align:middle;
 }
 
 /* Main content */
@@ -605,7 +633,7 @@ a{color:var(--rw-accent-dark);}
   .rw-cv-list li{grid-template-columns:4rem 1fr;gap:0.7rem;}
 }
 @media print{
-  .rw-topnav,.rw-hero-social,.rw-demo-hero,.rw-itemcard-links,.rw-systems-callout{display:none!important;}
+  .rw-topnav,.rw-progress,.rw-hero-social,.rw-demo-hero,.rw-itemcard-links,.rw-systems-callout{display:none!important;}
   body{font-size:10pt;line-height:1.5;}
   .rw-section{break-inside:avoid;margin-top:1.5rem;opacity:1!important;transform:none!important;}
   .rw-itemcard,.rw-pubitem{break-inside:avoid;}
@@ -618,6 +646,7 @@ a{color:var(--rw-accent-dark);}
 <body>
 
 <a class="rw-skip" href="#rw-main">Skip to content</a>
+<div class="rw-progress" id="rw-progress" aria-hidden="true"></div>
 <nav class="rw-topnav" aria-label="Section"><div class="rw-topnav-inner"><a href="#about">About</a><a href="#research">Research</a><a href="#news">News</a><a href="#topics">Topics</a><a href="#systems">Systems</a><a href="#demo">Demo</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#people">People</a><a href="#cv">Experience</a></div></nav>
 
 <header class="rw-hero">
@@ -625,6 +654,7 @@ a{color:var(--rw-accent-dark);}
 <h1 class="rw-hero-name">Ruiwen WANG</h1>
 <p class="rw-hero-subtitle">PhD Candidate&nbsp;· AI Infra&nbsp;· LLM Pretraining&nbsp;· Hybrid Parallelism</p>
 <p class="rw-hero-affil">Sorbonne Université&nbsp;× EURECOM&nbsp;× Huawei Paris&nbsp;· Paris, France</p>
+<p class="rw-hero-status"><span class="rw-status-dot" aria-hidden="true"></span>Defending in 2026&nbsp;· open to research roles in AI systems &amp; infrastructure</p>
 <div class="rw-hero-social">
 <a href="mailto:wangrw0124@gmail.com" title="Email" aria-label="Email"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></svg></a>
 <a href="https://scholar.google.com/citations?user=AR1nHEUAAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg></a>
@@ -666,7 +696,7 @@ a{color:var(--rw-accent-dark);}
 
 <section class="rw-section" id="topics">
 <h2>Topics</h2>
-<div class="rw-chips"><span class="rw-chip">hybrid parallelism</span><span class="rw-chip">distributed training</span><span class="rw-chip">symbolic cost modelling</span><span class="rw-chip">AI Infra</span><span class="rw-chip">large-scale LLM</span><span class="rw-chip">LLM pretraining</span><span class="rw-chip">pipeline parallelism</span><span class="rw-chip">automatic planning</span><span class="rw-chip">Mixture of Experts</span><span class="rw-chip">Ascend NPU</span><span class="rw-chip">portability</span><span class="rw-chip">ILP optimisation</span><span class="rw-chip">tensor parallelism</span><span class="rw-chip">activation recomputation</span><span class="rw-chip">pipeline bubbles</span><span class="rw-chip">memory modelling</span><span class="rw-chip">communication cost</span><span class="rw-chip">strategy injection</span><span class="rw-chip">expert parallelism</span><span class="rw-chip">MFU optimisation</span><span class="rw-chip">transformer training</span></div>
+<div class="rw-chips"><span class="rw-chip">hybrid parallelism</span><span class="rw-chip">pipeline parallelism</span><span class="rw-chip">LLM pretraining</span><span class="rw-chip">distributed training</span><span class="rw-chip">symbolic cost modelling</span><span class="rw-chip">automatic planning</span><span class="rw-chip">pipeline bubbles</span><span class="rw-chip">memory modelling</span><span class="rw-chip">Mixture of Experts</span><span class="rw-chip">ILP optimisation</span><span class="rw-chip">activation recomputation</span><span class="rw-chip">Ascend NPU</span></div>
 </section>
 
 <section class="rw-section" id="systems">
@@ -733,6 +763,7 @@ a{color:var(--rw-accent-dark);}
 <p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Philippe Fang, Chong Li, Thibaut Tachon, Raja Appuswamy.</p>
 <p class="rw-pubtitle"><em>PRISM: Profiling-Free Symbolic Memory-Driven Strategy Planner for Large DNN Model Training.</em></p>
 <p class="rw-pubvenue">SCA / HPCAsia 2026, Osaka, Japan · Jan 26–29, 2026</p>
+<div class="rw-itemcard-links"><a href="https://doi.org/10.1145/3773656.3773667" target="_blank" rel="noopener">ACM DL</a></div>
 </div></div>
 
 <div class="rw-pubitem"><div class="rw-itemcard-body">
@@ -745,18 +776,21 @@ a{color:var(--rw-accent-dark);}
 <p class="rw-pubauthors">Xinzhang Liu, Chao Wang, Zhihua Yang, Zhuo Jiang, …, <strong>Ruiwen Wang</strong>, <em>et al.</em></p>
 <p class="rw-pubtitle"><em>Training Report of TeleChat3-MoE.</em></p>
 <p class="rw-pubvenue">arXiv preprint · 2025</p>
+<div class="rw-itemcard-links"><a href="https://arxiv.org/abs/2512.24157" target="_blank" rel="noopener">arXiv</a></div>
 </div></div>
 
 <div class="rw-pubitem"><div class="rw-itemcard-body">
 <p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Hongxing Wang, Raja Appuswamy, Yujie Yuan.</p>
 <p class="rw-pubtitle"><em>ManuMatic: Strategy Injection for Robust Automatic Hybrid Parallelism in Distributed DNN Training.</em></p>
 <p class="rw-pubvenue">22nd IFIP NPC 2025, Nha Trang, Vietnam · Nov 14–16, 2025</p>
+<div class="rw-itemcard-links"><a href="https://doi.org/10.1007/978-3-032-10466-3_14" target="_blank" rel="noopener">Springer</a></div>
 </div></div>
 
 <div class="rw-pubitem"><div class="rw-itemcard-body">
 <p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy, Teng Su.</p>
 <p class="rw-pubtitle"><em>BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training.</em></p>
 <p class="rw-pubvenue">27th IEEE CLUSTER 2025, Edinburgh, UK · Sep 2–5, 2025</p>
+<div class="rw-itemcard-links"><a href="https://ieeexplore.ieee.org/document/11186487/" target="_blank" rel="noopener">IEEE Xplore</a></div>
 </div></div>
 
 <div class="rw-pubitem"><div class="rw-itemcard-body">
@@ -815,11 +849,10 @@ a{color:var(--rw-accent-dark);}
 <h3 class="rw-people-h3">Experience</h3>
 <ul class="rw-cv-list">
 <li><span class="rw-cv-year">2021–</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Research Engineer <span class="rw-people-role">· HPC and AI system optimisations for large-scale LLM training and inference, on Ascend-910 production clusters of 10K+&nbsp;NPUs</span></span></li>
-<li><span class="rw-cv-year">2023–</span><span class="rw-cv-body"><strong>Sorbonne Université × EURECOM</strong> — CIFRE Joint PhD Programme <span class="rw-people-role">· Doctoral research in HPC / MLSys under joint academic and industrial supervision</span></span></li>
 </ul>
 <h3 class="rw-people-h3">Education</h3>
 <ul class="rw-cv-list">
-<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>PhD in Computer Science</strong> — Sorbonne Université · EURECOM · with Huawei Paris <span class="rw-people-role">· advised by Raja Appuswamy &amp; Chong Li · expected</span><br><span class="rw-people-role">Thesis: <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em></span></span></li>
+<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>PhD in Computer Science</strong> — Sorbonne Université · EURECOM <span class="rw-people-role">· CIFRE programme with Huawei Paris · advised by Raja Appuswamy &amp; Chong Li · expected 2026</span><br><span class="rw-people-role">Thesis: <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em></span></span></li>
 <li><span class="rw-cv-year">2019–22</span><span class="rw-cv-body"><strong>MSc in Computer Science</strong> — Sorbonne Université, Paris <span class="rw-people-role">· advised by Emmanuel Chailloux &amp; Jacques Malenfant</span></span></li>
 <li><span class="rw-cv-year">2016–19</span><span class="rw-cv-body"><strong>BSc in Computer Science</strong> — Université Paris-Saclay <span class="rw-people-role">· mentored by Isabelle Guyon, Viviane Pons &amp; Zhengying Liu</span></span></li>
 </ul>
@@ -844,6 +877,7 @@ a{color:var(--rw-accent-dark);}
   'use strict';
   var links=Array.from(document.querySelectorAll('.rw-topnav a[href^="#"]'));
   var navEl=document.querySelector('.rw-topnav');
+  var progressEl=document.getElementById('rw-progress');
   var sections=links.map(function(l){return document.getElementById(l.getAttribute('href').slice(1));}).filter(Boolean);
   var offsets=[];
   var activeId=null;
@@ -868,6 +902,10 @@ a{color:var(--rw-accent-dark);}
       cur=sections[sections.length-1].id;
     }
     setActive(cur);
+    if(progressEl){
+      var max=document.documentElement.scrollHeight-window.innerHeight;
+      progressEl.style.transform='scaleX('+(max>0?Math.min(window.scrollY/max,1):0)+')';
+    }
   }
   var ticking=false;
   function onScroll(){
