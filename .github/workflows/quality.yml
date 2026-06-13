@@ -16,7 +16,7 @@ permissions:
 jobs:
 
   html:
-    name: HTML · W3C validator
+    name: HTML · structure (W3C Nu)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +24,14 @@ jobs:
         with:
           python-version: '3.x'
       - run: pip install -q html5validator
-      - run: html5validator --root . --match "*.html"
+      # The bundled vnu predates some of our CSS/HTML: filter its false
+      # "property doesn't exist" CSS noise and the media=/fetchpriority
+      # attributes it doesn't know yet. Real HTML structure errors
+      # (bad nesting, duplicate ids, unclosed tags) still fail the build.
+      - run: >-
+          html5validator --root . --match "*.html"
+          --ignore-re 'Property "[^"]*" doesn.t exist'
+          'Attribute "(media|fetchpriority)" not allowed'
 
   links:
     name: Links · lychee
