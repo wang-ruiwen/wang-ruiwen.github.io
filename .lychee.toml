@@ -1,0 +1,13 @@
+[main]
+# LinkedIn and Google Scholar reliably block crawlers; skip them.
+exclude = [
+  "^mailto:",
+  "linkedin\\.com",
+  "scholar\\.google\\.com",
+]
+
+timeout = 20
+max_retries = 3
+
+# 429 = rate-limited (treat as OK, not broken)
+accept = [200, 206, 429]
