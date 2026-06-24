@@ -675,8 +675,8 @@ a{color:var(--rw-accent-dark);}
 
 <section class="rw-section" id="research">
 <h2>Research focus</h2>
-<p>Scaling AI is increasingly a systems problem. A frontier model is trained by spreading one computation across thousands of accelerators for days or weeks at a time, and how that computation is partitioned and scheduled across them — the parallelism strategy — largely sets how much of the hardware is actually used, and with it the time, energy and cost of a run.</p>
-<p>Today that strategy is mostly found by hand: re-tuned for each model and cluster through profiling and expert intuition, and redone whenever the hardware or model changes. I want to know whether it can instead be reasoned about from first principles:</p>
+<p>Scaling AI is increasingly a systems problem. A frontier model is trained by spreading one computation across thousands of accelerators for days or weeks, and how that computation is partitioned and scheduled among them — the parallelism strategy — largely sets how much of the hardware is actually used, and with it the time, energy and cost of a run.</p>
+<p>Today that strategy is mostly found by hand: re-tuned for each model and cluster through profiling and expert intuition, and redone from scratch whenever either shifts. I want to know whether it can instead be reasoned about from first principles:</p>
 <blockquote class="rw-pullquote">How do we systematically plan parallelism for foundation-scale training without per-cluster profiling, and without losing portability when the hardware or model changes?</blockquote>
 <p>My approach builds closed-form cost models that predict how a strategy will behave before it runs — so a good plan can be found analytically, then carried across hardware and model changes rather than rebuilt each time. The planners that come out of this are described under <a href="#systems">Systems</a>.</p>
 </section>
@@ -848,7 +848,7 @@ a{color:var(--rw-accent-dark);}
 <h2>Experience &amp; Education</h2>
 <h3 class="rw-people-h3">Experience</h3>
 <ul class="rw-cv-list">
-<li><span class="rw-cv-year">2021–</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Research Engineer <span class="rw-people-role">· HPC and AI system optimisations for large-scale LLM training and inference, on Ascend-910 production clusters of 10K+&nbsp;NPUs</span></span></li>
+<li><span class="rw-cv-year">2021–</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Research Engineer <span class="rw-people-role">· HPC and AI-system optimisations for large-scale LLM training and inference, on Ascend-910 production clusters of 10K+&nbsp;NPUs</span></span></li>
 </ul>
 <h3 class="rw-people-h3">Education</h3>
 <ul class="rw-cv-list">
