@@ -648,7 +648,7 @@ a{color:var(--rw-accent-dark);}
 
 <a class="rw-skip" href="#rw-main">Skip to content</a>
 <div class="rw-progress" id="rw-progress" aria-hidden="true"></div>
-<nav class="rw-topnav" aria-label="Section"><div class="rw-topnav-inner"><a href="#about">About</a><a href="#research">Research</a><a href="#news">News</a><a href="#awards">Awards</a><a href="#topics">Topics</a><a href="#systems">Systems</a><a href="#demo">Demo</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#people">People</a><a href="#experience">Experience</a><a href="#education">Education</a></div></nav>
+<nav class="rw-topnav" aria-label="Section"><div class="rw-topnav-inner"><a href="#about">About</a><a href="#research">Research</a><a href="#systems">Systems</a><a href="#demo">Demo</a><a href="#publications">Publications</a><a href="#patents">Patents</a><a href="#awards">Awards</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#news">News</a><a href="#topics">Topics</a><a href="#people">People</a></div></nav>
 
 <header class="rw-hero">
 <picture><source srcset="/images/avatar.webp" type="image/webp"><img class="rw-hero-avatar" src="/images/avatar.jpg" alt="Ruiwen WANG" width="384" height="384" fetchpriority="high" decoding="async"></picture>
@@ -671,8 +671,8 @@ a{color:var(--rw-accent-dark);}
 <section class="rw-section" id="about">
 <h2>About</h2>
 <p>I am a third-year PhD candidate in Computer Science at Sorbonne Université and EURECOM, working at the intersection of AI systems, parallel computing and performance engineering, jointly advised by Dr. Raja Appuswamy (EURECOM) and Dr. Chong Li (Huawei Paris).</p>
-<p>I read Computer Science at Université Paris-Saclay (BSc, 2016–2019), where a machine-learning project class taught by Isabelle Guyon and Zhengying Liu first drew me toward the field, then took my MSc at Sorbonne Université (2019–2022) under Profs. Emmanuel Chailloux and Jacques Malenfant.</p>
-<p>I joined Huawei Paris in 2021 as a research engineer in AI infrastructure, working on hybrid parallelism and memory optimisation for the LLM pretraining stack behind the company's foundation-scale models. In 2023 the work evolved into a PhD under the French CIFRE programme; the planners studied in the thesis are integrated into Huawei's MindSpore / MindFormers stack and validated on Ascend-910 production clusters of up to 16,384&nbsp;NPUs, on dense, MoE and multimodal models of up to 1T+ parameters. Along the way they supported production customer training — China Telecom's DeepSeek-MoE deployment (Letter of Appreciation) and the TeleChat3-MoE effort. I expect to defend in 2026.</p>
+<p>I studied Computer Science at Université Paris-Saclay (BSc, 2016–2019), where a machine-learning project class taught by Isabelle Guyon and Zhengying Liu first drew me toward the field, and went on to an MSc at Sorbonne Université (2019–2022) under Profs. Emmanuel Chailloux and Jacques Malenfant.</p>
+<p>I joined Huawei Paris in 2021 as a research engineer in AI infrastructure, working on hybrid parallelism and memory optimisation for the LLM pretraining stack behind the company's foundation-scale models. In 2023 the work evolved into a PhD under the French CIFRE programme; the planners studied in the thesis are integrated into Huawei's MindSpore / MindFormers stack and validated on Ascend-910 production clusters of up to 16,384&nbsp;NPUs, on dense, MoE and multimodal models of up to 1T+ parameters. Along the way they supported production customer training — China Telecom's DeepSeek-MoE deployment (Letter of Appreciation) and TeleChat3-MoE training. I expect to defend in 2026.</p>
 </section>
 
 <section class="rw-section" id="research">
@@ -681,33 +681,6 @@ a{color:var(--rw-accent-dark);}
 <p>Today that strategy is mostly found by hand: re-tuned for each model and cluster through profiling and expert intuition, and redone from scratch whenever either shifts. I want to know whether it can instead be reasoned about from first principles:</p>
 <blockquote class="rw-pullquote">How do we systematically plan parallelism for foundation-scale training without per-cluster profiling, and without losing portability when the hardware or model changes?</blockquote>
 <p>My approach builds closed-form cost models that predict how a strategy will behave before it runs — so a good plan can be found analytically, then carried across hardware and model changes rather than rebuilt each time. The planners that come out of this are described under <a href="#systems">Systems</a>.</p>
-</section>
-
-<section class="rw-section" id="news">
-<h2>News</h2>
-<ul class="rw-news">
-<li class="rw-news-item"><time class="rw-news-date" datetime="2026-01">2026.01</time><div class="rw-news-text">Presented <strong>PRISM</strong> at SCA / HPCAsia 2026, Osaka.</div></li>
-<li class="rw-news-item"><time class="rw-news-date" datetime="2026-01">2026.01</time><div class="rw-news-text">Co-author on <em>MLLM Pipeline Bubble Modeling</em>, presented at SCA / HPCAsia 2026, Osaka.</div></li>
-<li class="rw-news-item"><time class="rw-news-date" datetime="2025-11">2025.11</time><div class="rw-news-text">Presented <strong>ManuMatic</strong> at IFIP NPC 2025, Nha Trang.</div></li>
-<li class="rw-news-item"><time class="rw-news-date" datetime="2025-09">2025.09</time><div class="rw-news-text">Presented <strong>BMPipe</strong> at IEEE CLUSTER 2025, Edinburgh.</div></li>
-<li class="rw-news-item"><time class="rw-news-date" datetime="2025-08">2025.08</time><div class="rw-news-text"><strong>H²O</strong> received the <strong>Best Poster Award</strong> at Euro-Par 2025, Dresden.</div></li>
-<li class="rw-news-item"><time class="rw-news-date" datetime="2025-06">2025.06</time><div class="rw-news-text">Presented <strong>SCOPE</strong> at the DP2E-AI 2025 Workshop, Paris.</div></li>
-<li class="rw-news-item"><time class="rw-news-date" datetime="2025-01">2025.01</time><div class="rw-news-text">Patent on automatic ML execution-plan generation published as <a href="https://patents.google.com/patent/WO2025020165A1" target="_blank" rel="noopener">WO 2025/020165 A1</a> (PCT, Huawei Technologies).</div></li>
-</ul>
-</section>
-
-<section class="rw-section" id="awards">
-<h2>Awards</h2>
-<ul class="rw-people-list">
-<li><strong>Best Poster Award</strong> — Euro-Par 2025, Dresden <span class="rw-people-role">· for H²O</span></li>
-<li><strong>Letter of Appreciation</strong> — China Telecom, 2025 <span class="rw-people-role">· DeepSeek-MoE training-optimisation deployment</span></li>
-<li><strong>Golden Prize</strong> — Huawei Challenge for Automatic Load Balancing, 2024</li>
-</ul>
-</section>
-
-<section class="rw-section" id="topics">
-<h2>Topics</h2>
-<div class="rw-chips"><span class="rw-chip">hybrid parallelism</span><span class="rw-chip">pipeline parallelism</span><span class="rw-chip">LLM pretraining</span><span class="rw-chip">distributed training</span><span class="rw-chip">symbolic cost modelling</span><span class="rw-chip">automatic planning</span><span class="rw-chip">pipeline bubbles</span><span class="rw-chip">memory modelling</span><span class="rw-chip">Mixture of Experts</span><span class="rw-chip">ILP optimisation</span><span class="rw-chip">activation recomputation</span><span class="rw-chip">optimiser-state sharding (ZeRO)</span><span class="rw-chip">computation graph (IR)</span><span class="rw-chip">performance profiling</span><span class="rw-chip">long context</span><span class="rw-chip">Ascend NPU</span></div>
 </section>
 
 <section class="rw-section" id="systems">
@@ -850,6 +823,50 @@ a{color:var(--rw-accent-dark);}
 </div>
 </section>
 
+<section class="rw-section" id="awards">
+<h2>Awards</h2>
+<ul class="rw-people-list">
+<li><strong>Best Poster Award</strong> — Euro-Par 2025, Dresden <span class="rw-people-role">· for H²O</span></li>
+<li><strong>Letter of Appreciation</strong> — China Telecom, 2025 <span class="rw-people-role">· DeepSeek-MoE training-optimisation deployment</span></li>
+<li><strong>Golden Prize</strong> — Huawei Challenge for Automatic Load Balancing, 2024</li>
+</ul>
+</section>
+
+<section class="rw-section" id="experience">
+<h2>Experience</h2>
+<ul class="rw-cv-list">
+<li><span class="rw-cv-year">2023–</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Ph.D. Researcher (CIFRE) <span class="rw-people-role">· compute, memory and communication cost models and optimisation-based planners for the LLM-pretraining stack — shipped in MindSpore&nbsp;/&nbsp;MindFormers, benchmarked against Megatron-LM, validated up to 16,384&nbsp;NPUs</span></span></li>
+<li><span class="rw-cv-year">2021–23</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Research Apprentice → Research Engineer <span class="rw-people-role">· profiling, bottleneck analysis and performance tuning for large-scale LLM training and inference on Ascend-910 production clusters</span></span></li>
+</ul>
+</section>
+
+<section class="rw-section" id="education">
+<h2>Education</h2>
+<ul class="rw-cv-list">
+<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>PhD in Computer Science</strong> — Sorbonne Université · EURECOM <span class="rw-people-role">· CIFRE programme with Huawei Paris · advised by Raja Appuswamy &amp; Chong Li · expected 2026</span><br><span class="rw-people-role">Thesis: <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em></span><br><span class="rw-people-role">Jury: Corinne Ancourt (Mines Paris–PSL) &amp; Gaëtan Hains (UPEC), reviewers · Serge Petiton &amp; Denis Barthou, examiners</span></span></li>
+<li><span class="rw-cv-year">2019–22</span><span class="rw-cv-body"><strong>MSc in Computer Science</strong> — Sorbonne Université, Paris <span class="rw-people-role">· advised by Emmanuel Chailloux &amp; Jacques Malenfant</span></span></li>
+<li><span class="rw-cv-year">2016–19</span><span class="rw-cv-body"><strong>BSc in Computer Science</strong> — Université Paris-Saclay <span class="rw-people-role">· mentored by Isabelle Guyon, Viviane Pons &amp; Zhengying Liu</span></span></li>
+</ul>
+</section>
+
+<section class="rw-section" id="news">
+<h2>News</h2>
+<ul class="rw-news">
+<li class="rw-news-item"><time class="rw-news-date" datetime="2026-01">2026.01</time><div class="rw-news-text">Presented <strong>PRISM</strong> at SCA / HPCAsia 2026, Osaka.</div></li>
+<li class="rw-news-item"><time class="rw-news-date" datetime="2026-01">2026.01</time><div class="rw-news-text">Co-author on <em>MLLM Pipeline Bubble Modeling</em>, presented at SCA / HPCAsia 2026, Osaka.</div></li>
+<li class="rw-news-item"><time class="rw-news-date" datetime="2025-11">2025.11</time><div class="rw-news-text">Presented <strong>ManuMatic</strong> at IFIP NPC 2025, Nha Trang.</div></li>
+<li class="rw-news-item"><time class="rw-news-date" datetime="2025-09">2025.09</time><div class="rw-news-text">Presented <strong>BMPipe</strong> at IEEE CLUSTER 2025, Edinburgh.</div></li>
+<li class="rw-news-item"><time class="rw-news-date" datetime="2025-08">2025.08</time><div class="rw-news-text"><strong>H²O</strong> received the <strong>Best Poster Award</strong> at Euro-Par 2025, Dresden.</div></li>
+<li class="rw-news-item"><time class="rw-news-date" datetime="2025-06">2025.06</time><div class="rw-news-text">Presented <strong>SCOPE</strong> at the DP2E-AI 2025 Workshop, Paris.</div></li>
+<li class="rw-news-item"><time class="rw-news-date" datetime="2025-01">2025.01</time><div class="rw-news-text">Patent on automatic ML execution-plan generation published as <a href="https://patents.google.com/patent/WO2025020165A1" target="_blank" rel="noopener">WO 2025/020165 A1</a> (PCT, Huawei Technologies).</div></li>
+</ul>
+</section>
+
+<section class="rw-section" id="topics">
+<h2>Topics</h2>
+<div class="rw-chips"><span class="rw-chip">hybrid parallelism</span><span class="rw-chip">pipeline parallelism</span><span class="rw-chip">LLM pretraining</span><span class="rw-chip">distributed training</span><span class="rw-chip">symbolic cost modelling</span><span class="rw-chip">automatic planning</span><span class="rw-chip">pipeline bubbles</span><span class="rw-chip">memory modelling</span><span class="rw-chip">Mixture of Experts</span><span class="rw-chip">ILP optimisation</span><span class="rw-chip">activation recomputation</span><span class="rw-chip">optimiser-state sharding (ZeRO)</span><span class="rw-chip">computation graph (IR)</span><span class="rw-chip">performance profiling</span><span class="rw-chip">long context</span><span class="rw-chip">Ascend NPU</span></div>
+</section>
+
 <section class="rw-section" id="people">
 <h2>People</h2>
 <p class="rw-section-note">The people behind this work — advisors, mentors, co-authors and friends.</p>
@@ -874,23 +891,6 @@ a{color:var(--rw-accent-dark);}
 </ul>
 <h3 class="rw-people-h3">Friend</h3><ul class="rw-people-list">
 <li><strong>Quentin Petit</strong> — Postdoctoral Researcher, Mines Paris – PSL <span class="rw-people-role">· HPC / AI · formerly&nbsp;Huawei&nbsp;Paris</span></li>
-</ul>
-</section>
-
-<section class="rw-section" id="experience">
-<h2>Experience</h2>
-<ul class="rw-cv-list">
-<li><span class="rw-cv-year">2023–</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Ph.D. Researcher (CIFRE) <span class="rw-people-role">· compute, memory and communication cost models and optimisation-based planners for the LLM-pretraining stack — shipped in MindSpore&nbsp;/&nbsp;MindFormers, benchmarked against Megatron-LM, validated up to 16,384&nbsp;NPUs</span></span></li>
-<li><span class="rw-cv-year">2021–23</span><span class="rw-cv-body"><strong>Huawei Paris</strong> — Research Apprentice → Research Engineer <span class="rw-people-role">· profiling, bottleneck analysis and performance tuning for large-scale LLM training and inference on Ascend-910 production clusters</span></span></li>
-</ul>
-</section>
-
-<section class="rw-section" id="education">
-<h2>Education</h2>
-<ul class="rw-cv-list">
-<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>PhD in Computer Science</strong> — Sorbonne Université · EURECOM <span class="rw-people-role">· CIFRE programme with Huawei Paris · advised by Raja Appuswamy &amp; Chong Li · expected 2026</span><br><span class="rw-people-role">Thesis: <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em></span><br><span class="rw-people-role">Jury: Corinne Ancourt (Mines Paris–PSL) &amp; Gaëtan Hains (UPEC), reviewers · Serge Petiton &amp; Denis Barthou, examiners</span></span></li>
-<li><span class="rw-cv-year">2019–22</span><span class="rw-cv-body"><strong>MSc in Computer Science</strong> — Sorbonne Université, Paris <span class="rw-people-role">· advised by Emmanuel Chailloux &amp; Jacques Malenfant</span></span></li>
-<li><span class="rw-cv-year">2016–19</span><span class="rw-cv-body"><strong>BSc in Computer Science</strong> — Université Paris-Saclay <span class="rw-people-role">· mentored by Isabelle Guyon, Viviane Pons &amp; Zhengying Liu</span></span></li>
 </ul>
 </section>
 
