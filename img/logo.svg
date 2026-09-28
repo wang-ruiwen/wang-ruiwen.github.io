@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Ruiwen Wang RW logo">
-  <rect width="256" height="256" rx="44" fill="#fffff8"/>
-  <g fill="#111318" transform="translate(2.2 65.4) scale(0.395)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="16 -24 605 365" role="img" aria-labelledby="title desc">
+  <title id="title">Ruiwen Wang — RW logo</title>
+  <desc id="desc">A minimalist geometric RW monogram.</desc>
+  <g fill="#111318">
     <path d="M40 0H76L210 250H168L40 0Z"/>
     <path d="M105 0h148c67 0 113 40 113 99 0 47-28 82-74 95l74 111h-48l-92-136h31c40 0 66-24 66-62 0-37-26-61-66-61H129L105 0Z"/>
     <path d="M338 139h42l80 117 91-141h46L481 297c-9 14-17 20-24 20-8 0-15-6-24-20L338 139Z"/>
