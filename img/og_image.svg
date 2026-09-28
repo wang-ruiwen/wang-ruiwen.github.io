@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Ruiwen WANG — AI Infrastructure &amp; ML Systems</title>
+  <desc id="desc">PhD. AI infrastructure, LLM pretraining and hybrid parallelism. Paris, France. Open to work and relocation.</desc>
+  <style>
+    @font-face{font-family:Inter;src:url('../fonts/inter-latin-wght-normal.woff2') format('woff2');font-weight:400 700;}
+    @font-face{font-family:SourceSerif;src:url('../fonts/source-serif-4-latin-wght-normal.woff2') format('woff2');font-weight:400 700;}
+    .sans{font-family:Inter,Arial,sans-serif;}
+  </style>
+  <rect width="1200" height="630" fill="#fffff8"/>
+  <text x="96" y="120" class="sans" font-size="23" fill="#73735f">AI Infrastructure &amp; ML Systems</text>
+  <path d="M96 205H156" stroke="#aaa692" stroke-width="1"/>
+  <text x="91" y="324" font-family="SourceSerif,Georgia,serif" font-size="80" font-weight="600" fill="#1a1a18">Ruiwen WANG</text>
+  <text x="96" y="389" class="sans" font-size="28" fill="#5a5a50">PhD · LLM Pretraining · Hybrid Parallelism</text>
+  <text x="96" y="434" class="sans" font-size="23" fill="#73735f">Paris, France · Open to work &amp; relocation</text>
+  <text x="1104" y="564" text-anchor="end" class="sans" font-size="23" fill="#73735f">ruiwen.wang</text>
+</svg>
