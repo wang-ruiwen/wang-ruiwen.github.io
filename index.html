@@ -169,6 +169,8 @@ a{color:var(--rw-accent-dark);}
   margin:0 0 0.2rem;
   text-wrap:balance;
 }
+.rw-hero-field{display:inline-block;}
+.rw-hero-field+.rw-hero-field::before{content:" · ";white-space:pre;}
 .rw-hero-affil{
   font-size:0.86rem;
   color:var(--rw-text-soft);
@@ -476,7 +478,7 @@ a{color:var(--rw-accent-dark);}
   font-variant-caps:all-small-caps;
 }
 .rw-people-h3::after{display:none;}
-.rw-people-list{
+.rw-section .rw-people-list{
   margin:0;
   padding:0;
   list-style:none;
@@ -504,10 +506,10 @@ a{color:var(--rw-accent-dark);}
 }
 
 /* CV timeline */
-.rw-cv-list{margin:0.4rem 0 1.1rem;padding:0;list-style:none;}
-.rw-cv-list li{display:grid;grid-template-columns:5.5rem 1fr;gap:1.1rem;padding:0.45rem 0;align-items:baseline;}
+.rw-section .rw-cv-list{margin:0.4rem 0 1.1rem;padding:0;list-style:none;}
+.rw-cv-list li{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:1.1rem;padding:0.45rem 0;align-items:baseline;}
 .rw-cv-year{font-family:'Source Code Pro',monospace;font-size:0.82rem;color:var(--rw-text-soft);font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:0.01em;}
-.rw-cv-body{font-size:0.95rem;line-height:1.55;color:var(--rw-text);}
+.rw-cv-body{min-width:0;font-size:0.95rem;line-height:1.55;color:var(--rw-text);}
 
 /* Footer */
 .rw-footer{
@@ -526,6 +528,10 @@ a{color:var(--rw-accent-dark);}
 .rw-footer p.rw-footer-meta{font-size:0.8rem;color:var(--rw-text-muted);opacity:0.85;}
 .rw-footer p:last-child{margin-bottom:0;}
 .rw-footer a{color:var(--rw-text-muted);text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s ease;}
+.rw-footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:0.2rem 0.9rem;}
+.rw-footer-links a{white-space:nowrap;}
+.rw-nowrap{white-space:nowrap;}
+.rw-people-list strong{white-space:nowrap;}
 .rw-footer a:hover{border-bottom-color:var(--rw-text-muted);color:var(--rw-ink);}
 .rw-colophon{font-style:italic;letter-spacing:0.01em;opacity:0.85;}
 
@@ -539,8 +545,9 @@ a{color:var(--rw-accent-dark);}
 .rw-work{padding:1.6rem 0;border-bottom:1px solid var(--rw-line);scroll-margin-top:var(--rw-scroll-offset, 7rem);}
 .rw-work:first-of-type{padding-top:0;}
 .rw-work:last-of-type{border-bottom:none;}
-.rw-work .rw-pubtitle{font-size:1.08rem;line-height:1.5;margin:0 0 0.5rem;text-wrap:pretty;}
+.rw-work .rw-pubtitle{font-size:1.08rem;line-height:1.5;margin:0 0 0.5rem;text-wrap:balance;}
 .rw-work .rw-pubtitle em{font-style:normal;font-weight:500;}
+.rw-title-part{display:inline-block;max-width:100%;vertical-align:top;}
 .rw-itemcard-body .rw-pubauthors{font-size:0.85rem;color:var(--rw-text-muted);line-height:1.55;}
 .rw-itemcard-body .rw-pubvenue{font-size:0.77rem;color:var(--rw-text-soft);line-height:1.6;}
 .rw-work .rw-work-method{margin:0.8rem 0 0.45rem;}
@@ -556,6 +563,8 @@ a{color:var(--rw-accent-dark);}
   .rw-hero-avatar{width:120px;height:120px;}
   .rw-hero-name{font-size:1.9rem;}
   .rw-hero-subtitle{font-size:0.93rem;}
+  .rw-hero-field{display:block;}
+  .rw-hero-field+.rw-hero-field::before{content:none;}
   .rw-content{padding:0 1rem 2rem;}
   .rw-section{margin-top:2.2rem;}
   .rw-section h2{font-size:1.32rem;}
@@ -564,7 +573,10 @@ a{color:var(--rw-accent-dark);}
   .rw-news .rw-news-item{grid-template-columns:3.8rem minmax(0,1fr);column-gap:1.6rem;font-size:0.9rem;}
   .rw-news-item::before,.rw-news-item::after{left:4.6rem;}
   .rw-news-date{font-size:0.79rem;}
-  .rw-cv-list li{grid-template-columns:4rem 1fr;gap:0.7rem;}
+  .rw-cv-list li{grid-template-columns:4rem minmax(0,1fr);gap:0.7rem;}
+}
+@media (max-width:520px){
+  .rw-cv-list li{grid-template-columns:minmax(0,1fr);gap:0.2rem;}
 }
 @media (max-width:360px){
   .rw-topnav-inner{gap:0.15rem 0.75rem;padding:0.6rem 0.65rem;}
@@ -591,7 +603,7 @@ a{color:var(--rw-accent-dark);}
 <header class="rw-hero">
 <picture><source srcset="/images/avatar.webp" type="image/webp"><img class="rw-hero-avatar" src="/images/avatar.jpg" alt="Ruiwen WANG" width="384" height="384" fetchpriority="high" decoding="async"></picture>
 <h1 class="rw-hero-name">Ruiwen WANG</h1>
-<p class="rw-hero-subtitle">PhD&nbsp;· AI Infra&nbsp;· LLM Pretraining&nbsp;· Hybrid Parallelism</p>
+<p class="rw-hero-subtitle"><span class="rw-hero-field">PhD&nbsp;· AI Infra</span> <span class="rw-hero-field">LLM&nbsp;Pretraining&nbsp;· Hybrid&nbsp;Parallelism</span></p>
 <p class="rw-hero-affil">Paris, France</p>
 <p class="rw-hero-status"><span class="rw-status-dot" aria-hidden="true"></span>Open to work &amp; relocation</p>
 <div class="rw-hero-social">
@@ -625,8 +637,8 @@ a{color:var(--rw-accent-dark);}
 
 <article class="rw-work" id="publication-concord"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>Concord</h3><span class="rw-badge">NeurIPS 2026 · Accepted</span></div>
-<p class="rw-pubtitle"><em>Can Hybrid-Parallel Planning Support Alternating Model–Strategy Design? Dependency-Keyed Per-Layer Primitives for Re-Planning.</em></p>
-<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Thibaut Tachon, Raja Appuswamy, Chong Li.</p>
+<p class="rw-pubtitle"><em><span class="rw-title-part">Can Hybrid-Parallel Planning Support Alternating Model–Strategy Design?</span> <span class="rw-title-part">Dependency-Keyed Per-Layer Primitives for Re-Planning.</span></em></p>
+<p class="rw-pubauthors"><strong>Ruiwen&nbsp;Wang</strong>, Thibaut&nbsp;Tachon, Raja&nbsp;Appuswamy, Chong&nbsp;Li.</p>
 <p class="rw-work-method">Incremental hybrid-parallel re-planning with dependency-keyed per-layer primitives, recomputing only what a model edit can invalidate.</p>
 <p class="rw-card-result"><strong>~2.7×</strong> faster re-planning (median over audited model edits) with <strong>provably identical</strong> plan selection to a full search; validated on dense and MoE models at up to <strong>4,096 NPUs</strong>.</p>
 </div></article>
@@ -634,8 +646,8 @@ a{color:var(--rw-accent-dark);}
 <article class="rw-work" id="publication-prism"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>PRISM</h3><span class="rw-badge">SCA / HPCAsia 2026</span></div>
 <p class="rw-pubtitle"><em>PRISM: Profiling-Free Symbolic Memory-Driven Strategy Planner for Large DNN Model Training.</em></p>
-<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Philippe Fang, Chong Li, Thibaut Tachon, Raja Appuswamy.</p>
-<p class="rw-pubvenue">Osaka, Japan · Jan 26–29, 2026</p>
+<p class="rw-pubauthors"><strong>Ruiwen&nbsp;Wang</strong>, Philippe&nbsp;Fang, Chong&nbsp;Li, Thibaut&nbsp;Tachon, Raja&nbsp;Appuswamy.</p>
+<p class="rw-pubvenue">Osaka, Japan · <span class="rw-nowrap">Jan 26–29, 2026</span></p>
 <p class="rw-work-method">Profiling-free hybrid-parallel strategy planning with symbolic memory models, recomputation-aware estimates and topology-aware communication costs.</p>
 <p class="rw-card-result"><strong>92–96%</strong> memory-prediction accuracy (median error ≈ 7%) across DeepSeek3 / Llama2-3 / Mistral / TextHawk / Llama-MoE on Ascend-910 up to <strong>1,024 NPUs</strong>; up to <strong>1.43× MFU</strong> speedup over Megatron-LM.</p>
 <div class="rw-itemcard-links"><a href="https://doi.org/10.1145/3773656.3773667" rel="noopener" target="_blank">ACM DL</a><a href="https://atomgit.com/mindspore/hyper-parallel/tree/master/hyper_parallel/auto_parallel/sapp_nd" rel="noopener" target="_blank">SAPP-ND code</a><a href="#demo">→ SAPP demo</a></div>
@@ -644,23 +656,23 @@ a{color:var(--rw-accent-dark);}
 <article class="rw-work" id="publication-mllm-pipeline"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>MLLM Pipeline</h3><span class="rw-badge">SCA / HPCAsia 2026</span></div>
 <p class="rw-pubtitle"><em>MLLM Pipeline Bubble Modeling for Large-Scale Training.</em></p>
-<p class="rw-pubauthors">Zhengdao Yu, <strong>Ruiwen Wang</strong>, Nelson Lossing, Chong Li.</p>
-<p class="rw-pubvenue">SCA / HPCAsia 2026, Osaka, Japan · Jan 26–29, 2026</p>
+<p class="rw-pubauthors">Zhengdao&nbsp;Yu, <strong>Ruiwen&nbsp;Wang</strong>, Nelson&nbsp;Lossing, Chong&nbsp;Li.</p>
+<p class="rw-pubvenue">SCA / HPCAsia 2026, Osaka, Japan · <span class="rw-nowrap">Jan 26–29, 2026</span></p>
 </div></article>
 
 <article class="rw-work" id="publication-telechat3"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>TeleChat3-MoE</h3><span class="rw-badge">arXiv 2025</span></div>
 <p class="rw-pubtitle"><em>Training Report of TeleChat3-MoE.</em></p>
-<p class="rw-pubauthors">Xinzhang Liu, Chao Wang, Zhihua Yang, Zhuo Jiang, …, <strong>Ruiwen Wang</strong>, <em>et al.</em></p>
-<p class="rw-pubvenue">arXiv preprint · Dec 2025</p>
+<p class="rw-pubauthors">Xinzhang&nbsp;Liu, Chao&nbsp;Wang, Zhihua&nbsp;Yang, Zhuo&nbsp;Jiang, …, <strong>Ruiwen&nbsp;Wang</strong>, <em>et al.</em></p>
+<p class="rw-pubvenue">arXiv preprint · <span class="rw-nowrap">Dec 2025</span></p>
 <div class="rw-itemcard-links"><a href="https://arxiv.org/abs/2512.24157" rel="noopener" target="_blank">arXiv</a></div>
 </div></article>
 
 <article class="rw-work" id="publication-manumatic"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>ManuMatic</h3><span class="rw-badge">IFIP NPC 2025</span></div>
 <p class="rw-pubtitle"><em>ManuMatic: Strategy Injection for Robust Automatic Hybrid Parallelism in Distributed DNN Training.</em></p>
-<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Hongxing Wang, Raja Appuswamy, Yujie Yuan.</p>
-<p class="rw-pubvenue">22nd IFIP NPC · Nha Trang, Vietnam · Nov 14–16, 2025</p>
+<p class="rw-pubauthors"><strong>Ruiwen&nbsp;Wang</strong>, Chong&nbsp;Li, Hongxing&nbsp;Wang, Raja&nbsp;Appuswamy, Yujie&nbsp;Yuan.</p>
+<p class="rw-pubvenue">22nd IFIP NPC · Nha Trang, Vietnam · <span class="rw-nowrap">Nov 14–16, 2025</span></p>
 <p class="rw-work-method">Strategy injection lets users pin performance-critical operators while a D-Rec-based planner derives a consistent hybrid-parallel strategy for the rest of the graph.</p>
 <p class="rw-card-result">Up to <strong>2.24×</strong> over D-Rec on Mixtral-8×7B with expert parallelism (8 NPUs); <strong>2.04×</strong> on Llama3-8B at 8K context; <strong>1.45× / 1.30×</strong> on Qwen2.5-72B at 32K context (64 NPUs, combined with BMPipe).</p>
 <div class="rw-itemcard-links"><a href="https://doi.org/10.1007/978-3-032-10466-3_14" rel="noopener" target="_blank">Springer</a></div>
@@ -669,18 +681,18 @@ a{color:var(--rw-accent-dark);}
 <article class="rw-work" id="publication-bmpipe"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>BMPipe</h3><span class="rw-badge">IEEE CLUSTER 2025</span></div>
 <p class="rw-pubtitle"><em>BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training.</em></p>
-<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy, Teng Su.</p>
-<p class="rw-pubvenue">27th IEEE CLUSTER · Edinburgh, UK · Sep 2–5, 2025</p>
+<p class="rw-pubauthors"><strong>Ruiwen&nbsp;Wang</strong>, Chong&nbsp;Li, Thibaut&nbsp;Tachon, Raja&nbsp;Appuswamy, Teng&nbsp;Su.</p>
+<p class="rw-pubvenue">27th IEEE CLUSTER · Edinburgh, UK · <span class="rw-nowrap">Sep 2–5, 2025</span></p>
 <p class="rw-work-method">Joint pipeline–memory optimisation: an ILP balances recomputation, load imbalance and preparation bubbles under memory constraints.</p>
 <p class="rw-card-result"><strong>1.36×</strong> speedup over Megatron-Even on a <strong>16,384-NPU</strong> Ascend-910 cluster; up to <strong>1.70×</strong> under 1F1B-Interleave; the ILP solves in <strong>under 200 ms</strong> at production scale.</p>
 <div class="rw-itemcard-links"><a href="https://ieeexplore.ieee.org/document/11186487/" rel="noopener" target="_blank">IEEE Xplore</a><a href="https://atomgit.com/mindspore/hyper-parallel/tree/master/hyper_parallel/auto_parallel/sapp_ppb" rel="noopener" target="_blank">SAPP-PPB code</a><a href="https://gitee.com/mindspore/mindformers/tree/r1.5.0/toolkit/pipeline_balance" rel="noopener" target="_blank">MindFormers r1.5 code</a><a href="#demo">→ SAPP demo</a></div>
 </div></article>
 
 <article class="rw-work" id="publication-h2o"><div class="rw-itemcard-body">
-<div class="rw-itemcard-head"><h3>H²O</h3><span class="rw-badge">Euro-Par 2025</span><span class="rw-badge rw-badge-award">Best Poster Award</span></div>
+<div class="rw-itemcard-head"><h3>H²O</h3><span class="rw-badge">Euro-Par 2025</span><span class="rw-badge rw-badge-award">Best&nbsp;Poster&nbsp;Award</span></div>
 <p class="rw-pubtitle"><em>H²O: Holistic Hyper-Parameter Optimization for Large-Scale Deep Neural Network Training.</em></p>
-<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Raja Appuswamy, Yujie Yuan.</p>
-<p class="rw-pubvenue">Poster · 31st Euro-Par · Dresden, Germany · Aug 25–29, 2025</p>
+<p class="rw-pubauthors"><strong>Ruiwen&nbsp;Wang</strong>, Chong&nbsp;Li, Raja&nbsp;Appuswamy, Yujie&nbsp;Yuan.</p>
+<p class="rw-pubvenue">Poster · 31st Euro-Par · Dresden, Germany · <span class="rw-nowrap">Aug 25–29, 2025</span></p>
 <p class="rw-work-method">A two-level optimiser combines symbolic cost modelling with an ILP to jointly plan hybrid-parallel configurations, layer-to-stage assignments and recomputation.</p>
 <p class="rw-card-result"><strong>+36.7%</strong> speedup over the D-Rec baseline on 128-device clusters; <strong>35.7% MFU</strong> on DeepSeek-141B — without any accelerator-time profiling.</p>
 <div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
@@ -689,8 +701,8 @@ a{color:var(--rw-accent-dark);}
 <article class="rw-work" id="publication-scope"><div class="rw-itemcard-body">
 <div class="rw-itemcard-head"><h3>SCOPE</h3><span class="rw-badge">DP2E-AI 2025</span></div>
 <p class="rw-pubtitle"><em>SCOPE — Symbolic Computation-Memory Optimization for Pipeline Efficiency in Ultra-Scale DNN Training.</em></p>
-<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy.</p>
-<p class="rw-pubvenue">DP2E-AI 2025 Workshop, Paris, France · Jun 2–6, 2025</p>
+<p class="rw-pubauthors"><strong>Ruiwen&nbsp;Wang</strong>, Chong&nbsp;Li, Thibaut&nbsp;Tachon, Raja&nbsp;Appuswamy.</p>
+<p class="rw-pubvenue">DP2E-AI 2025 Workshop, Paris, France · <span class="rw-nowrap">Jun 2–6, 2025</span></p>
 </div></article>
 
 <div aria-labelledby="demo-title" class="rw-demo-hero" id="demo" role="region" tabindex="-1"><div class="rw-demo-hero-body">
@@ -704,17 +716,17 @@ a{color:var(--rw-accent-dark);}
 <section class="rw-section" id="patents">
 <h2>Patents</h2>
 <div class="rw-pubitem">
-<p class="rw-pubauthors">Chong Li, Pierre Leca, Thibaut Tachon, <strong>Ruiwen Wang</strong>, Haoran Wang.</p>
+<p class="rw-pubauthors">Chong&nbsp;Li, Pierre&nbsp;Leca, Thibaut&nbsp;Tachon, <strong>Ruiwen&nbsp;Wang</strong>, Haoran&nbsp;Wang.</p>
 <p class="rw-pubtitle"><em>Devices and methods for generating execution plans for a machine learning model.</em></p>
-<p class="rw-pubvenue"><a href="https://patents.google.com/patent/WO2025020165A1" target="_blank" rel="noopener">WO 2025/020165 A1</a> · PCT/CN2023/109533 · Huawei Technologies · filed Jul 27, 2023 · published Jan 30, 2025</p>
+<p class="rw-pubvenue"><a href="https://patents.google.com/patent/WO2025020165A1" target="_blank" rel="noopener">WO 2025/020165 A1</a> · PCT/CN2023/109533 · Huawei Technologies · filed <span class="rw-nowrap">Jul 27, 2023</span> · published <span class="rw-nowrap">Jan 30, 2025</span></p>
 </div>
 <div class="rw-pubitem">
-<p class="rw-pubauthors">Chong Li, <strong>Ruiwen Wang</strong>, Haoran Wang, Fan Yu.</p>
+<p class="rw-pubauthors">Chong&nbsp;Li, <strong>Ruiwen&nbsp;Wang</strong>, Haoran&nbsp;Wang, Fan&nbsp;Yu.</p>
 <p class="rw-pubtitle"><em>A load balancing method to improve large model performance.</em></p>
 <p class="rw-pubvenue">Patent application · Huawei Technologies · publication pending</p>
 </div>
 <div class="rw-pubitem">
-<p class="rw-pubauthors">Chong Li, Thibaut Tachon, <strong>Ruiwen Wang</strong>, Haoran Wang.</p>
+<p class="rw-pubauthors">Chong&nbsp;Li, Thibaut&nbsp;Tachon, <strong>Ruiwen&nbsp;Wang</strong>, Haoran&nbsp;Wang.</p>
 <p class="rw-pubtitle"><em>A multi-dimension parallelism configuration method for large language model training.</em></p>
 <p class="rw-pubvenue">Patent application · Huawei Technologies · publication pending</p>
 </div>
@@ -723,9 +735,9 @@ a{color:var(--rw-accent-dark);}
 <section class="rw-section" id="awards">
 <h2>Awards</h2>
 <ul class="rw-people-list">
-<li><strong>Best Poster Award</strong> — Euro-Par 2025, Dresden <span class="rw-people-role">· for H²O</span></li>
-<li><strong>Letter of Appreciation</strong> — China Telecom, 2025 <span class="rw-people-role">· DeepSeek-MoE training-optimisation deployment</span></li>
-<li><strong>Golden Prize</strong> — Huawei Challenge for Automatic Load Balancing, 2024</li>
+<li><strong>Best&nbsp;Poster&nbsp;Award</strong> — Euro-Par 2025, Dresden <span class="rw-people-role">· for H²O</span></li>
+<li><strong>Letter&nbsp;of&nbsp;Appreciation</strong> — China Telecom, 2025 <span class="rw-people-role">· DeepSeek-MoE training-optimisation deployment</span></li>
+<li><strong>Golden&nbsp;Prize</strong> — Huawei Challenge for Automatic Load Balancing, 2024</li>
 </ul>
 </section>
 
@@ -740,9 +752,9 @@ a{color:var(--rw-accent-dark);}
 <section class="rw-section" id="education">
 <h2>Education</h2>
 <ul class="rw-cv-list">
-<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>PhD in Computer Science</strong> — Sorbonne Université · EURECOM <span class="rw-people-role">· CIFRE programme with Huawei Paris · advised by Raja Appuswamy &amp; Chong Li · defended 24 July 2026</span><br><span class="rw-people-role">Thesis: <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em></span><br><span class="rw-people-role">Jury: Corinne Ancourt (Mines Paris–PSL) &amp; Gaëtan Hains (UPEC), reviewers · Serge Petiton, examiner · Denis Barthou, president</span></span></li>
-<li><span class="rw-cv-year">2019–22</span><span class="rw-cv-body"><strong>MSc in Computer Science</strong> — Sorbonne Université, Paris <span class="rw-people-role">· advised by Emmanuel Chailloux &amp; Jacques Malenfant</span></span></li>
-<li><span class="rw-cv-year">2016–19</span><span class="rw-cv-body"><strong>BSc in Computer Science</strong> — Université Paris-Saclay <span class="rw-people-role">· mentored by Isabelle Guyon, Viviane Pons &amp; Zhengying Liu</span></span></li>
+<li><span class="rw-cv-year">2023–26</span><span class="rw-cv-body"><strong>PhD in Computer Science</strong> — Sorbonne Université · EURECOM <span class="rw-people-role">· CIFRE programme with Huawei Paris · advised by Raja&nbsp;Appuswamy &amp; Chong&nbsp;Li · defended 24&nbsp;July&nbsp;2026</span><br><span class="rw-people-role">Thesis: <em>Systematic and Portable Optimisation of Hybrid Parallelism for Large-Scale Distributed Training</em></span><br><span class="rw-people-role">Jury: Corinne&nbsp;Ancourt (Mines Paris–PSL) &amp; Gaëtan&nbsp;Hains (UPEC), reviewers · Serge&nbsp;Petiton, examiner · Denis&nbsp;Barthou, president</span></span></li>
+<li><span class="rw-cv-year">2019–22</span><span class="rw-cv-body"><strong>MSc in Computer Science</strong> — Sorbonne Université, Paris <span class="rw-people-role">· advised by Emmanuel&nbsp;Chailloux &amp; Jacques&nbsp;Malenfant</span></span></li>
+<li><span class="rw-cv-year">2016–19</span><span class="rw-cv-body"><strong>BSc in Computer Science</strong> — Université Paris-Saclay <span class="rw-people-role">· mentored by Isabelle&nbsp;Guyon, Viviane&nbsp;Pons &amp; Zhengying&nbsp;Liu</span></span></li>
 </ul>
 </section>
 
@@ -755,7 +767,7 @@ a{color:var(--rw-accent-dark);}
 <li class="rw-news-item"><time class="rw-news-date" datetime="2026-01">2026.01</time><div class="rw-news-text">Co-author on <em>MLLM Pipeline Bubble Modeling</em>, presented at SCA / HPCAsia 2026, Osaka.</div></li>
 <li class="rw-news-item"><time class="rw-news-date" datetime="2025-11">2025.11</time><div class="rw-news-text">Presented <strong>ManuMatic</strong> at IFIP NPC 2025, Nha Trang.</div></li>
 <li class="rw-news-item"><time class="rw-news-date" datetime="2025-09">2025.09</time><div class="rw-news-text">Presented <strong>BMPipe</strong> at IEEE CLUSTER 2025, Edinburgh.</div></li>
-<li class="rw-news-item"><time class="rw-news-date" datetime="2025-08">2025.08</time><div class="rw-news-text"><strong>H²O</strong> received the <strong>Best Poster Award</strong> at Euro-Par 2025, Dresden.</div></li>
+<li class="rw-news-item"><time class="rw-news-date" datetime="2025-08">2025.08</time><div class="rw-news-text"><strong>H²O</strong> received the <strong>Best&nbsp;Poster&nbsp;Award</strong> at Euro-Par 2025, Dresden.</div></li>
 <li class="rw-news-item"><time class="rw-news-date" datetime="2025-06">2025.06</time><div class="rw-news-text">Presented <strong>SCOPE</strong> at the DP2E-AI 2025 Workshop, Paris.</div></li>
 <li class="rw-news-item"><time class="rw-news-date" datetime="2025-01">2025.01</time><div class="rw-news-text">Patent on automatic ML execution-plan generation published as <a href="https://patents.google.com/patent/WO2025020165A1" rel="noopener" target="_blank">WO 2025/020165 A1</a> (PCT, Huawei Technologies).</div></li>
 </ol>
@@ -765,32 +777,32 @@ a{color:var(--rw-accent-dark);}
 <h2>People</h2>
 <p class="rw-section-note">The people behind this work — advisors, thesis committee members, mentors, co-authors and friends.</p>
 <h3 class="rw-people-h3">PhD supervisors</h3><ul class="rw-people-list">
-<li><strong>Dr. Raja Appuswamy</strong> — Assistant Professor (HDR), EURECOM <span class="rw-people-role">· director</span></li>
-<li><strong>Dr. Chong Li</strong> — Principal Researcher, Huawei Paris <span class="rw-people-role">· co-director</span></li>
+<li><strong>Dr. Raja&nbsp;Appuswamy</strong> — Assistant Professor (HDR), EURECOM <span class="rw-people-role">· director</span></li>
+<li><strong>Dr. Chong&nbsp;Li</strong> — Principal Researcher, Huawei Paris <span class="rw-people-role">· co-director</span></li>
 </ul>
 <h3 class="rw-people-h3">PhD thesis committee</h3><ul class="rw-people-list">
-<li><strong>Corinne Ancourt</strong> — Mines Paris–PSL <span class="rw-people-role">· Reviewer</span></li>
-<li><strong>Gaëtan Hains</strong> — UPEC <span class="rw-people-role">· Reviewer</span></li>
-<li><strong>Serge Petiton</strong> — Université de Lille <span class="rw-people-role">· Examiner</span></li>
-<li><strong>Denis Barthou</strong> — Bordeaux INP / LaBRI <span class="rw-people-role">· President</span></li>
+<li><strong>Corinne&nbsp;Ancourt</strong> — Mines Paris–PSL <span class="rw-people-role">· Reviewer</span></li>
+<li><strong>Gaëtan&nbsp;Hains</strong> — UPEC <span class="rw-people-role">· Reviewer</span></li>
+<li><strong>Serge&nbsp;Petiton</strong> — Université de Lille <span class="rw-people-role">· Examiner</span></li>
+<li><strong>Denis&nbsp;Barthou</strong> — Bordeaux INP / LaBRI <span class="rw-people-role">· President</span></li>
 </ul>
 <h3 class="rw-people-h3">MSc advisors</h3><ul class="rw-people-list">
-<li><strong>Prof. Emmanuel Chailloux</strong> — Professor, Sorbonne Université / LIP6</li>
-<li><strong>Prof. Jacques Malenfant</strong> — Professor, Sorbonne Université / LIP6</li>
+<li><strong>Prof. Emmanuel&nbsp;Chailloux</strong> — Professor, Sorbonne Université / LIP6</li>
+<li><strong>Prof. Jacques&nbsp;Malenfant</strong> — Professor, Sorbonne Université / LIP6</li>
 </ul>
 <h3 class="rw-people-h3">Undergraduate mentors</h3><ul class="rw-people-list">
-<li><strong>Prof. Isabelle Guyon</strong> — Research Director, Google DeepMind <span class="rw-people-role">· Chaired Professor, Université Paris-Saclay (LISN)</span></li>
-<li><strong>Dr. Viviane Pons</strong> — Associate Professor, Université Paris-Saclay (LISN)</li>
-<li><strong>Dr. Zhengying Liu</strong> — Researcher, Moonshot AI <span class="rw-people-role">· PhD, Université Paris-Saclay (LRI)</span></li>
+<li><strong>Prof. Isabelle&nbsp;Guyon</strong> — Research Director, Google DeepMind <span class="rw-people-role">· Chaired Professor, Université Paris-Saclay (LISN)</span></li>
+<li><strong>Dr. Viviane&nbsp;Pons</strong> — Associate Professor, Université Paris-Saclay (LISN)</li>
+<li><strong>Dr. Zhengying&nbsp;Liu</strong> — Researcher, Moonshot AI <span class="rw-people-role">· PhD, Université Paris-Saclay (LRI)</span></li>
 </ul>
 <h3 class="rw-people-h3">Co-authors</h3><ul class="rw-people-list">
-<li><strong>Thibaut Tachon</strong> — Research Engineer, Huawei Paris <span class="rw-people-role">· PRISM · BMPipe · H²O · SCOPE</span></li>
-<li><strong>Philippe Fang</strong> — Research Engineer, Huawei Paris <span class="rw-people-role">· PRISM</span></li>
-<li><strong>Zhengdao Yu</strong> — PhD candidate (CIFRE), Huawei Paris × Sorbonne Université <span class="rw-people-role">· MLLM Pipeline Bubble</span></li>
-<li><strong>Nelson Lossing</strong> — Research Engineer (HPC), Huawei Paris <span class="rw-people-role">· MLLM Pipeline Bubble</span></li>
+<li><strong>Thibaut&nbsp;Tachon</strong> — Research Engineer, Huawei Paris <span class="rw-people-role">· PRISM · BMPipe · H²O · SCOPE</span></li>
+<li><strong>Philippe&nbsp;Fang</strong> — Research Engineer, Huawei Paris <span class="rw-people-role">· PRISM</span></li>
+<li><strong>Zhengdao&nbsp;Yu</strong> — PhD candidate (CIFRE), Huawei Paris × Sorbonne Université <span class="rw-people-role">· MLLM Pipeline Bubble</span></li>
+<li><strong>Nelson&nbsp;Lossing</strong> — Research Engineer (HPC), Huawei Paris <span class="rw-people-role">· MLLM Pipeline Bubble</span></li>
 </ul>
 <h3 class="rw-people-h3">Friends</h3><ul class="rw-people-list">
-<li><strong>Quentin Petit</strong> — Postdoctoral Researcher, Mines Paris – PSL <span class="rw-people-role">· HPC / AI · formerly&nbsp;Huawei&nbsp;Paris</span></li>
+<li><strong>Quentin&nbsp;Petit</strong> — Postdoctoral Researcher, Mines Paris – PSL <span class="rw-people-role">· HPC / AI · formerly&nbsp;Huawei&nbsp;Paris</span></li>
 </ul>
 </section>
 
@@ -798,11 +810,11 @@ a{color:var(--rw-accent-dark);}
 
 <footer class="rw-footer">
 <p>© 2026 Ruiwen WANG · <a href="mailto:wangrw0124@gmail.com">wangrw0124@gmail.com</a></p>
-<p class="rw-footer-meta">
-<a href="#people">People</a> ·
-<a href="/cv/ruiwen-wang-cv.pdf">CV (PDF)</a> ·
-<a href="https://orcid.org/0009-0000-6709-5970" target="_blank" rel="noopener">ORCID</a> ·
-<a href="https://scholar.google.com/citations?user=AR1nHEUAAAAJ" target="_blank" rel="noopener">Google Scholar</a> ·
+<p class="rw-footer-meta rw-footer-links">
+<a href="#people">People</a>
+<a href="/cv/ruiwen-wang-cv.pdf">CV (PDF)</a>
+<a href="https://orcid.org/0009-0000-6709-5970" target="_blank" rel="noopener">ORCID</a>
+<a href="https://scholar.google.com/citations?user=AR1nHEUAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
 <a href="https://www.linkedin.com/in/ruiwen-wang-ai" target="_blank" rel="noopener">LinkedIn</a>
 </p>
 <p class="rw-footer-meta">Last updated <time datetime="2026-09-28">September 2026</time> · <a href="https://github.com/wang-ruiwen/wang-ruiwen.github.io" target="_blank" rel="noopener">Source on GitHub</a></p>
