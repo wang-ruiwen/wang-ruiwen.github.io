@@ -318,7 +318,6 @@ a{color:var(--rw-accent-dark);}
   padding:0.75rem 0;
   border-top:1px solid var(--rw-line);
 }
-.rw-publist .rw-pubitem:first-child,
 #patents>.rw-pubitem{border-top:none;}
 
 /* Research entries */
@@ -391,19 +390,7 @@ a{color:var(--rw-accent-dark);}
   border-color:var(--rw-ink);
 }
 
-/* Publications */
-.rw-publist{counter-reset:rw-pub;margin:0;padding:0;list-style:none;}
-.rw-publist .rw-pubitem{position:relative;padding-left:2.5rem;}
-.rw-publist .rw-pubitem::before{
-  counter-increment:rw-pub;
-  content:counter(rw-pub);
-  position:absolute;left:0;top:0.95rem;
-  width:1.7rem;text-align:right;
-  font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  font-size:0.78rem;font-weight:600;
-  color:var(--rw-text-soft);
-  font-variant-numeric:tabular-nums lining-nums;
-}
+/* Publication metadata */
 .rw-pubauthors{
   font-size:0.93rem;
   color:var(--rw-text);
@@ -537,8 +524,8 @@ a{color:var(--rw-accent-dark);}
 .rw-work .rw-pubtitle{font-size:1rem;line-height:1.5;margin:0.55rem 0 0.4rem;text-wrap:pretty;}
 .rw-itemcard-body .rw-pubauthors{font-size:0.85rem;color:var(--rw-text-muted);line-height:1.55;}
 .rw-itemcard-body .rw-pubvenue{font-size:0.77rem;color:var(--rw-text-soft);line-height:1.6;}
+.rw-publication-only .rw-pubtitle{margin-top:0;font-weight:500;}
 .rw-work .rw-work-method{margin:0.8rem 0 0.45rem;}
-.rw-subheading{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:1.05rem;font-weight:600;color:var(--rw-ink);margin:2rem 0 0.7rem;}
 .rw-hero-social{align-items:center;flex-wrap:wrap;}
 .rw-hero-social a{display:inline-flex;align-items:center;gap:0.4rem;}
 .rw-hero-social a span{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:0.8rem;}
@@ -572,7 +559,7 @@ a{color:var(--rw-accent-dark);}
   .rw-topnav,.rw-progress,.rw-hero-social,.rw-demo-hero,.rw-itemcard-links{display:none!important;}
   body{font-size:10pt;line-height:1.5;}
   .rw-section{margin-top:1.5rem;opacity:1!important;transform:none!important;}
-  .rw-section h2,.rw-subheading{break-after:avoid;}
+  .rw-section h2{break-after:avoid;}
   .rw-work,.rw-pubitem{break-inside:avoid;}
   .rw-card-result{border:1px solid #ccc;background:none;}
   .rw-badge{border:1px solid #ccc;background:none;color:#444;}
@@ -637,27 +624,20 @@ a{color:var(--rw-accent-dark);}
 <p class="rw-pubvenue">Osaka, Japan · Jan 26–29, 2026</p>
 <p class="rw-work-method">Profiling-free hybrid-parallel strategy planning with symbolic memory models, recomputation-aware estimates and topology-aware communication costs.</p>
 <p class="rw-card-result"><strong>92–96%</strong> memory-prediction accuracy (median error ≈ 7%) across DeepSeek3 / Llama2-3 / Mistral / TextHawk / Llama-MoE on Ascend-910 up to <strong>1,024 NPUs</strong>; up to <strong>1.43× MFU</strong> speedup over Megatron-LM.</p>
-<div class="rw-itemcard-links"><a href="https://doi.org/10.1145/3773656.3773667" rel="noopener" target="_blank">ACM DL</a><a href="#demo">→ SAPP demo</a></div>
+<div class="rw-itemcard-links"><a href="https://doi.org/10.1145/3773656.3773667" rel="noopener" target="_blank">ACM DL</a><a href="https://atomgit.com/mindspore/hyper-parallel/tree/master/hyper_parallel/auto_parallel/sapp_nd" rel="noopener" target="_blank">SAPP-ND code</a><a href="#demo">→ SAPP demo</a></div>
 </div></article>
 
-<article class="rw-work" id="publication-bmpipe"><div class="rw-itemcard-body">
-<div class="rw-itemcard-head"><h3>BMPipe</h3><span class="rw-badge">IEEE CLUSTER 2025</span></div>
-<p class="rw-pubtitle"><em>BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training.</em></p>
-<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy, Teng Su.</p>
-<p class="rw-pubvenue">27th IEEE CLUSTER · Edinburgh, UK · Sep 2–5, 2025</p>
-<p class="rw-work-method">Joint pipeline–memory optimisation: an ILP balances recomputation, load imbalance and preparation bubbles under memory constraints.</p>
-<p class="rw-card-result"><strong>1.36×</strong> speedup over Megatron-Even on a <strong>16,384-NPU</strong> Ascend-910 cluster; up to <strong>1.70×</strong> under 1F1B-Interleave; the ILP solves in <strong>under 200 ms</strong> at production scale.</p>
-<div class="rw-itemcard-links"><a href="https://ieeexplore.ieee.org/document/11186487/" rel="noopener" target="_blank">IEEE Xplore</a><a href="#demo">→ SAPP demo</a></div>
+<article class="rw-work rw-publication-only" id="publication-mllm-pipeline"><div class="rw-itemcard-body">
+<h3 class="rw-pubtitle"><em>MLLM Pipeline Bubble Modeling for Large-Scale Training.</em></h3>
+<p class="rw-pubauthors">Zhengdao Yu, <strong>Ruiwen Wang</strong>, Nelson Lossing, Chong Li.</p>
+<p class="rw-pubvenue">SCA / HPCAsia 2026, Osaka, Japan · Jan 26–29, 2026</p>
 </div></article>
 
-<article class="rw-work" id="publication-h2o"><div class="rw-itemcard-body">
-<div class="rw-itemcard-head"><h3>H²O</h3><span class="rw-badge">Euro-Par 2025</span><span class="rw-badge rw-badge-award">Best Poster</span></div>
-<p class="rw-pubtitle"><em>H²O: Holistic Hyper-Parameter Optimization for Large-Scale Deep Neural Network Training.</em></p>
-<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Raja Appuswamy, Yujie Yuan.</p>
-<p class="rw-pubvenue">Poster · 31st Euro-Par · Dresden, Germany · Aug 25–29, 2025</p>
-<p class="rw-work-method">A two-level optimiser combines symbolic cost modelling with an ILP to jointly plan hybrid-parallel configurations, layer-to-stage assignments and recomputation.</p>
-<p class="rw-card-result"><strong>+36.7%</strong> speedup over the D-Rec baseline on 128-device clusters; <strong>35.7% MFU</strong> on DeepSeek-141B — without any accelerator-time profiling.</p>
-<div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
+<article class="rw-work rw-publication-only" id="publication-telechat3"><div class="rw-itemcard-body">
+<h3 class="rw-pubtitle"><em>Training Report of TeleChat3-MoE.</em></h3>
+<p class="rw-pubauthors">Xinzhang Liu, Chao Wang, Zhihua Yang, Zhuo Jiang, …, <strong>Ruiwen Wang</strong>, <em>et al.</em></p>
+<p class="rw-pubvenue">arXiv preprint · Dec 2025</p>
+<div class="rw-itemcard-links"><a href="https://arxiv.org/abs/2512.24157" rel="noopener" target="_blank">arXiv</a></div>
 </div></article>
 
 <article class="rw-work" id="publication-manumatic"><div class="rw-itemcard-body">
@@ -670,34 +650,38 @@ a{color:var(--rw-accent-dark);}
 <div class="rw-itemcard-links"><a href="https://doi.org/10.1007/978-3-032-10466-3_14" rel="noopener" target="_blank">Springer</a></div>
 </div></article>
 
+<article class="rw-work" id="publication-bmpipe"><div class="rw-itemcard-body">
+<div class="rw-itemcard-head"><h3>BMPipe</h3><span class="rw-badge">IEEE CLUSTER 2025</span></div>
+<p class="rw-pubtitle"><em>BMPipe: Bubble-Memory Co-optimization Strategy Planner for Very-Large DNN Training.</em></p>
+<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy, Teng Su.</p>
+<p class="rw-pubvenue">27th IEEE CLUSTER · Edinburgh, UK · Sep 2–5, 2025</p>
+<p class="rw-work-method">Joint pipeline–memory optimisation: an ILP balances recomputation, load imbalance and preparation bubbles under memory constraints.</p>
+<p class="rw-card-result"><strong>1.36×</strong> speedup over Megatron-Even on a <strong>16,384-NPU</strong> Ascend-910 cluster; up to <strong>1.70×</strong> under 1F1B-Interleave; the ILP solves in <strong>under 200 ms</strong> at production scale.</p>
+<div class="rw-itemcard-links"><a href="https://ieeexplore.ieee.org/document/11186487/" rel="noopener" target="_blank">IEEE Xplore</a><a href="https://atomgit.com/mindspore/hyper-parallel/tree/master/hyper_parallel/auto_parallel/sapp_ppb" rel="noopener" target="_blank">SAPP-PPB code</a><a href="https://gitee.com/mindspore/mindformers/tree/r1.5.0/toolkit/pipeline_balance" rel="noopener" target="_blank">MindFormers r1.5 code</a><a href="#demo">→ SAPP demo</a></div>
+</div></article>
+
+<article class="rw-work" id="publication-h2o"><div class="rw-itemcard-body">
+<div class="rw-itemcard-head"><h3>H²O</h3><span class="rw-badge">Euro-Par 2025</span><span class="rw-badge rw-badge-award">Best Poster</span></div>
+<p class="rw-pubtitle"><em>H²O: Holistic Hyper-Parameter Optimization for Large-Scale Deep Neural Network Training.</em></p>
+<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Raja Appuswamy, Yujie Yuan.</p>
+<p class="rw-pubvenue">Poster · 31st Euro-Par · Dresden, Germany · Aug 25–29, 2025</p>
+<p class="rw-work-method">A two-level optimiser combines symbolic cost modelling with an ILP to jointly plan hybrid-parallel configurations, layer-to-stage assignments and recomputation.</p>
+<p class="rw-card-result"><strong>+36.7%</strong> speedup over the D-Rec baseline on 128-device clusters; <strong>35.7% MFU</strong> on DeepSeek-141B — without any accelerator-time profiling.</p>
+<div class="rw-itemcard-links"><a href="#demo">→ SAPP demo</a></div>
+</div></article>
+
+<article class="rw-work rw-publication-only" id="publication-scope"><div class="rw-itemcard-body">
+<h3 class="rw-pubtitle"><em>SCOPE — Symbolic Computation-Memory Optimization for Pipeline Efficiency in Ultra-Scale DNN Training.</em></h3>
+<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy.</p>
+<p class="rw-pubvenue">DP2E-AI 2025 Workshop, Paris, France · Jun 2–6, 2025</p>
+</div></article>
+
 <div aria-labelledby="demo-title" class="rw-demo-hero" id="demo" role="region" tabindex="-1"><div class="rw-demo-hero-body">
 <h3 id="demo-title">SAPP Search Studio</h3>
 <p>Interactive strategy search combining PRISM, BMPipe and H²O. Configure a model and cluster, compare candidate strategies, and inspect their pipeline timelines.</p>
 <a class="rw-demo-cta" href="https://sapp.ruiwen.wang" rel="noopener" target="_blank">Open live demo ↗</a>
 <p class="rw-demo-note">Start with <em>Launch search study</em> to populate the workspace. Searches run real solvers server-side.</p>
 </div></div>
-
-<h3 class="rw-subheading">Other publications</h3>
-<ol class="rw-publist">
-<li class="rw-pubitem"><div class="rw-itemcard-body">
-<p class="rw-pubtitle"><em>MLLM Pipeline Bubble Modeling for Large-Scale Training.</em></p>
-<p class="rw-pubauthors">Zhengdao Yu, <strong>Ruiwen Wang</strong>, Nelson Lossing, Chong Li.</p>
-<p class="rw-pubvenue">SCA / HPCAsia 2026, Osaka, Japan · Jan 26–29, 2026</p>
-</div></li>
-
-<li class="rw-pubitem"><div class="rw-itemcard-body">
-<p class="rw-pubtitle"><em>Training Report of TeleChat3-MoE.</em></p>
-<p class="rw-pubauthors">Xinzhang Liu, Chao Wang, Zhihua Yang, Zhuo Jiang, …, <strong>Ruiwen Wang</strong>, <em>et al.</em></p>
-<p class="rw-pubvenue">arXiv preprint · 2025</p>
-<div class="rw-itemcard-links"><a href="https://arxiv.org/abs/2512.24157" rel="noopener" target="_blank">arXiv</a></div>
-</div></li>
-
-<li class="rw-pubitem"><div class="rw-itemcard-body">
-<p class="rw-pubtitle"><em>SCOPE — Symbolic Computation-Memory Optimization for Pipeline Efficiency in Ultra-Scale DNN Training.</em></p>
-<p class="rw-pubauthors"><strong>Ruiwen Wang</strong>, Chong Li, Thibaut Tachon, Raja Appuswamy.</p>
-<p class="rw-pubvenue">DP2E-AI 2025 Workshop, Paris, France · Jun 2–6, 2025</p>
-</div></li>
-</ol>
 </section>
 
 <section class="rw-section" id="patents">
