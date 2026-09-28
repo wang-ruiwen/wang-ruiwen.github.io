@@ -170,7 +170,7 @@ a{color:var(--rw-accent-dark);}
   text-wrap:balance;
 }
 .rw-hero-field{display:inline-block;}
-.rw-hero-field+.rw-hero-field::before{content:" · ";white-space:pre;}
+.rw-hero-divider{white-space:pre;}
 .rw-hero-affil{
   font-size:0.86rem;
   color:var(--rw-text-soft);
@@ -564,7 +564,7 @@ a{color:var(--rw-accent-dark);}
   .rw-hero-name{font-size:1.9rem;}
   .rw-hero-subtitle{font-size:0.93rem;}
   .rw-hero-field{display:block;}
-  .rw-hero-field+.rw-hero-field::before{content:none;}
+  .rw-hero-divider{display:none;}
   .rw-content{padding:0 1rem 2rem;}
   .rw-section{margin-top:2.2rem;}
   .rw-section h2{font-size:1.32rem;}
@@ -603,7 +603,7 @@ a{color:var(--rw-accent-dark);}
 <header class="rw-hero">
 <picture><source srcset="/images/avatar.webp" type="image/webp"><img class="rw-hero-avatar" src="/images/avatar.jpg" alt="Ruiwen WANG" width="384" height="384" fetchpriority="high" decoding="async"></picture>
 <h1 class="rw-hero-name">Ruiwen WANG</h1>
-<p class="rw-hero-subtitle"><span class="rw-hero-field">PhD&nbsp;· AI Infra</span> <span class="rw-hero-field">LLM&nbsp;Pretraining&nbsp;· Hybrid&nbsp;Parallelism</span></p>
+<p class="rw-hero-subtitle"><span class="rw-hero-field">PhD&nbsp;· HPC&nbsp;· AI Infra</span><span class="rw-hero-divider"> · </span><span class="rw-hero-field">LLM&nbsp;Pretraining&nbsp;· Hybrid&nbsp;Parallelism</span></p>
 <p class="rw-hero-affil">Paris, France</p>
 <p class="rw-hero-status"><span class="rw-status-dot" aria-hidden="true"></span>Open to work &amp; relocation</p>
 <div class="rw-hero-social">
